@@ -578,7 +578,7 @@
 	<!-- Magnifier Box -->
 	<div id="magnifier-box">
 		<div id="magnifier-header">
-			<span class="magnifier-title">Lente di Ingrandimento (Alt + Z)</span>
+			<span class="magnifier-title">Lente di Ingrandimento (Alt + Q)</span>
 			<div id="magnifier-close">
 				<i data-lucide="x" class="w-5 h-5"></i>
 			</div>
@@ -603,10 +603,10 @@
 					<button id="magnifier-toggle"
 						onclick="const s=window.getSelection().toString(); if(s) openMagnifier(s); else alert('Seleziona del testo prima!')"
 						class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-neon-yellow/30 text-neon-yellow hover:bg-neon-yellow/10 transition-all group"
-						title="Ingrandisci Selezione (Alt + Z)">
+						title="Ingrandisci Selezione (Alt + Q)">
 						<i data-lucide="zoom-in" class="w-5 h-5"></i>
 						<span class="hidden lg:block font-mono text-xs font-bold uppercase tracking-tighter">LENTE
-							(Alt+Z)</span>
+							(Alt+Q)</span>
 					</button>
 					<button id="menu-btn" class="p-2 rounded-md hover:bg-white/10 transition-colors group">
 						<div class="flex items-center gap-2">
@@ -1757,78 +1757,219 @@
 			</section>
 			<section class="mb-16">
 				<div
-					class="bg-gradient-to-br from-gray-900 to-black p-8 md:p-12 rounded-2xl border border-white/10 relative overflow-hidden flex flex-col md:flex-row items-center gap-12 group hover:border-neon-teal/30 transition-all">
-					<div
-						class="absolute top-1/2 right-10 -translate-y-1/2 p-4 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
-						<i data-lucide="watch" class="w-64 h-64 md:w-96 md:h-96"></i>
-					</div>
-					<div class="flex-1 z-10 space-y-6">
-						<h3 class="text-3xl font-bold text-white flex items-center gap-3"><i data-lucide="clock"
-								class="text-neon-teal w-8 h-8"></i> Orologio di Sistema (Clock)</h3>
-						<p class="text-gray-300 text-lg text-justify leading-relaxed"> Il clock di sistema (system
-							clock) è un circuito elettronico che genera segnali periodici sotto forma di impulsi
-							elettrici. Come il battito di un metronomo, ogni impulso scandisce il tempo, generando
-							scandendo un ritmo regolare che scandisce ogni singola operazione interna. </p>
-						<p class="text-gray-300 text-lg text-justify leading-relaxed"> In particolare, fa partire e
-							scandisce le operazioni della CPU e permette di sincronizzare tutte le parti del computer
-							(CPU, memoria, bus, periferiche). </p>
-						<p class="text-gray-300 text-lg text-justify leading-relaxed"> Senza clock, il computer non
-							avrebbe un tempo comune e svolgerebbe le proprie operazioni con tempistiche totalmente
-							sfalsate. </p>
-						<p class="text-gray-300 text-lg text-justify leading-relaxed">La velocità del clock si misura in
-							<strong>Hertz (Hz)</strong>, ovvero cicli al secondo.
-						</p>
-						<div class="flex flex-wrap gap-4 mt-4 opacity-70">
-							<div class="bg-black/50 p-3 rounded-lg border border-white/10 flex flex-col items-start">
-								<span
-									class="text-gray-500 text-[10px] font-mono uppercase tracking-wider">Definizione</span><span
-									class="text-gray-300 font-mono text-sm">1 Hz = 1 ciclo/s</span>
-							</div>
-							<div class="bg-black/50 p-3 rounded-lg border border-white/10 flex flex-col items-start">
-								<span
-									class="text-gray-500 text-[10px] font-mono uppercase tracking-wider">Definizione</span><span
-									class="text-gray-300 font-mono text-sm">1 GHz = 1 Miliardo/s</span>
-							</div>
-						</div>
-						<span class="text-neon-teal block mt-2">Le CPU moderne hanno un clock tra i 2GHz e i
-							5GHz.</span>
-					</div>
-					<div class="flex flex-col items-center gap-6 z-10">
+					class="bg-gradient-to-br from-gray-900 to-black p-8 md:p-12 rounded-2xl border border-white/10 relative overflow-hidden flex flex-col items-center gap-12 group hover:border-neon-teal/30 transition-all">
+
+					<!-- Top Section: Text and Metronome -->
+					<div class="flex flex-col md:flex-row items-start gap-12 w-full">
+
 						<div
-							class="relative w-64 h-64 flex-shrink-0 flex items-end justify-center bg-white/5 rounded-full border border-white/5 shadow-inner backdrop-blur-sm p-8">
-							<div
-								class="absolute inset-0 rounded-full border-t border-r border-l border-transparent border-t-gray-600/30 rotate-45">
-							</div>
-							<div class="absolute bottom-10 w-4 h-4 bg-gray-400 rounded-full z-20 shadow-lg"></div>
-							<div id="metronome-stick"
-								class="w-1.5 h-40 bg-gray-600 rounded-full origin-bottom animate-metronome-manual relative z-10 flex flex-col justify-between items-center pb-2"
-								style="animation-duration: 2s;">
-								<div class="w-6 h-8 bg-neon-teal rounded shadow-[0_0_20px_rgba(45,212,191,0.6)] relative top-4 transition-all duration-300"
-									id="metronome-weight">
-									<div class="absolute inset-0 bg-white/30 rounded blur-[2px]"></div>
+							class="absolute top-1/2 right-10 -translate-y-1/2 p-4 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
+							<i data-lucide="watch" class="w-64 h-64 md:w-96 md:h-96"></i>
+						</div>
+						<div class="flex-1 z-10 space-y-6">
+							<h3 class="text-3xl font-bold text-white flex items-center gap-3"><i data-lucide="clock"
+									class="text-neon-teal w-8 h-8"></i> Orologio di Sistema (Clock)</h3>
+							<p class="text-gray-300 text-lg text-justify leading-relaxed"> Il clock di sistema (system
+								clock) è un circuito elettronico che genera segnali periodici sotto forma di impulsi
+								elettrici. Come il battito di un metronomo, ogni impulso definisce un ritmo
+								regolare che coordina ogni singola operazione interna. </p>
+							<p class="text-gray-300 text-lg text-justify leading-relaxed"> In particolare, fa partire e
+								scandisce le operazioni della CPU e permette di sincronizzare tutte le parti del
+								computer
+								(CPU, memoria, bus, periferiche). </p>
+							<p class="text-gray-300 text-lg text-justify leading-relaxed"> Senza clock, il computer non
+								avrebbe un tempo comune e svolgerebbe le proprie operazioni con tempistiche totalmente
+								sfalsate. </p>
+							<p class="text-gray-300 text-lg text-justify leading-relaxed">La velocità del clock si
+								misura in
+								<strong>Hertz (Hz)</strong>, ovvero cicli al secondo.
+							</p>
+							<div class="flex flex-wrap gap-4 mt-4 opacity-70">
+								<div
+									class="bg-black/50 p-3 rounded-lg border border-white/10 flex flex-col items-start">
+									<span
+										class="text-gray-500 text-[10px] font-mono uppercase tracking-wider">Definizione</span><span
+										class="text-gray-300 font-mono text-sm">1 Hz = 1 ciclo/s</span>
+								</div>
+								<div
+									class="bg-black/50 p-3 rounded-lg border border-white/10 flex flex-col items-start">
+									<span
+										class="text-gray-500 text-[10px] font-mono uppercase tracking-wider">Definizione</span><span
+										class="text-gray-300 font-mono text-sm">1 GHz = 1 Miliardo/s</span>
 								</div>
 							</div>
-							<div class="absolute top-10 left-10 text-gray-600 font-mono text-xs animate-pulse">TIC</div>
-							<div class="absolute top-10 right-10 text-gray-600 font-mono text-xs animate-pulse"
-								style="animation-delay: 0.6s">TAC</div>
-							<div id="clock-status-text"
-								class="absolute bottom-4 text-neon-teal font-mono text-xs font-bold tracking-widest uppercase z-30">
-								1 Hz (Didattico)</div>
+							<span class="text-neon-teal block mt-2">Le CPU moderne hanno un clock tra i 2GHz e i
+								5GHz.</span>
+
+
 						</div>
-						<div class="flex gap-3 bg-black/40 p-2 rounded-xl border border-white/10 backdrop-blur-md">
-							<button onclick="changeClockSpeed('slow', this)"
-								class="clock-btn bg-neon-teal text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all hover:scale-105 border border-transparent shadow-[0_0_10px_rgba(45,212,191,0.3)]">1
-								Hz</button>
-							<button onclick="changeClockSpeed('medium', this)"
-								class="clock-btn bg-transparent text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg text-xs font-mono transition-all border border-transparent">100
-								MHz</button>
-							<button onclick="changeClockSpeed('fast', this)"
-								class="clock-btn bg-transparent text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg text-xs font-mono transition-all border border-transparent group">4
-								GHz</button>
+						<div class="flex flex-col items-center gap-6 z-10 flex-shrink-0 self-start md:mt-2">
+							<div
+								class="relative w-64 h-64 flex-shrink-0 flex items-end justify-center bg-white/5 rounded-full border border-white/5 shadow-inner backdrop-blur-sm p-8">
+								<div
+									class="absolute inset-0 rounded-full border-t border-r border-l border-transparent border-t-gray-600/30 rotate-45">
+								</div>
+								<div class="absolute bottom-10 w-4 h-4 bg-gray-400 rounded-full z-20 shadow-lg"></div>
+								<div id="metronome-stick"
+									class="w-1.5 h-40 bg-gray-600 rounded-full origin-bottom animate-metronome-manual relative z-10 flex flex-col justify-between items-center pb-2"
+									style="animation-duration: 2s;">
+									<div class="w-6 h-8 bg-neon-teal rounded shadow-[0_0_20px_rgba(45,212,191,0.6)] relative top-4 transition-all duration-300"
+										id="metronome-weight">
+										<div class="absolute inset-0 bg-white/30 rounded blur-[2px]"></div>
+									</div>
+								</div>
+								<div class="absolute top-10 left-10 text-gray-600 font-mono text-xs animate-pulse">TIC
+								</div>
+								<div class="absolute top-10 right-10 text-gray-600 font-mono text-xs animate-pulse"
+									style="animation-delay: 0.6s">TAC</div>
+								<div id="clock-status-text"
+									class="absolute bottom-4 text-neon-teal font-mono text-xs font-bold tracking-widest uppercase z-30">
+									1 Hz (Didattico)</div>
+							</div>
+							<div class="flex gap-3 bg-black/40 p-2 rounded-xl border border-white/10 backdrop-blur-md">
+								<button onclick="changeClockSpeed('slow', this)"
+									class="clock-btn bg-neon-teal text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all hover:scale-105 border border-transparent shadow-[0_0_10px_rgba(45,212,191,0.3)]">1
+									Hz</button>
+								<button onclick="changeClockSpeed('medium', this)"
+									class="clock-btn bg-transparent text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg text-xs font-mono transition-all border border-transparent">100
+									MHz</button>
+								<button onclick="changeClockSpeed('fast', this)"
+									class="clock-btn bg-transparent text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg text-xs font-mono transition-all border border-transparent group">4
+									GHz</button>
+							</div>
 						</div>
 					</div>
-				</div>
+
+					<!-- COORDINAZIONE CLOCK INTEGRATA (Full Width) -->
+					<div class="pt-12 border-t border-white/5 mt-4 w-full z-10">
+						<h4 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+							<i data-lucide="users" class="text-neon-amber w-6 h-6"></i>
+							L'Analogia del Lancio della Palla (Clock)
+						</h4>
+						<p class="text-gray-400 text-base mb-6 leading-relaxed max-w-3xl">
+							Senza un clock (il "ritmo comune"), i componenti agirebbero come una squadra scoordinata.
+							Guarda come i cinque omini riescono a passarsi la palla solo quando sono sincronizzati dal
+							ritmo del sistema.
+						</p>
+
+						<div class="flex flex-col gap-8">
+							<!-- Controlli -->
+							<div class="flex flex-wrap justify-between items-center gap-6">
+								<div class="flex bg-black/40 p-1 rounded-full border border-white/10 shadow-lg">
+									<button onclick="toggleCoordinationClock(true)" id="coord-clock-on"
+										class="px-6 py-2 rounded-full transition-all font-bold font-mono text-[10px] uppercase tracking-widest bg-neon-green text-black shadow-[0_0_15px_#00ff9d]">CLOCK:
+										ON</button>
+									<button onclick="toggleCoordinationClock(false)" id="coord-clock-off"
+										class="px-6 py-2 rounded-full transition-all font-bold font-mono text-[10px] uppercase tracking-widest text-gray-400 hover:text-white">CLOCK:
+										OFF</button>
+								</div>
+								<div class="flex gap-4">
+									<div
+										class="bg-black/60 px-4 py-2 rounded-xl border border-white/5 flex flex-col items-center min-w-[100px] shadow-inner">
+										<span
+											class="text-[9px] text-gray-500 uppercase font-mono tracking-wider">Efficienza</span>
+										<span id="efficiency-val"
+											class="text-neon-green font-bold font-mono text-xl tracking-tighter">100%</span>
+									</div>
+									<div
+										class="bg-black/60 px-4 py-2 rounded-xl border border-white/5 flex flex-col items-center min-w-[100px] shadow-inner">
+										<span class="text-[9px] text-gray-500 uppercase font-mono tracking-wider">Dati
+											Persi</span>
+										<span id="dataloss-val"
+											class="text-neon-red font-bold font-mono text-xl tracking-tighter">0</span>
+									</div>
+								</div>
+							</div>
+
+							<!-- Area Simulazione -->
+							<div class="relative">
+								<div class="flex justify-between items-end mb-1 px-1">
+									<span id="clock-signal-text"
+										class="font-mono text-[10px] text-neon-green uppercase tracking-widest">
+										Sincronizzazione di Sistema: OTTIMALE
+									</span>
+								</div>
+								<div id="clock-signal-bar"
+									class="w-full h-2 bg-gray-800 rounded-full overflow-hidden mb-4 shadow-inner">
+									<div id="clock-signal-fill"
+										class="h-full w-0 bg-neon-green shadow-[0_0_15px_#00ff9d]"></div>
+								</div>
+								<div id="coord-sim-container"
+									class="relative h-48 bg-black/60 rounded-2xl border border-white/5 p-4 flex items-center justify-around overflow-hidden shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]">
+									<div class="absolute inset-0 opacity-10 pointer-events-none"
+										style="background-image: radial-gradient(circle, #444 1px, transparent 1px); background-size: 20px 20px;">
+									</div>
+
+									<!-- OMINI (5 FIGURI) -->
+									<div class="flex justify-between w-full px-4 items-center relative z-10">
+										<div id="unit-0"
+											class="coord-unit w-14 h-14 bg-gray-900 border-2 border-neon-purple rounded-xl flex flex-col items-center justify-center transition-all duration-300 shadow-lg">
+											<i data-lucide="user" class="text-neon-purple w-6 h-6"></i>
+											<span
+												class="text-[7px] font-mono font-bold text-gray-500 uppercase mt-1">OMINO
+												1</span>
+										</div>
+
+										<div id="unit-1"
+											class="coord-unit w-14 h-14 bg-gray-900 border-2 border-neon-blue rounded-xl flex flex-col items-center justify-center transition-all duration-300 shadow-lg">
+											<i data-lucide="user" class="text-neon-blue w-6 h-6"></i>
+											<span
+												class="text-[7px] font-mono font-bold text-gray-500 uppercase mt-1">OMINO
+												2</span>
+										</div>
+
+										<div id="unit-2"
+											class="coord-unit w-14 h-14 bg-gray-900 border-2 border-neon-green rounded-xl flex flex-col items-center justify-center transition-all duration-300 shadow-lg">
+											<i data-lucide="user" class="text-neon-green w-6 h-6"></i>
+											<span
+												class="text-[7px] font-mono font-bold text-gray-500 uppercase mt-1">OMINO
+												3</span>
+										</div>
+
+										<div id="unit-3"
+											class="coord-unit w-14 h-14 bg-gray-900 border-2 border-neon-amber rounded-xl flex flex-col items-center justify-center transition-all duration-300 shadow-lg">
+											<i data-lucide="user" class="text-neon-amber w-6 h-6"></i>
+											<span
+												class="text-[7px] font-mono font-bold text-gray-500 uppercase mt-1">OMINO
+												4</span>
+										</div>
+
+										<div id="unit-4"
+											class="coord-unit w-14 h-14 bg-gray-900 border-2 border-neon-red rounded-xl flex flex-col items-center justify-center transition-all duration-300 shadow-lg">
+											<i data-lucide="user" class="text-neon-red w-6 h-6"></i>
+											<span
+												class="text-[7px] font-mono font-bold text-gray-500 uppercase mt-1">OMINO
+												5</span>
+										</div>
+									</div>
+
+									<!-- Bus Line Background (Full width) -->
+									<div
+										class="absolute w-[80%] h-1 left-[10%] top-1/2 -translate-y-1/2 bg-gray-800/30 -z-0 rounded-full">
+									</div>
+
+
+
+									<div id="coord-collision-layer" class="absolute inset-0 pointer-events-none z-[60]">
+									</div>
+									<div id="coord-packets-container" class="absolute inset-0 pointer-events-none z-50">
+									</div>
+								</div>
+							</div>
+
+							<!-- Log -->
+							<div
+								class="p-4 bg-black/60 rounded-xl border border-white/5 min-h-[60px] flex items-center justify-center text-center shadow-lg">
+								<p id="coord-status-log"
+									class="font-mono text-sm text-neon-green tracking-tight leading-relaxed max-w-2xl">
+									Ritmo attivo: la palla scorre perfettamente tra gli omini.
+								</p>
+							</div>
+						</div>
+					</div>
+
 			</section>
+
 			<section class="bg-dark-card border border-white/5 rounded-2xl p-8 mb-16">
 				<h2 class="text-2xl font-bold text-white mb-6">Microprocessori Multi-core</h2>
 				<div class="flex flex-col md:flex-row gap-8 items-center">
@@ -2587,8 +2728,9 @@
 					class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
 					<i data-lucide="arrow-left"></i> Precedente: CPU
 				</button>
-				<button class="flex items-center gap-2 text-gray-600 cursor-not-allowed font-bold">
-					Prossima: Memorie <i data-lucide="lock" class="w-4 h-4"></i>
+				<button onclick="navigateTo('lesson-6')"
+					class="flex items-center gap-2 text-neon-purple hover:text-white font-bold transition-colors">
+					Prossima: Memoria RAM <i data-lucide="arrow-right"></i>
 				</button>
 			</div>
 		</div>
@@ -3085,7 +3227,7 @@
 						<!-- IMMAGINE ROM -->
 						<div class="md:w-1/3 bg-gray-900 p-4 rounded-xl border border-white/10 group">
 							<img src="rom.jpg" alt="ROM Chip"
-								class="w-full rounded-lg shadow-2xl group-hover:scale-105 transition-transform duration-700">
+								class="w-full rounded-lg shadow-2xl group-hover:scale-110 transition-transform duration-700">
 							<p class="text-center text-[10px] text-gray-500 font-mono mt-4 tracking-widest uppercase">
 								Chip di una ROM
 							</p>
@@ -3666,43 +3808,899 @@
 			</div>
 		</div>
 
-		<!-- ================= LESSON 9 VIEW ================= -->
+		<!-- ================= LESSON 9 VIEW (MASS STORAGE) ================= -->
 		<div id="lesson-9-view" class="hidden w-full max-w-5xl mx-auto animate-fade-in z-10">
-			<div class="flex flex-col items-center justify-center py-20 text-center space-y-8">
-				<div class="relative">
-					<div class="w-32 h-32 bg-neon-amber/20 rounded-full flex items-center justify-center animate-pulse">
-						<i data-lucide="hard-drive" class="w-16 h-16 text-neon-amber"></i>
-					</div>
-					<i data-lucide="hammer"
-						class="absolute -top-2 -right-2 w-12 h-12 text-gray-500 animate-spin-slow"></i>
-					<i data-lucide="settings-2"
-						class="absolute -bottom-2 -left-2 w-10 h-10 text-gray-600 animate-spin-reverse"></i>
-				</div>
+			<!-- Intestazione -->
+			<div class="mb-12 border-b border-white/10 pb-6 flex items-center justify-between">
 				<div>
-					<span class="text-neon-amber font-mono text-sm tracking-widest uppercase mb-2 block">Lezione
-						09</span>
-					<h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Lavori in Corso</h1>
-					<p class="text-gray-400 text-lg md:text-xl max-w-md mx-auto leading-relaxed">
-						Stiamo installando i dischi delle <strong class="text-neon-amber">Memorie di Massa</strong>.
-						<br>
-						Questa sezione sarà disponibile a breve con schemi interattivi su Hard Disk e SSD.
-					</p>
+					<span class="text-neon-amber font-mono text-sm tracking-widest">LEZIONE 09</span>
+					<h1 class="text-4xl md:text-5xl font-bold text-white mt-2">La memoria di massa</h1>
 				</div>
-				<div
-					class="w-full h-2 bg-gray-800 rounded-full overflow-hidden max-w-sm mx-auto border border-gray-700">
-					<div
-						class="h-full bg-[repeating-linear-gradient(45deg,#ffbf00,#ffbf00_10px,#cc9900_10px,#cc9900_20px)] animate-flow w-[200%]">
-					</div>
+				<div class="hidden md:block text-neon-amber/20">
+					<i data-lucide="hard-drive" class="w-16 h-16"></i>
 				</div>
 			</div>
-			<div class="flex justify-between w-full mt-12 pt-8 border-t border-white/10">
+
+			<!-- Introduzione Visuale Migliorata -->
+			<section class="mb-16 space-y-8">
+				<!-- Contenitore unificato per Problema + Soluzione + Confronto -->
+				<div class="bg-dark-card p-8 rounded-3xl border border-white/10 space-y-6">
+					<!-- Problema: Volatilità della RAM -->
+					<div class="bg-black/20 p-6 rounded-2xl border border-white/10">
+						<div class="flex items-start gap-6">
+							<div class="shrink-0">
+								<div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center">
+									<i data-lucide="power-off" class="w-7 h-7 text-red-400/60"></i>
+								</div>
+							</div>
+							<div class="flex-1">
+								<h3 class="text-xl font-bold text-white mb-3">
+									Il problema della volatilità
+								</h3>
+								<p class="text-gray-300 text-justify leading-relaxed mb-3">
+									Quando un computer viene spento, tutti i dati presenti nella <span
+										class="text-white font-bold">RAM</span> vengono perduti,
+									perché si tratta di una <span class="text-white font-bold italic">memoria
+										volatile</span>: necessita di alimentazione
+									elettrica per conservare le informazioni.
+								</p>
+								<div class="bg-black/30 p-3 rounded-lg border border-white/10 flex items-center gap-3">
+									<i data-lucide="alert-triangle" class="w-5 h-5 text-amber-400/60 shrink-0"></i>
+									<p class="text-sm text-gray-400 italic">
+										Senza alimentazione elettrica, la RAM perde istantaneamente tutti i dati
+										memorizzati.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Soluzione: Memoria Non Volatile -->
+					<div class="bg-black/20 p-6 rounded-2xl border border-white/10">
+						<div class="flex items-start gap-6">
+							<div class="shrink-0">
+								<div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center">
+									<i data-lucide="shield-check" class="w-7 h-7 text-green-400/60"></i>
+								</div>
+							</div>
+							<div class="flex-1">
+								<h3 class="text-xl font-bold text-white mb-3">
+									La soluzione: memoria non volatile
+								</h3>
+								<p class="text-gray-300 text-justify leading-relaxed mb-3">
+									Per rendere i dati permanenti è necessario scriverli (e, successivamente, leggerli)
+									su un supporto di <span class="text-white font-bold italic">memoria non
+										volatile</span>,
+									cioè capace di mantenere le informazioni anche in assenza di corrente elettrica.
+								</p>
+								<div class="bg-black/30 p-3 rounded-lg border border-white/10">
+									<p class="text-gray-300 leading-relaxed text-justify">
+										La <span class="text-white font-bold">memoria di massa</span> comprende proprio
+										quei dispositivi progettati per
+										conservare informazioni in formato digitale in modo <span
+											class="text-white font-bold">stabile e duraturo</span>.
+										A differenza della RAM, questi supporti permettono di archiviare file,
+										programmi, sistema operativo e dati personali
+										anche quando il computer è spento.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Confronto Visivo RAM vs Memoria di Massa -->
+					<div class="grid md:grid-cols-2 gap-6 pt-2">
+						<!-- RAM Card -->
+						<div
+							class="bg-black/20 p-5 rounded-xl border border-white/10 hover:border-white/20 transition-all">
+							<div class="flex items-center gap-3 mb-4">
+								<div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+									<i data-lucide="zap" class="w-5 h-5 text-blue-400/60"></i>
+								</div>
+								<h4 class="text-lg font-bold text-white">RAM</h4>
+							</div>
+							<div class="space-y-2.5 text-sm">
+								<div class="flex items-center gap-2">
+									<i data-lucide="zap" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300">Velocissima</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<i data-lucide="power" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300"><span class="text-white font-bold">Volatile</span>
+										(richiede alimentazione)</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<i data-lucide="database" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300">Capacità limitata (GB)</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<i data-lucide="trending-up" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300">Costo per GB elevato</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<i data-lucide="activity" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300">Uso: <strong class="text-white">elaborazioni
+											temporanee</strong></span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Memoria di Massa Card -->
+						<div
+							class="bg-black/20 p-5 rounded-xl border border-white/10 hover:border-white/20 transition-all">
+							<div class="flex items-center gap-3 mb-4">
+								<div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+									<i data-lucide="hard-drive" class="w-5 h-5 text-amber-400/60"></i>
+								</div>
+								<h4 class="text-lg font-bold text-white">Memoria di Massa</h4>
+							</div>
+							<div class="space-y-2.5 text-sm">
+								<div class="flex items-center gap-2">
+									<i data-lucide="gauge" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300">Più lenta della RAM</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<i data-lucide="shield-check" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300"><span class="text-white font-bold">Non volatile</span>
+										(dati permanenti)</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<i data-lucide="database" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300">Grande capacità (TB)</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<i data-lucide="trending-down" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300">Costo per GB contenuto</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<i data-lucide="save" class="w-4 h-4 text-gray-400"></i>
+									<span class="text-gray-300">Uso: <strong class="text-white">archiviazione
+											permanente</strong></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Operazioni: Lettura e Scrittura -->
+
+			</section>
+
+			<!-- Caratteristiche principali -->
+			<section class="mb-16">
+				<h2 class="text-2xl font-bold text-white mb-8 border-l-4 border-neon-amber pl-6">Caratteristiche
+					principali dei supporti di memoria</h2>
+				<div class="grid md:grid-cols-2 gap-8">
+					<div
+						class="bg-dark-card p-6 rounded-2xl border border-white/5 hover:border-neon-amber/30 transition-all">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="w-12 h-12 bg-neon-amber/10 rounded-xl flex items-center justify-center">
+								<i data-lucide="database" class="text-neon-amber"></i>
+							</div>
+							<h3 class="text-white font-bold text-xl">Capacità</h3>
+						</div>
+						<p class="text-gray-400 text-sm leading-relaxed text-justify">
+							È la quantità massima di dati che il supporto può contenere. Si misura in byte e nei suoi
+							multipli, in genere gigabyte (GB) o terabyte (TB). Determina quanti file, programmi o
+							contenuti multimediali possiamo archiviare.
+						</p>
+						<!-- Evoluzione Capacità -->
+						<div class="mt-6 pt-6 border-t border-white/5 flex flex-col gap-4">
+							<p class="text-[10px] font-mono text-neon-amber uppercase tracking-widest text-center">
+								L'evoluzione della capacità</p>
+							<div class="grid grid-cols-2 gap-4">
+								<div class="space-y-2">
+									<div
+										class="aspect-square rounded-xl overflow-hidden border border-white/10 group/img relative">
+										<img src="https://obsoletemedia.org/wp-content/uploads/2014/08/3.5-inch-HD-microfloppy-Sony-front.jpg"
+											alt="Floppy Disk"
+											class="w-full h-full object-cover transition-transform group-hover/img:scale-110">
+										<div
+											class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
+											<span class="text-[8px] font-mono text-white opacity-70">FLOPPY DISK</span>
+										</div>
+									</div>
+									<div class="text-center">
+										<p class="text-xs text-white font-mono">ANNI '80 - 2000
+										</p>
+										<span class="text-xs font-bold text-neon-amber">1.44 MB</span>
+
+									</div>
+								</div>
+								<div class="space-y-2">
+									<div
+										class="aspect-square rounded-xl overflow-hidden border border-white/10 group/img relative">
+										<img src="https://img.pccomponentes.com/articles/8/87746/wd-blue-4tb-5400rpm-3-5-sata3.jpg"
+											alt="Modern External HDD"
+											class="w-full h-full object-cover transition-transform group-hover/img:scale-110">
+										<div
+											class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
+											<span class="text-[8px] font-mono text-white opacity-70">HDD MODERNO</span>
+										</div>
+									</div>
+									<div class="text-center">
+										<p class="text-xs text-white font-mono">OGGI</p>
+										<span class="text-xs font-bold text-neon-amber">4 TB</span>
+
+									</div>
+								</div>
+							</div>
+							<p class=" text-sm text-white/80 italic text-center mt-4">
+								In meno di cinquant'anni, la capacità è aumentata di circa <br><span
+									class="text-white font-bold">3 milioni di volte!</span>
+							</p>
+						</div>
+					</div>
+					<div
+						class="bg-dark-card p-6 rounded-2xl border border-white/5 hover:border-neon-amber/30 transition-all">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="w-12 h-12 bg-neon-amber/10 rounded-xl flex items-center justify-center">
+								<i data-lucide="timer" class="text-neon-amber"></i>
+							</div>
+							<h3 class="text-white font-bold text-xl">Tempo d’accesso (access time)</h3>
+						</div>
+						<p class="text-gray-400 text-sm leading-relaxed text-justify">
+							È il tempo che il computer impiega per accedere ai dati memorizzati. Si misura in secondi e
+							suoi sottomultipli, in genere millisecondi (ms) o microsecondi (µs). Determina la
+							rapidità
+							nell’apertura dei file e nell’esecuzione dei programmi.
+						</p>
+						<!-- Evoluzione Velocità (Lumaca vs Fulmine) -->
+						<div class="mt-6 pt-6 border-t border-white/5 flex flex-col gap-4">
+							<p class="text-[10px] font-mono text-neon-amber uppercase tracking-widest text-center">
+								L'abisso della velocità</p>
+							<div class="grid grid-cols-2 gap-4">
+								<div class="space-y-2">
+									<div
+										class="aspect-square rounded-xl overflow-hidden border border-white/10 group/img relative bg-black/40">
+										<img src="https://cyclando.com/_next/image?url=https%3A%2F%2Fbecyclando.com%2Fmedia%2F712%2Fconversions%2Fitalia_piemonte_bici_SF0524-hero.webp&w=3840&q=75"
+											alt="Bicycle representing HDD speed"
+											class="w-full h-full object-cover transition-all group-hover/img:scale-110">
+										<div
+											class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
+											<span class="text-[8px] font-mono text-white opacity-70">VELOCITÀ
+												BICICLETTA</span>
+										</div>
+									</div>
+									<div class="text-center">
+										<p class="text-xs text-white font-mono">HDD</p>
+										<span class="text-xs font-bold text-neon-amber">10.000 µs</span>
+
+									</div>
+								</div>
+								<div class="space-y-2">
+									<div
+										class="aspect-square rounded-xl overflow-hidden border border-neon-amber/30 group/img relative bg-black/40">
+										<img src="https://www.topjet.aero/wp-content/uploads/2022/11/i-nostri-jet-privati-v3.jpg"
+											alt="Lightning/Speed representing SSD speed"
+											class="w-full h-full object-cover transition-all group-hover/img:scale-110 shadow-[0_0_20px_rgba(251,191,36,0.2)]">
+										<div
+											class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
+											<span class="text-[8px] font-mono text-white">VELOCITÀ JET </span>
+										</div>
+									</div>
+									<div class="text-center">
+										<p class="text-xs text-white font-mono">SSD</p>
+										<span class="text-xs font-bold text-neon-amber">50 µs</span>
+
+									</div>
+								</div>
+							</div>
+							<p class=" text-sm text-white/80 italic text-center mt-4">
+								Un SSD è <span class="text-white font-bold">200 volte</span> più veloce di un HDD:
+								mentre un HDD effettua un'operazione,
+								un SSD ne ha già completate 200!
+
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Come memorizzano i dati -->
+			<section class="mb-16">
+				<h2 class="text-2xl font-bold text-white mb-6">Come vengono memorizzati i dati</h2>
+				<p class="text-white mb-8 text-justify leading-relaxed">
+					La memoria di massa può essere realizzata con tecnologie diverse: tutti hanno la stessa funzione
+					logica
+					(conservare le informazioni in modo permanente), ma si distinguono per
+					il principio fisico con cui registrano i bit nei loro due stati, 0 e 1.
+				</p>
+
+
+			</section>
+
+			<!-- 1. Hard Disk -->
+			<section class="mb-16 bg-white/5 p-8 rounded-3xl border border-white/10">
+				<h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+					<span
+						class="w-8 h-8 rounded-full bg-neon-blue text-black flex items-center justify-center font-bold text-sm">1</span>
+					Memoria magnetica: gli hard disk (HDD)
+				</h3>
+				<p class="text-white mb-8 text-justify leading-relaxed">
+					Per decenni la memoria di massa dei computer è stata basata sugli hard disk (HDD, Hard Disk Drive),
+					dispositivi di tipo magnetico. Anche se oggi molti computer utilizzano altri tipi di memorie,
+					nel linguaggio comune si continua spesso a dire “hard disk” per indicare genericamente la memoria di
+					massa.
+
+				</p>
+				<div class="grid md:grid-cols-2 gap-12">
+					<!-- Colonna Sinistra: Come Funziona + Caratteristiche -->
+					<div class="space-y-8">
+						<div>
+							<h4 class="text-neon-blue font-bold mb-4 uppercase text-sm tracking-widest">Struttura fisica
+							</h4>
+							<p class="text-white text-sm mb-4">Un hard disk è costituito da:</p>
+							<ul class="space-y-2 text-white text-sm mb-6">
+								<li class="flex gap-2"><i data-lucide="check"
+										class="w-4 h-4 text-neon-blue shrink-0"></i>
+									Una pila di dischi rigidi in materiale metallico;</li>
+								<li class="flex gap-2"><i data-lucide="check"
+										class="w-4 h-4 text-neon-blue shrink-0"></i>
+									Un rivestimento superficiale di materiale ferromagnetico;</li>
+								<li class="flex gap-2"><i data-lucide="check"
+										class="w-4 h-4 text-neon-blue shrink-0"></i>
+									Un braccio meccanico mobile;</li>
+								<li class="flex gap-2"><i data-lucide="check"
+										class="w-4 h-4 text-neon-blue shrink-0"></i>
+									Piccole testine elettromagnetiche per leggere e scrivere i dati.</li>
+							</ul>
+							<p class="text-white text-sm leading-relaxed text-justify">
+								I dischi ruotano ad alta velocità. Le testine, sospese a
+								distanza microscopica dalla superficie, magnetizzano da polo nord a polo sud o
+								vicerversa minuscole aree:
+							</p>
+							<ul class="mt-4 space-y-1 text-sm font-mono text-neon-blue/80">
+								<li>Area polarizzata in un verso → bit 1 </li>
+								<li>Area polarizzata nel verso opposto → bit 0</li>
+							</ul>
+						</div>
+
+						<div class="bg-black/40 p-6 rounded-2xl border border-neon-blue/20">
+							<h4 class="text-white font-bold mb-4">Caratteristiche principali</h4>
+							<ul class="space-y-3 text-white text-sm">
+								<li><i data-lucide="settings" class="inline w-4 h-4 mr-2"></i> Parti meccaniche in
+									movimento, il che li rende molto sensibili agli urti.</li>
+								<li><i data-lucide="volume-2" class="inline w-4 h-4 mr-2"></i> Maggiore rumorosità
+									dovuta alla rotazione dei dischi e lo spostamento della testina.</li>
+								<li><i data-lucide="zap" class="inline w-4 h-4 mr-2"></i> Consumo energetico elevato a
+									causa di questi movimenti.
+								</li>
+								<li><i data-lucide="banknote" class="inline w-4 h-4 mr-2"></i> Costo per TB contenuto.
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Colonna Destra: Video -->
+					<div class="space-y-6">
+						<!-- Video 1 -->
+						<div
+							class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
+							<iframe class="w-full h-full"
+								src="https://www.youtube.com/embed/ojGvHDjHPb4?si=Ce7GSp7iE18C7Jth"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
+						</div>
+						<!-- Video 2 -->
+						<div
+							class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
+							<iframe class="w-full h-full"
+								src="https://www.youtube.com/embed/wtdnatmVdIg?si=s-qawyJXwRGnKQGq&amp;start=284"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
+						</div>
+						<p class="text-xs text-white/50 text-justify italic">
+							Ancora oggi gli HDD sono molto usati nei server e nei data center per la loro grande
+							capacità a costi contenuti.
+						</p>
+					</div>
+				</div>
+
+
+			</section>
+
+			<!-- 2. SSD -->
+			<section class="mb-16 bg-white/5 p-8 rounded-3xl border border-white/10">
+				<h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+					<span
+						class="w-8 h-8 rounded-full bg-neon-green text-black flex items-center justify-center font-bold text-sm">2</span>
+					Memoria elettronica: le unità SSD (stato solido)
+				</h3>
+				<p class="text-white mb-8 text-justify leading-relaxed">
+					Nei computer moderni la memoria di massa è costituita prevalentemente da SSD (Solid-State Drive),
+					dispositivi di tipo elettronico. A differenza degli hard disk, gli SSD non contengono dischi, non
+					hanno parti meccaniche e non utilizzano campi magnetici.
+				</p>
+				<div class="grid md:grid-cols-2 gap-12">
+					<!-- Colonna Sinistra: Come Funziona + Caratteristiche -->
+					<div class="space-y-8">
+						<div>
+							<h4 class="text-neon-green font-bold mb-4 uppercase text-sm tracking-widest">Struttura
+								fisica</h4>
+							<p class="text-white text-sm leading-relaxed text-justify">
+								Gli SSD utilizzano memoria <span class="text-neon-green font-bold">flash</span>,
+								composta da
+								miliardi di transistor speciali organizzati in celle. Queste celle possono
+								trattenere una carica elettrica:
+							</p>
+							<ul class="mt-4 space-y-1 text-sm font-mono text-neon-green/80">
+								<li>presenza di carica → 1 / assenza di carica → 0</li>
+							</ul>
+							<p class="mt-4 text-white text-sm text-justify">
+								La carica nelle celle flash rimane anche senza alimentazione: per questo è una memoria
+								non volatile.
+							</p>
+						</div>
+
+						<div class="bg-black/40 p-6 rounded-2xl border border-neon-green/20">
+							<h4 class="text-white font-bold mb-4">Caratteristiche principali</h4>
+							<ul class="space-y-3 text-white text-sm">
+								<li><i data-lucide="activity" class="inline w-4 h-4 mr-2"></i> Nessuna parte mobile</li>
+								<li><i data-lucide="zap" class="inline w-4 h-4 mr-2"></i> Tempi di accesso ultra-rapidi
+								</li>
+								<li><i data-lucide="volume-x" class="inline w-4 h-4 mr-2"></i> Silenziosità assoluta
+								</li>
+								<li><i data-lucide="shield-check" class="inline w-4 h-4 mr-2"></i> Grande resistenza
+									agli urti</li>
+								<li><i data-lucide="battery-charging" class="inline w-4 h-4 mr-2"></i> Minore consumo
+									energetico</li>
+								<li><i data-lucide="trending-up" class="inline w-4 h-4 mr-2"></i> Costo per GB superiore
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Colonna Destra: Video -->
+					<div class="space-y-6">
+						<!-- Video 1 -->
+						<div
+							class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/5Mh3o886qpg"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
+						</div>
+						<!-- Video 2 -->
+						<div
+							class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/YQEjGKYXjw8"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
+						</div>
+						<p class="text-xs text-white/70 text-justify italic">
+							Gli SSD hanno rivoluzionato le prestazioni, rendendo istantaneo l’avvio del sistema e dei
+							programmi.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- 3. Memoria Ottica -->
+			<section class="mb-16 bg-white/5 p-8 rounded-3xl border border-white/10">
+				<h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+					<span
+						class="w-8 h-8 rounded-full bg-neon-purple text-black flex items-center justify-center font-bold text-sm">3</span>
+					Memoria ottica: CD, DVD e Blu-ray
+				</h3>
+				<p class="text-white mb-8 text-justify leading-relaxed">
+					Un’altra tecnologia di memorizzazione è quella ottica, utilizzata nei CD, DVD e Blu-ray.
+				</p>
+				<div class="grid md:grid-cols-2 gap-12">
+					<!-- Colonna Sinistra: Come Funziona + Caratteristiche -->
+					<div class="space-y-8">
+						<div>
+							<h4 class="text-neon-purple font-bold mb-4 uppercase text-sm tracking-widest">Principio
+								fisico</h4>
+							<p class="text-white text-sm leading-relaxed text-justify mb-4">
+								I dati sono registrati tramite microscopiche incisioni (<span
+									class="text-neon-purple font-bold italic">pit</span>) e zone lisce (<span
+									class="text-neon-purple font-bold italic">land</span>).
+							</p>
+							<p class="text-white text-sm leading-relaxed text-justify">
+								Un raggio laser legge queste differenze rilevando la diversa riflessione della luce:
+							</p>
+							<p class="mt-4 text-sm font-mono text-neon-purple/80">riflessione diversa → interpretata
+								come 0 o 1</p>
+						</div>
+
+						<div class="bg-black/40 p-6 rounded-2xl border border-neon-purple/20">
+							<h4 class="text-white font-bold mb-4">Caratteristiche</h4>
+							<ul class="space-y-3 text-white text-sm">
+								<li><i data-lucide="disc" class="inline w-4 h-4 mr-2"></i> Lettura e scrittura tramite
+									laser</li>
+								<li><i data-lucide="power-off" class="inline w-4 h-4 mr-2"></i> Nessuna parte meccanica
+									interna</li>
+								<li><i data-lucide="arrow-down-wide-narrow" class="inline w-4 h-4 mr-2"></i> Bassa
+									capacità</li>
+								<li><i data-lucide="lock" class="inline w-4 h-4 mr-2"></i> Spesso di tipo ROM (sola
+									lettura)</li>
+								<li><i data-lucide="trending-down" class="inline w-4 h-4 mr-2"></i> Tecnologia in
+									declino</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Colonna Destra: Video -->
+					<div class="space-y-6">
+						<!-- Video 1 -->
+						<div
+							class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/8OBy08O78rs"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
+						</div>
+						<!-- Video 2 -->
+						<div
+							class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/e0iCH_K3m_k"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
+						</div>
+						<p class="mt-4 text-white/50 text-xs text-justify italic">In alcuni dischi scrivibili, il laser
+							modifica chimicamente uno strato del disco per creare le incisioni.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Tabella confronto -->
+			<section class="mb-16">
+				<h3 class="text-xl font-bold text-white mb-6">Confronto fisico tra le tre tecnologie</h3>
+				<div class="overflow-x-auto rounded-xl border border-white/10">
+					<table class="w-full text-left text-sm">
+						<thead class="bg-white/5 text-gray-300 font-bold uppercase tracking-wider">
+							<tr>
+								<th class="p-4">Tecnologia</th>
+								<th class="p-4">Principio fisico</th>
+								<th class="p-4">Parti mobili</th>
+								<th class="p-4">Velocità</th>
+								<th class="p-4">Robustezza</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-white/5 text-gray-400">
+							<tr class="hover:bg-white/5">
+								<td class="p-4 font-bold text-neon-blue">HDD</td>
+								<td class="p-4">Magnetizzazione</td>
+								<td class="p-4 text-green-400">Sì</td>
+								<td class="p-4 text-amber-500">Media</td>
+								<td class="p-4">Sensibile agli urti</td>
+							</tr>
+							<tr class="hover:bg-white/5">
+								<td class="p-4 font-bold text-neon-green">SSD</td>
+								<td class="p-4">Carica elettrica in transistor</td>
+								<td class="p-4 text-red-400">No</td>
+								<td class="p-4 text-green-400 font-bold">Molto alta</td>
+								<td class="p-4 text-green-400">Molto resistente</td>
+							</tr>
+							<tr class="hover:bg-white/5">
+								<td class="p-4 font-bold text-neon-purple">Ottica</td>
+								<td class="p-4">Riflessione laser su incisioni</td>
+								<td class="p-4 text-red-400">No (nel disco)</td>
+								<td class="p-4 text-red-400">Bassa</td>
+								<td class="p-4">Discreta</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<!-- Approfondimenti veloci -->
+			<section class="mb-16">
+				<div class="bg-cyan-500/10 p-8 rounded-2xl border border-cyan-500/30">
+					<h4 class="text-cyan-400 font-bold mb-4 flex items-center gap-2">
+						<i data-lucide="eye"></i> Uno sguardo più ampio: cosa significa davvero “memorizzare”?
+					</h4>
+					<p class="text-gray-300 text-sm leading-relaxed text-justify">
+						In tutti questi casi, memorizzare un dato significa modificare una proprietà fisica della
+						materia: orientamento magnetico (HDD), stato elettrico di un transistor (SSD) o struttura
+						superficiale che riflette la luce (dischi ottici). In altre parole, ogni file, immagine o video
+						che salviamo non è altro che una gigantesca sequenza di modifiche fisiche microscopiche
+						organizzate in modo coerente.
+					</p>
+					<p class="mt-4 text-xs italic text-cyan-400/80 text-justify">La differenza tra i dispositivi non è
+						quindi nel
+						concetto logico di bit, ma nel modo concreto e materiale con cui quel bit viene realizzato.</p>
+				</div>
+			</section>
+
+			<!-- Unità rimovibili -->
+			<section class="mb-16">
+				<h2 class="text-3xl font-bold text-white mb-8 border-l-4 border-neon-amber pl-6">Le unità di memoria
+					rimovibili</h2>
+				<p class="text-gray-300 text-justify leading-relaxed mb-8">
+					Oltre alle unità interne, esistono supporti di memoria rimovibili, cioè non fissati permanentemente
+					alla scheda madre del computer. Questi dispositivi sono fondamentali per trasferire dati tra
+					dispositivi diversi, effettuare copie di sicurezza (backup) e archiviare informazioni da conservare
+					separatamente dal computer principale. <br><br>
+					<span class="text-red-400 font-bold italic italic">Effettuare regolarmente copie di backup è
+						estremamente importante: in caso di furto, smarrimento o danneggiamento del computer, i dati
+						salvati solo sull’unità interna andrebbero persi definitivamente.</span>
+				</p>
+				<div class="grid md:grid-cols-4 gap-4">
+					<div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+						<i data-lucide="hard-drive" class="w-8 h-8 text-neon-blue mx-auto mb-2"></i>
+						<h5 class="text-white font-bold text-xs mb-1 uppercase">Hard disk esterni</h5>
+						<p class="text-[10px] text-gray-500">Unità di grande capacità (spesso diversi TB), usate per
+							backup.</p>
+					</div>
+					<div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+						<i data-lucide="server" class="w-8 h-8 text-neon-green mx-auto mb-2"></i>
+						<h5 class="text-white font-bold text-xs mb-1 uppercase">Chiavette USB</h5>
+						<p class="text-[10px] text-gray-500">Dispositivi compatti (memoria flash) fino a 1 TB o più.</p>
+					</div>
+					<div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+						<i data-lucide="tablet" class="w-8 h-8 text-neon-teal mx-auto mb-2"></i>
+						<h5 class="text-white font-bold text-xs mb-1 uppercase">Schede di memoria</h5>
+						<p class="text-[10px] text-gray-500">Memory card (flash), usate in smartphone e fotocamere.
+							Versioni microSD sottili come un'unghia.</p>
+					</div>
+					<div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+						<i data-lucide="disc" class="w-8 h-8 text-neon-purple mx-auto mb-2"></i>
+						<h5 class="text-white font-bold text-xs mb-1 uppercase">Dischi ottici</h5>
+						<p class="text-[10px] text-gray-500">CD (700MB), DVD (8,5GB), Blu-ray (fino a 100GB). In forte
+							declino.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Cloud -->
+			<section
+				class="mb-16 bg-gradient-to-br from-blue-900/20 to-black p-8 rounded-3xl border border-blue-500/30">
+				<h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+					<i data-lucide="cloud" class="text-blue-400"></i> Salvare i dati online: unità di rete e cloud
+					computing
+				</h3>
+				<p class="text-gray-300 text-justify leading-relaxed mb-8">
+					Un’altra forma di memoria di massa è costituita dalle unità di rete, che permettono di salvare dati
+					su server accessibili tramite rete locale o Internet. Con lo sviluppo del <span
+						class="text-blue-400 font-bold">cloud computing</span>, è diventato comune affidare i propri
+					dati a un fornitore di servizi informatici che li memorizza su server situati in grandi data center,
+					talvolta anche in altri continenti. In questo caso si dice che i dati sono salvati “sulla nuvola”.
+				</p>
+				<div class="grid md:grid-cols-2 gap-8">
+					<div class="bg-green-500/5 p-6 rounded-2xl border border-green-500/20">
+						<h4 class="text-green-400 font-bold mb-4 flex items-center gap-2"><i
+								data-lucide="plus-circle"></i>
+							Vantaggi del cloud</h4>
+						<ul class="space-y-3 text-gray-400 text-sm">
+							<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 shrink-0"></i>
+								Accesso ai dati da qualsiasi dispositivo connesso a Internet.</li>
+							<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 shrink-0"></i>
+								Disponibilità continua delle informazioni.</li>
+							<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 shrink-0"></i>
+								Facilità di collaborazione tra persone geograficamente lontane.</li>
+							<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 shrink-0"></i>
+								Ridotta necessità di gestire direttamente copie di backup.</li>
+						</ul>
+					</div>
+					<div class="bg-red-500/5 p-6 rounded-2xl border border-red-500/20">
+						<h4 class="text-red-400 font-bold mb-4 flex items-center gap-2"><i
+								data-lucide="minus-circle"></i>
+							Svantaggi del cloud</h4>
+						<ul class="space-y-3 text-gray-400 text-sm">
+							<li class="flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0"></i> I dati
+								sono accessibili solo in presenza di connessione Internet.</li>
+							<li class="flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0"></i>
+								Esistono potenziali rischi legati alla sicurezza e alla privacy: in teoria, il gestore
+								del servizio potrebbe accedere ai dati o subire violazioni informatiche.</li>
+						</ul>
+					</div>
+				</div>
+				<p class="mt-8 text-gray-400 italic text-sm text-center">
+					Il cloud rappresenta quindi una soluzione estremamente comoda, ma richiede consapevolezza rispetto
+					alla protezione delle informazioni personali.
+				</p>
+			</section>
+
+			<!-- Memoria Virtuale -->
+			<section class="mb-16">
+				<div class="bg-neon-purple/5 border border-neon-purple/20 p-8 rounded-3xl">
+					<h3 class="text-2xl font-bold text-white mb-6">La memoria virtuale</h3>
+					<p class="text-gray-300 text-justify leading-relaxed mb-6">
+						In determinate situazioni il computer può utilizzare una parte della memoria di massa come
+						memoria virtuale, simulando un’estensione della RAM. Ad esempio, mentre si utilizza un
+						elaboratore di testi (<span class="italic font-bold">word processor</span>), questo programma
+						occupa una porzione della RAM insieme al sistema operativo. Se si avvia un’altra applicazione
+						impegnativa, come la riproduzione di un video, la memoria RAM disponibile potrebbe non essere
+						sufficiente.
+					</p>
+					<p class="text-gray-300 text-justify leading-relaxed mb-6">
+						In questo caso il sistema operativo sposta temporaneamente nella memoria di massa (sull’SSD) le
+						parti meno utilizzate dei programmi attivi, liberando spazio nella RAM per le operazioni più
+						urgenti.
+					</p>
+					<div class="bg-black/50 p-6 rounded-2xl border border-red-500/30">
+						<p class="text-gray-300 text-sm leading-relaxed text-justify">
+							<i data-lucide="alert-triangle" class="inline w-5 h-5 text-red-500 mr-2"></i>
+							Tuttavia, l’accesso ai dati nella memoria di massa è significativamente più lento rispetto
+							alla RAM. Per questo motivo, quando il computer fa ampio uso della memoria virtuale, le
+							prestazioni generali diminuiscono: le applicazioni possono risultare meno reattive e i tempi
+							di caricamento aumentano. <br><br>
+							<strong>La memoria virtuale rappresenta quindi una soluzione utile in caso di necessità, ma
+								non può sostituire completamente la velocità e l’efficienza della RAM fisica.</strong>
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Piramide delle Memorie -->
+			<section class="mb-16">
+				<h2 class="text-2xl font-bold text-white mb-8 border-l-4 border-neon-amber pl-6">La piramide delle
+					memorie (o gerarchia delle memorie)</h2>
+				<p class="text-gray-300 text-justify leading-relaxed mb-8">
+					La piramide delle memorie è un modello concettuale che rappresenta l’organizzazione dei diversi tipi
+					di memoria in un sistema di calcolo. L’idea centrale è che non esiste una memoria che sia
+					contemporaneamente velocissima, enorme, economica e permanente: ogni tecnologia comporta
+					compromessi. <br><br>
+					Per questo motivo i computer utilizzano una gerarchia di memorie, disposte a livelli, ciascuno con
+					caratteristiche diverse in termini di velocità, capacità, costo per bit e volatilità. La forma a
+					piramide aiuta a visualizzare che in alto troviamo memorie molto veloci ma piccole e costose, mentre
+					in basso memorie più lente ma molto capienti ed economiche.
+				</p>
+
+				<!-- Struttura della Piramide -->
+				<div class="space-y-8 max-w-3xl mx-auto">
+					<h4 class="text-neon-amber font-bold flex items-center gap-2"><i data-lucide="triangle"></i>
+						Struttura della piramide</h4>
+					<div class="space-y-4">
+						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+							<h5 class="text-neon-teal font-bold mb-2">🔺 1. Registri della CPU</h5>
+							<ul class="text-sm text-gray-400 space-y-1">
+								<li>• Sono integrati direttamente nel processore.</li>
+								<li>• Contengono pochissimi dati (pochi byte).</li>
+								<li>• Sono estremamente veloci.</li>
+								<li>• Usati per operazioni immediate durante l’esecuzione delle istruzioni.</li>
+								<li>• Volatili.</li>
+								<li class="italic">• Sono il punto in cui la CPU lavora direttamente.</li>
+							</ul>
+						</div>
+						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+							<h5 class="text-neon-blue font-bold mb-2">🔺 2. Cache (L1, L2, L3)</h5>
+							<ul class="text-sm text-gray-400 space-y-1">
+								<li>• Memoria molto veloce, vicinissima alla CPU.</li>
+								<li>• Serve a conservare temporaneamente i dati e le istruzioni usati più
+									frequentemente.</li>
+								<li>• Molto più veloce della RAM.</li>
+								<li>• Capacità limitata (da pochi KB a pochi MB).</li>
+								<li>• Volatile.</li>
+								<li class="italic text-xs mt-2">• La cache riduce il tempo medio di accesso ai dati
+									sfruttando il principio di località:</li>
+								<li class="pl-4 text-[11px]">• località temporale → i dati usati di recente
+									probabilmente verranno riutilizzati</li>
+								<li class="pl-4 text-[11px]">• località spaziale → i dati vicini in memoria
+									probabilmente verranno richiesti</li>
+							</ul>
+						</div>
+						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+							<h5 class="text-neon-purple font-bold mb-2">🔺 3. RAM (memoria principale)</h5>
+							<ul class="text-sm text-gray-400 space-y-1">
+								<li>• Memoria di lavoro del sistema.</li>
+								<li>• Contiene programmi e dati in uso.</li>
+								<li>• Più lenta della cache ma molto più veloce della memoria di massa.</li>
+								<li>• Capacità molto maggiore (GB).</li>
+								<li>• Volatile: si svuota allo spegnimento.</li>
+								<li class="italic">• È il livello su cui operano sistema operativo e applicazioni.</li>
+							</ul>
+						</div>
+						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+							<h5 class="text-neon-amber font-bold mb-2">🔺 4. Memoria secondaria (SSD / HDD)</h5>
+							<ul class="text-sm text-gray-400 space-y-1">
+								<li>• Memoria permanente.</li>
+								<li>• Molto più capiente (centinaia di GB o TB).</li>
+								<li>• Più lenta rispetto alla RAM.</li>
+								<li>• Non volatile.</li>
+								<li>• Contiene sistema operativo, programmi e file personali.</li>
+							</ul>
+						</div>
+						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+							<h5 class="text-gray-400 font-bold mb-2">🔺 5. Archiviazione remota e backup (cloud, nastri,
+								server)</h5>
+							<ul class="text-sm text-gray-500 space-y-1">
+								<li>• Capacità enorme.</li>
+								<li>• Accesso più lento.</li>
+								<li>• Utilizzata per archiviazione a lungo termine.</li>
+								<li>• Non volatile.</li>
+								<li class="italic">• È il livello più basso della piramide, ma quello con la massima
+									capacità complessiva.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Rappresentazione Schematica -->
+				<div class="mt-12 bg-black/60 p-8 rounded-3xl border border-white/10 flex flex-col items-center">
+					<h4 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-6">Rappresentazione
+						schematica</h4>
+					<div class="font-mono text-[11px] sm:text-xs text-center space-y-1">
+						<div class="text-neon-teal">Registri CPU ← velocità massima, capacità minima</div>
+						<div class="text-neon-blue">Cache</div>
+						<div class="text-neon-purple">RAM</div>
+						<div class="text-neon-amber">SSD / HDD</div>
+						<div class="text-gray-500">Cloud / Archiviazione ← capacità massima, velocità minima</div>
+					</div>
+				</div>
+
+				<!-- Tendenze -->
+				<div class="mt-12 space-y-6">
+					<h4 class="text-white font-bold text-center underline decoration-neon-amber">Le tre grandi tendenze
+						della piramide</h4>
+					<p class="text-gray-300 text-center italic text-sm">Scendendo verso il basso:</p>
+					<div
+						class="flex flex-col sm:flex-row justify-center gap-8 text-center text-sm font-mono text-neon-amber">
+						<div>🔽 La velocità diminuisce</div>
+						<div>🔼 La capacità aumenta</div>
+						<div>🔽 Il costo per bit diminuisce</div>
+					</div>
+					<p class="text-gray-400 text-sm text-center max-w-2xl mx-auto">
+						In altre parole: le memorie più veloci sono piccole e costose; le memorie più grandi sono più
+						lente ma economiche.
+					</p>
+				</div>
+
+				<!-- Perché esiste -->
+				<div class="mt-12 bg-white/5 p-8 rounded-3xl border border-white/10 text-justify">
+					<h4 class="text-xl font-bold text-white mb-4">Perché esiste questa gerarchia?</h4>
+					<p class="text-gray-300 text-sm leading-relaxed mb-4">
+						Il motivo è tecnico ed economico. Costruire una memoria velocissima richiede tecnologia
+						sofisticata → costa molto → non può essere enorme. Al contrario, una memoria molto capiente deve
+						essere economica → ma sarà più lenta.
+					</p>
+					<p class="text-gray-300 text-sm leading-relaxed">
+						La soluzione è combinare più livelli, così il sistema usa le memorie veloci per i dati
+						immediatamente necessari e quelle più lente per archiviare grandi quantità di informazioni.
+					</p>
+				</div>
+
+				<!-- Analogia -->
+				<div class="mt-12 bg-neon-amber/5 p-8 rounded-3xl border border-neon-amber/20">
+					<h4 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i data-lucide="table-2"></i>
+						Un’analogia intuitiva</h4>
+					<p class="text-gray-300 text-sm mb-6">Si può paragonare la piramide delle memorie a una scrivania:
+					</p>
+					<div class="grid grid-cols-1 gap-3 font-mono text-xs">
+						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
+							<span class="w-24 text-neon-teal">📌 Registri</span>
+							<span class="text-gray-400">→ ciò che hai in mano in questo momento</span>
+						</div>
+						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
+							<span class="w-24 text-neon-blue">📖 Cache</span>
+							<span class="text-gray-400">→ il foglio aperto davanti a te</span>
+						</div>
+						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
+							<span class="w-24 text-neon-purple">📚 RAM</span>
+							<span class="text-gray-400">→ i libri sulla scrivania</span>
+						</div>
+						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
+							<span class="w-24 text-neon-amber">🗄 SSD/HDD</span>
+							<span class="text-gray-400">→ l’armadio in stanza</span>
+						</div>
+						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
+							<span class="w-24 text-gray-500">🏢 Cloud</span>
+							<span class="text-gray-400">→ un archivio in un altro edificio</span>
+						</div>
+					</div>
+					<p class="mt-6 text-center text-xs text-neon-amber/60 italic font-bold">
+						Più un oggetto è vicino a te, più è rapido usarlo, ma meno spazio hai disponibile.
+					</p>
+				</div>
+			</section>
+
+			<!-- Navigazione Lezioni -->
+			<div class="flex justify-between mt-12 pt-8 border-t border-white/10 text-sm">
 				<button onclick="navigateTo('lesson-8')"
-					class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-					<i data-lucide="arrow-left"></i> Precedente: Il Bus
+					class="flex items-center gap-2 text-gray-400 hover:text-white transition-all group">
+					<i data-lucide="arrow-left" class="group-hover:-translate-x-1 transition-transform"></i> Precedente:
+					Il Bus
 				</button>
 				<button onclick="navigateTo('lesson-10')"
-					class="flex items-center gap-2 text-neon-pink hover:text-white font-bold transition-colors">
-					Prossima: Periferiche e Porte <i data-lucide="arrow-right"></i>
+					class="flex items-center gap-2 text-neon-pink hover:text-white font-bold transition-all group">
+					Prossima: Periferiche e Porte <i data-lucide="arrow-right"
+						class="group-hover:translate-x-1 transition-transform"></i>
 				</button>
 			</div>
 		</div>
@@ -3808,6 +4806,10 @@
 			}
 			if (viewId === 'lesson-4') {
 				setTimeout(updateFetchVisuals, 100);
+				setTimeout(() => toggleCoordinationClock(true), 150);
+			}
+			if (viewId !== 'lesson-4') {
+				stopCoordSim();
 			}
 			if (viewId === 'lesson-5') {
 				setTimeout(initRace, 100);
@@ -4055,6 +5057,37 @@
 			    .font-handwriting {
 			        font-family: 'Courier New', Courier, monospace; 
 			    }
+				@keyframes coordShake {
+					0%, 100% { transform: translateX(0); }
+					25% { transform: translateX(-4px); }
+					75% { transform: translateX(4px); }
+				}
+				.animate-coord-shake {
+					animation: coordShake 0.1s ease-in-out infinite;
+				}
+				@keyframes explosion {
+					0% { transform: scale(0.5); opacity: 1; border-radius: 50%; background: #ffaa00; filter: blur(0px); }
+					50% { transform: scale(4); opacity: 0.8; background: #ff0000; filter: blur(2px); }
+					100% { transform: scale(6); opacity: 0; border-radius: 50%; filter: blur(10px); }
+				}
+				.animate-explosion {
+					animation: explosion 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+				}
+				.collision-flash {
+					position: absolute;
+					inset: 0;
+					background: white;
+					opacity: 0;
+					z-index: 100;
+					pointer-events: none;
+				}
+				@keyframes flash {
+					0% { opacity: 0.5; }
+					100% { opacity: 0; }
+				}
+				.animate-flash {
+					animation: flash 0.2s ease-out;
+				}
 			`;
 		document.head.appendChild(styleSheet);
 
@@ -4435,6 +5468,391 @@
 					btn.className = "clock-btn bg-neon-red text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all scale-105 border border-transparent shadow-[0_0_15px_rgba(255,51,51,0.5)]";
 					break;
 			}
+		}
+
+		/* --- LOGICA COORDINAZIONE CLOCK --- */
+		let coordClockActive = true;
+		let coordInterval = null;
+		let coordChaosTimeouts = [];
+		let coordPhase = 0;
+		let dataLossCount = 0;
+		let totalAttempts = 0;
+		let successfulPasses = 0;
+		let chaosBallOwner = 0;
+		let ballDirection = 1; // 1 per avanti (1->5), -1 per indietro (5->1)
+
+		function toggleCoordinationClock(active) {
+			coordClockActive = active;
+
+			const btnOn = document.getElementById('coord-clock-on');
+			const btnOff = document.getElementById('coord-clock-off');
+			const signalText = document.getElementById('clock-signal-text');
+			const signalFill = document.getElementById('clock-signal-fill');
+			const efficiency = document.getElementById('efficiency-val');
+
+			if (active) {
+				btnOn.className = "px-6 py-2 rounded-full transition-all font-bold font-mono text-[10px] uppercase tracking-widest bg-neon-green text-black shadow-[0_0_15px_#00ff9d]";
+				btnOff.className = "px-6 py-2 rounded-full transition-all font-bold font-mono text-[10px] uppercase tracking-widest text-gray-400 hover:text-white";
+
+				if (signalText) {
+					signalText.textContent = "Sincronizzazione di Sistema: OTTIMALE";
+					signalText.className = "font-mono text-[10px] text-neon-green uppercase tracking-widest";
+				}
+				signalFill.style.backgroundColor = "#00ff9d";
+				efficiency.textContent = "100%";
+				efficiency.className = "text-neon-green font-bold font-mono text-lg";
+
+				startCoordinatedSim();
+			} else {
+				btnOff.className = "px-6 py-2 rounded-full transition-all font-bold font-mono text-[10px] uppercase tracking-widest bg-neon-red text-white shadow-[0_0_15px_#ff3333]";
+				btnOn.className = "px-6 py-2 rounded-full transition-all font-bold font-mono text-[10px] uppercase tracking-widest text-gray-400 hover:text-white";
+
+				if (signalText) {
+					signalText.textContent = "Sincronizzazione di Sistema: CRITICA / ASSENTE";
+					signalText.className = "font-mono text-[10px] text-neon-red uppercase tracking-widest animate-pulse";
+				}
+				signalFill.style.backgroundColor = "#ff3333";
+
+				// L'efficienza verrà aggiornata dinamicamente durante la simulazione
+				startChaosSim();
+			}
+		}
+
+		function updateCoordEfficiency() {
+			const efficiencyEl = document.getElementById('efficiency-val');
+			if (!efficiencyEl) return;
+
+			if (totalAttempts === 0) {
+				efficiencyEl.textContent = "0%";
+				return;
+			}
+
+			const eff = Math.round((successfulPasses / totalAttempts) * 100);
+			efficiencyEl.textContent = eff + "%";
+
+			// Cambia colore in base all'efficienza
+			if (eff > 80) efficiencyEl.className = "text-neon-green font-bold font-mono text-xl tracking-tighter";
+			else if (eff > 40) efficiencyEl.className = "text-yellow-400 font-bold font-mono text-xl tracking-tighter";
+			else efficiencyEl.className = "text-neon-red font-bold font-mono text-xl tracking-tighter";
+		}
+
+		function pulseClockSignal() {
+			const fill = document.getElementById('clock-signal-fill');
+			if (!fill) return;
+
+			// Se il clock è spento, la barra resta vuota o instabile
+			if (!coordClockActive) {
+				fill.style.width = '0%';
+				return;
+			}
+
+			fill.style.transition = 'none';
+			fill.style.width = '0%';
+			void fill.offsetWidth; // Force Reflow
+			fill.style.transition = 'width 1.4s linear';
+			fill.style.width = '100%';
+		}
+
+		function startCoordinatedSim() {
+			stopCoordSim();
+			coordPhase = 0;
+			dataLossCount = 0;
+			totalAttempts = 0;
+			successfulPasses = 0;
+			document.getElementById('dataloss-val').textContent = "0";
+			updateCoordEfficiency();
+
+			const log = document.getElementById('coord-status-log');
+			if (log) {
+				log.textContent = "Sincronizzazione attiva: ogni impulso del clock definisce un'azione precisa.";
+				log.className = "font-mono text-sm text-neon-green tracking-tight";
+			}
+
+			// La barra dura 1500ms, l'intervallo deve coincidere
+			coordInterval = setInterval(() => {
+				runCoordinatedCycle();
+			}, 1500);
+
+			runCoordinatedCycle();
+		}
+
+		function stopCoordSim() {
+			if (coordInterval) clearInterval(coordInterval);
+			coordChaosTimeouts.forEach(t => clearTimeout(t));
+			coordChaosTimeouts = [];
+			const container = document.getElementById('coord-packets-container');
+			if (container) container.innerHTML = '';
+			const colLayer = document.getElementById('coord-collision-layer');
+			if (colLayer) colLayer.innerHTML = '';
+
+			// Reset units
+			document.querySelectorAll('.coord-unit').forEach(u => {
+				u.classList.remove('animate-coord-shake', 'bg-neon-red/20', 'border-white', 'shadow-[0_0_20px_white]', 'scale-110');
+			});
+		}
+
+		function runCoordinatedCycle() {
+			if (!coordClockActive) return;
+
+			pulseClockSignal();
+
+			const log = document.getElementById('coord-status-log');
+			const units = [
+				document.getElementById('unit-0'),
+				document.getElementById('unit-1'),
+				document.getElementById('unit-2'),
+				document.getElementById('unit-3'),
+				document.getElementById('unit-4')
+			];
+
+			// Ciclo da 8 fasi: 0->1, 1->2, 2->3, 3->4 e poi 4->3, 3->2, 2->1, 1->0
+			const phase = coordPhase % 8;
+			let fromIdx, toIdx;
+
+			if (phase < 4) {
+				fromIdx = phase;
+				toIdx = phase + 1;
+				ballDirection = 1;
+			} else {
+				fromIdx = 8 - phase;
+				toIdx = 7 - phase; // p=4 -> from=4, to=3; p=5 -> from=3, to=2 etc.
+				ballDirection = -1;
+			}
+
+			// Reset all units visual state
+			units.forEach(u => {
+				if (u) {
+					u.classList.remove('border-white', 'scale-110', 'bg-white/10');
+					u.style.transform = 'none';
+				}
+			});
+
+			const fromUnit = units[fromIdx];
+			const toUnit = units[toIdx];
+
+			if (fromUnit && toUnit) {
+				totalAttempts++;
+				// Animazione Lancio
+				fromUnit.classList.add('border-white', 'scale-110');
+				fromUnit.style.transform = `rotate(${ballDirection * 15}deg) scale(1.1)`;
+
+				// Animazione Ricezione: voltarsi verso chi lancia
+				toUnit.style.transform = `rotate(${ballDirection * -20}deg)`;
+
+				log.innerHTML = `<span class="text-white bg-neon-green/20 px-2 rounded">BATTITO ${coordPhase % 8 + 1}:</span> Omino ${fromIdx + 1} lancia la palla a Omino ${toIdx + 1}.`;
+
+				// Crea palla che si muove tra gli omini
+				const rectFrom = fromUnit.getBoundingClientRect();
+				const rectTo = toUnit.getBoundingClientRect();
+				const containerRect = document.getElementById('coord-sim-container').getBoundingClientRect();
+
+				const x1 = ((rectFrom.left + rectFrom.width / 2) - containerRect.left) / containerRect.width * 100;
+				const x2 = ((rectTo.left + rectTo.width / 2) - containerRect.left) / containerRect.width * 100;
+
+				createCoordPacket(x1, 50, x2, 50, '#ffffff', 0);
+
+				// Ricezione (800ms è il tempo di volo della palla nel CSS transition)
+				setTimeout(() => {
+					successfulPasses++;
+					updateCoordEfficiency();
+					fromUnit.style.transform = 'none';
+					toUnit.classList.add('border-white', 'scale-110', 'bg-white/10');
+					toUnit.style.transform = 'scale(1.2)'; // Torna dritto ma ingrandito perché ha la palla
+				}, 800);
+			}
+
+			coordPhase++;
+		}
+
+		function createCoordPacket(x1, y1, x2, y2, color, delay, shouldFall = false) {
+			const timeout = setTimeout(() => {
+				const container = document.getElementById('coord-packets-container');
+				if (!container) return;
+
+				const p = document.createElement('div');
+				p.className = `absolute w-4 h-4 rounded-full shadow-lg z-20 transition-all duration-800 ease-out coord-packet-instance flex items-center justify-center`;
+				p.style.backgroundColor = color || '#ffffff';
+				p.style.boxShadow = `0 0 15px ${color || '#ffffff'}`;
+				p.style.left = x1 + '%';
+				p.style.top = y1 + '%';
+				p.style.transform = 'translate(-50%, -50%)';
+				p.innerHTML = '<div class="w-full h-[1px] bg-black/20 rotate-45"></div>';
+
+				container.appendChild(p);
+
+				setTimeout(() => {
+					p.style.left = x2 + '%';
+					p.style.top = y2 + '%';
+
+					if (shouldFall) {
+						setTimeout(() => {
+							p.style.transition = 'top 0.5s ease-in, opacity 0.5s';
+							p.style.top = '90%';
+							p.style.opacity = '0';
+							triggerCollision(p.offsetLeft + container.getBoundingClientRect().left, p.offsetTop + container.getBoundingClientRect().top);
+						}, 400);
+					}
+
+					setTimeout(() => {
+						if (p && p.parentElement) p.remove();
+					}, 1000);
+				}, 50);
+			}, delay);
+			coordChaosTimeouts.push(timeout);
+		}
+
+		function triggerCollision(x, y) {
+			const layer = document.getElementById('coord-collision-layer');
+			const diag = document.getElementById('coord-sim-container');
+			if (!layer || !diag) return;
+
+			dataLossCount++;
+			const lossDisplay = document.getElementById('dataloss-val');
+			if (lossDisplay) {
+				lossDisplay.textContent = dataLossCount;
+				lossDisplay.classList.add('scale-150', 'text-white', 'duration-75');
+				setTimeout(() => lossDisplay.classList.remove('scale-150', 'text-white'), 150);
+			}
+
+			const flash = document.createElement('div');
+			flash.className = 'collision-flash animate-flash';
+			diag.appendChild(flash);
+			setTimeout(() => flash.remove(), 200);
+
+			const rect = diag.getBoundingClientRect();
+			const relX = x - rect.left;
+			const relY = y - rect.top;
+
+			// Effetto "Palla Caduta"
+			const explosion = document.createElement('div');
+			explosion.className = 'absolute animate-ping z-[70] bg-neon-red rounded-full';
+			explosion.style.width = '20px';
+			explosion.style.height = '20px';
+			explosion.style.left = relX + 'px';
+			explosion.style.top = relY + 'px';
+			explosion.style.transform = 'translate(-50%, -50%)';
+			layer.appendChild(explosion);
+
+			const log = document.getElementById('coord-status-log');
+			if (log) {
+				const errorMsgs = [
+					"PALLA CADUTA! L'omino non era pronto a riceverla.",
+					"SCOORDINAZIONE! Due omini hanno cercato di lanciare la stessa palla.",
+					"RITMO PERSO! L'omino ha lanciato nel vuoto."
+				];
+				log.innerHTML = `<span class="text-neon-red font-bold">!! ${errorMsgs[Math.floor(Math.random() * errorMsgs.length)]} !!</span>`;
+
+				setTimeout(() => {
+					if (!coordClockActive) {
+						log.innerHTML = `<span class="opacity-70 italic text-neon-red">Senza ritmo (Clock), gli omini agiscono a caso e la palla non avanza mai.</span>`;
+					}
+				}, 2000);
+			}
+
+			setTimeout(() => explosion.remove(), 600);
+		}
+
+		function startChaosSim() {
+			stopCoordSim();
+			const log = document.getElementById('coord-status-log');
+			if (log) {
+				log.innerHTML = `<span class="text-neon-red font-bold">RITMO INSTABILE:</span> Gli omini provano a seguire il ritmo, ma senza un clock centrale ogni tanto qualcuno si distrae.`;
+			}
+
+			chaosBallOwner = 0;
+			ballDirection = 1;
+			totalAttempts = 0;
+			successfulPasses = 0;
+			dataLossCount = 0;
+			document.getElementById('dataloss-val').textContent = "0";
+			updateCoordEfficiency();
+
+			let chaosBallInTransit = false;
+
+			function runChaosCycle() {
+				if (coordClockActive) return;
+
+				const units = [
+					document.getElementById('unit-0'),
+					document.getElementById('unit-1'),
+					document.getElementById('unit-2'),
+					document.getElementById('unit-3'),
+					document.getElementById('unit-4')
+				];
+
+				const fromIdx = chaosBallOwner;
+				const toIdx = chaosBallOwner + ballDirection;
+
+				// Se siamo arrivati ai bordi, invertiamo la marcia
+				if (toIdx < 0 || toIdx > 4) {
+					ballDirection *= -1;
+					// Piccolo delay prima di ripartire nell'altra direzione
+					coordChaosTimeouts.push(setTimeout(runChaosCycle, 1000));
+					return;
+				}
+
+				const fromUnit = units[fromIdx];
+				const toUnit = units[toIdx];
+
+				if (fromUnit && toUnit) {
+					totalAttempts++;
+					// Lancio: l'omino si sporge
+					fromUnit.style.transform = `rotate(${ballDirection * 25}deg) scale(1.1)`;
+
+					// Probabilità di fallimento: 30% delle volte l'omino ricevente è "distratto"
+					const isDistracted = Math.random() < 0.3;
+
+					if (isDistracted) {
+						toUnit.dataset.state = "idle";
+						toUnit.style.transform = "none"; // Resta dritto se non è pronto
+						toUnit.classList.remove('border-white/40');
+					} else {
+						toUnit.dataset.state = "ready";
+						toUnit.style.transform = `rotate(${ballDirection * -20}deg)`; // Si volta se è pronto
+						toUnit.classList.add('border-white/40');
+					}
+
+					const rectFrom = fromUnit.getBoundingClientRect();
+					const rectTo = toUnit.getBoundingClientRect();
+					const containerRect = document.getElementById('coord-sim-container').getBoundingClientRect();
+					const x1 = ((rectFrom.left + rectFrom.width / 2) - containerRect.left) / containerRect.width * 100;
+					const x2 = ((rectTo.left + rectTo.width / 2) - containerRect.left) / containerRect.width * 100;
+
+					createCoordPacket(x1, 50, x2, 50, isDistracted ? '#ff3333' : '#ffffff', 0, isDistracted);
+
+					// Gestione esito dopo il lancio (800ms volo palla)
+					coordChaosTimeouts.push(setTimeout(() => {
+						if (coordClockActive) return;
+
+						fromUnit.style.transform = "none";
+
+						if (isDistracted) {
+							// Fallimento gestito da triggerCollision richiamata da createCoordPacket(isChaos=true)
+							// Qui resettiamo solo il messaggio
+							if (log) log.innerHTML = `<span class="text-neon-red">OPS! Omino ${toIdx + 1} era distratto!</span>`;
+							// La palla può ripartire dallo stesso omino dopo un po'
+							coordChaosTimeouts.push(setTimeout(runChaosCycle, 1500));
+						} else {
+							// Successo
+							successfulPasses++;
+							updateCoordEfficiency();
+							chaosBallOwner = toIdx;
+							toUnit.classList.add('border-neon-green', 'scale-110');
+							if (log) log.innerHTML = `<span class="text-neon-green">PRESA!</span> Avanzamento verso ${ballDirection > 0 ? 'destra' : 'sinistra'}.`;
+
+							setTimeout(() => {
+								toUnit.classList.remove('border-neon-green', 'scale-110');
+								toUnit.style.transform = "none";
+								// Prossimo ciclo
+								runChaosCycle();
+							}, 800);
+						}
+					}, 800));
+				}
+			}
+
+			// Avvio del ciclo
+			runChaosCycle();
 		}
 
 		/* --- LOGICA SIMULATORE PROCESSI --- */
@@ -5375,12 +6793,16 @@
 
 		document.getElementById('magnifier-close').addEventListener('click', closeMagnifier);
 
-		// Shortcut Alt + Z
+		// Shortcut Alt + Q (Toggle)
 		document.addEventListener('keydown', (e) => {
-			if (e.altKey && (e.key === 'z' || e.key === 'Z')) {
-				const selection = window.getSelection().toString();
-				if (selection) {
-					openMagnifier(selection);
+			if (e.altKey && (e.key === 'q' || e.key === 'Q')) {
+				if (isMagnifierOpen) {
+					closeMagnifier();
+				} else {
+					const selection = window.getSelection().toString();
+					if (selection) {
+						openMagnifier(selection);
+					}
 				}
 			}
 			// Escape per chiudere
@@ -5449,6 +6871,8 @@
 			isDragging = false;
 			isResizingBL = false;
 		});
+
+
 
 	</script>
 </body>
