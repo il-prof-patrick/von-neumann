@@ -4102,8 +4102,7 @@
 				<h2 class="text-2xl font-bold text-white mb-6">Come vengono memorizzati i dati</h2>
 				<p class="text-white mb-8 text-justify leading-relaxed">
 					La memoria di massa può essere realizzata con tecnologie diverse: tutti hanno la stessa funzione
-					logica
-					(conservare le informazioni in modo permanente), ma si distinguono per
+					logica (conservare le informazioni in modo permanente), ma si distinguono per
 					il principio fisico con cui registrano i bit nei loro due stati, 0 e 1.
 				</p>
 
@@ -4174,7 +4173,8 @@
 								</li>
 								<li><i data-lucide="banknote" class="inline w-4 h-4 mr-2"></i> Costo per TB contenuto.
 								</li>
-								<li><i data-lucide="gauge" class="inline w-4 h-4 mr-2"></i> Velocità media moderata.
+								<li><i data-lucide="gauge" class="inline w-4 h-4 mr-2"></i> Velocità tendenzialmente
+									moderata.
 								</li>
 								<li><i data-lucide="server" class="inline w-4 h-4 mr-2"></i> Usati ampiamente nei server
 									e data center per la grande capacità a costi contenuti.</li>
@@ -4193,10 +4193,7 @@
 
 						<!-- Video 1 -->
 						<div>
-							<h5 class="text-white font-bold mb-3 text-sm flex items-center gap-2">
-								<i data-lucide="play-circle" class="w-4 h-4 text-neon-blue"></i>
-								Come funziona
-							</h5>
+
 							<div
 								class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
 								<iframe class="w-full h-full"
@@ -4247,8 +4244,7 @@
 								fisica</h4>
 							<p class="text-white text-sm leading-relaxed text-justify">
 								Gli SSD utilizzano memoria <span class="font-bold">flash</span>,
-								composta da
-								miliardi di transistor speciali organizzati in celle. Queste celle possono
+								composta da miliardi di transistor speciali organizzati in celle. Queste celle possono
 								trattenere una carica elettrica:
 							</p>
 							<ul class="mt-4 space-y-1 text-sm font-mono text-neon-green/80">
@@ -4257,7 +4253,10 @@
 							</ul>
 							<p class="mt-4 text-white text-sm text-justify">
 								La carica nelle celle flash rimane anche senza alimentazione: per questo è una memoria
-								non volatile.
+								non volatile. </p>
+							<p class="mt-4 text-white text-sm text-justify">
+								Gli SSD includono anche un controller, un circuito elettronico che gestisce la
+								distribuzione dei dati nelle celle, corregge errori e ottimizza le prestazioni.
 							</p>
 						</div>
 
@@ -4272,7 +4271,7 @@
 									ideale per laptop e dispositivi portatili.</li>
 								<li><i data-lucide="banknote" class="inline w-4 h-4 mr-2"></i> Costo per TB elevato.
 								</li>
-								<li><i data-lucide="gauge" class="inline w-4 h-4 mr-2"></i> Velocità media elevata.</li>
+								<li><i data-lucide="gauge" class="inline w-4 h-4 mr-2"></i> Velocità molto elevata.</li>
 								<li><i data-lucide="server" class="inline w-4 h-4 mr-2"></i> Usati in computer general
 									purpose di fascia medio-alta.</li>
 							</ul>
@@ -4320,37 +4319,67 @@
 					<!-- Colonna Sinistra -->
 					<div class="space-y-8">
 						<p class="text-white mb-8 text-justify leading-relaxed">
-							Un’altra tecnologia di memorizzazione è quella ottica, utilizzata nei CD, DVD e Blu-ray.
+							Per molti anni, oltre agli hard disk, sono stati utilizzati supporti di memoria ottica come
+							CD, DVD e Blu-ray per distribuire software, musica, film e videogame.
+							Oggi il loro utilizzo è diminuito, ma restano importanti come esempio di tecnologia di
+							memorizzazione diversa da quella magnetica ed elettronica.
 						</p>
 
 						<div>
-							<h4 class="text-neon-purple font-bold mb-4 uppercase text-sm tracking-widest">Principio
-								fisico</h4>
+							<h4 class="text-neon-purple font-bold mb-4 uppercase text-sm tracking-widest">Struttura
+								fisica</h4>
 							<p class="text-white text-sm leading-relaxed text-justify mb-4">
-								I dati sono registrati tramite microscopiche incisioni (<span
-									class="text-neon-purple font-bold italic">pit</span>) e zone lisce (<span
-									class="text-neon-purple font-bold italic">land</span>).
+								Un supporto ottico è costituito da:
 							</p>
-							<p class="text-white text-sm leading-relaxed text-justify">
-								Un raggio laser legge queste differenze rilevando la diversa riflessione della luce:
+							<ul class="space-y-2 text-white/80 text-sm mb-6">
+								<li class="flex gap-2"><i data-lucide="check"
+										class="w-4 h-4 text-neon-purple shrink-0"></i>
+									Un disco in materiale plastico (policarbonato);</li>
+								<li class="flex gap-2"><i data-lucide="check"
+										class="w-4 h-4 text-neon-purple shrink-0"></i>
+									Una superficie riflettente metallica;</li>
+								<li class="flex gap-2"><i data-lucide="check"
+										class="w-4 h-4 text-neon-purple shrink-0"></i>
+									Una serie di microscopiche incisioni (pit) e zone piane (land);</li>
+								<li class="flex gap-2"><i data-lucide="check"
+										class="w-4 h-4 text-neon-purple shrink-0"></i>
+									Un lettore dotato di laser per la lettura dei dati.</li>
+							</ul>
+
+							<p class="text-white text-sm leading-relaxed text-justify mb-4">
+								Il disco ruota all’interno del lettore mentre un raggio laser colpisce la superficie. La
+								memorizzazione e la lettura avvengono tramite la differente interpretazione che viene
+								data alla riflessione del laser:
 							</p>
-							<p class="mt-4 text-sm font-mono text-neon-purple/80">riflessione diversa → interpretata
-								come 0 o 1</p>
+
+							<ul class="mt-4 mb-8 space-y-2 text-sm font-mono text-neon-purple font-bold">
+								<li>Sulle land, il laser riflette &rarr; Bit a 1</li>
+								<li>Nei pit, il laser non riflette &rarr; Bit a 0</li>
+							</ul>
+
+							<p class="text-white text-sm leading-relaxed text-justify mb-4">
+								Questo meccanismo di lettura basato sulla superficie del disco lo rende però molto
+								vulnerabile a graffi e polvere.
+							</p>
 						</div>
 
 						<div class="bg-black/40 p-6 rounded-2xl border border-neon-purple/20">
-							<h4 class="text-white font-bold mb-4">Caratteristiche</h4>
+							<h4 class="text-white font-bold mb-4">Caratteristiche principali</h4>
 							<ul class="space-y-3 text-white text-sm">
-								<li><i data-lucide="disc" class="inline w-4 h-4 mr-2"></i> Lettura e scrittura tramite
-									laser</li>
-								<li><i data-lucide="power-off" class="inline w-4 h-4 mr-2"></i> Nessuna parte meccanica
-									interna</li>
-								<li><i data-lucide="arrow-down-wide-narrow" class="inline w-4 h-4 mr-2"></i> Bassa
-									capacità</li>
-								<li><i data-lucide="lock" class="inline w-4 h-4 mr-2"></i> Spesso di tipo ROM (sola
-									lettura)</li>
-								<li><i data-lucide="trending-down" class="inline w-4 h-4 mr-2"></i> Tecnologia in
-									declino</li>
+								<li><i data-lucide="settings" class="inline w-4 h-4 mr-2"></i> Presenza di movimento
+									meccanico nel lettore per lo
+									spostamento del laser e la rotazione del disco.</li>
+								<li><i data-lucide="volume-2" class="inline w-4 h-4 mr-2"></i> Rumorosità udibile
+									durante il funzionamento a causa della rotazione meccanica del disco.</li>
+								<li><i data-lucide="zap" class="inline w-4 h-4 mr-2"></i> Consumo energetico moderato
+									richiesto dai motori di trascinamento e dal raggio laser.</li>
+								<li><i data-lucide="banknote" class="inline w-4 h-4 mr-2"></i> Costo contenuto per
+									singolo supporto, ma capacità limitata rispetto a HDD e SSD.</li>
+								<li><i data-lucide="gauge" class="inline w-4 h-4 mr-2"></i> Velocità tendenzialmente
+									medio-bassa.</li>
+								<li><i data-lucide="server" class="inline w-4 h-4 mr-2"></i> Utilizzati soprattutto per
+									distribuzione di contenuti multimediali e backup.</li>
+
 							</ul>
 						</div>
 					</div>
@@ -4359,14 +4388,15 @@
 					<div class="space-y-6">
 						<!-- Immagine Ottica -->
 						<div class="rounded-xl border border-white/5 overflow-hidden shadow-2xl bg-black/40">
-							<img src="https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?auto=format&fit=crop&q=80&w=1000"
+							<img src="https://bandofgeeks.fr/wp-content/uploads/2019/10/discs-cd-dvd-blu-ray-uhd-900x456.jpg"
 								alt="Dettaglio di un disco ottico" class="w-full h-auto">
 						</div>
 
 						<!-- Video 1 -->
 						<div
 							class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
-							<iframe class="w-full h-full" src="https://www.youtube.com/embed/8OBy08O78rs"
+							<iframe class="w-full h-full"
+								src="https://www.youtube.com/embed/GqbiEfctYIQ?si=pBz9GVhuh8hBtvml"
 								title="YouTube video player" frameborder="0"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 								allowfullscreen loading="lazy"></iframe>
@@ -4374,74 +4404,35 @@
 						<!-- Video 2 -->
 						<div
 							class="aspect-video bg-black/40 rounded-xl border border-white/5 overflow-hidden shadow-2xl">
-							<iframe class="w-full h-full" src="https://www.youtube.com/embed/e0iCH_K3m_k"
+							<iframe class="w-full h-full"
+								src="https://www.youtube.com/embed/H-jxTzFrnpg?si=73n-Jt49DPgv4Du7"
 								title="YouTube video player" frameborder="0"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 								allowfullscreen loading="lazy"></iframe>
 						</div>
-						<p class="mt-4 text-white/50 text-xs text-justify italic">In alcuni dischi scrivibili, il laser
-							modifica chimicamente uno strato del disco per creare le incisioni.</p>
+
 					</div>
 				</div>
 			</section>
 
-			<!-- Tabella confronto -->
-			<section class="mb-16">
-				<h3 class="text-xl font-bold text-white mb-6">Confronto fisico tra le tre tecnologie</h3>
-				<div class="overflow-x-auto rounded-xl border border-white/10">
-					<table class="w-full text-left text-sm">
-						<thead class="bg-white/5 text-gray-300 font-bold uppercase tracking-wider">
-							<tr>
-								<th class="p-4">Tecnologia</th>
-								<th class="p-4">Principio fisico</th>
-								<th class="p-4">Parti mobili</th>
-								<th class="p-4">Velocità</th>
-								<th class="p-4">Robustezza</th>
-							</tr>
-						</thead>
-						<tbody class="divide-y divide-white/5 text-gray-400">
-							<tr class="hover:bg-white/5">
-								<td class="p-4 font-bold text-neon-blue">HDD</td>
-								<td class="p-4">Magnetizzazione</td>
-								<td class="p-4 text-green-400">Sì</td>
-								<td class="p-4 text-amber-500">Media</td>
-								<td class="p-4">Sensibile agli urti</td>
-							</tr>
-							<tr class="hover:bg-white/5">
-								<td class="p-4 font-bold text-neon-green">SSD</td>
-								<td class="p-4">Carica elettrica in transistor</td>
-								<td class="p-4 text-red-400">No</td>
-								<td class="p-4 text-green-400 font-bold">Molto alta</td>
-								<td class="p-4 text-green-400">Molto resistente</td>
-							</tr>
-							<tr class="hover:bg-white/5">
-								<td class="p-4 font-bold text-neon-purple">Ottica</td>
-								<td class="p-4">Riflessione laser su incisioni</td>
-								<td class="p-4 text-red-400">No (nel disco)</td>
-								<td class="p-4 text-red-400">Bassa</td>
-								<td class="p-4">Discreta</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</section>
+
 
 			<!-- Approfondimenti veloci -->
 			<section class="mb-16">
 				<div class="bg-cyan-500/10 p-8 rounded-2xl border border-cyan-500/30">
 					<h4 class="text-cyan-400 font-bold mb-4 flex items-center gap-2">
-						<i data-lucide="eye"></i> Uno sguardo più ampio: cosa significa davvero “memorizzare”?
+						<i data-lucide="eye"></i> Cosa significa dunque "memorizzare"?
 					</h4>
 					<p class="text-gray-300 text-sm leading-relaxed text-justify">
-						In tutti questi casi, memorizzare un dato significa modificare una proprietà fisica della
-						materia: orientamento magnetico (HDD), stato elettrico di un transistor (SSD) o struttura
-						superficiale che riflette la luce (dischi ottici). In altre parole, ogni file, immagine o video
+						La differenza tra i dispositivi non è quindi nel concetto logico di bit: in tutti e tre i casi
+						memorizzare un dato significa modificare una proprietà fisica della
+						materia. Ciò che cambia è il modo concreto e materiale con cui quel bit viene
+						realizzato: norientamento magnetico (HDD), stato elettrico di un transistor (SSD) o superficie
+						che riflette la luce (dischi ottici). Ogni file, immagine o video
 						che salviamo non è altro che una gigantesca sequenza di modifiche fisiche microscopiche
 						organizzate in modo coerente.
 					</p>
-					<p class="mt-4 text-xs italic text-cyan-400/80 text-justify">La differenza tra i dispositivi non è
-						quindi nel
-						concetto logico di bit, ma nel modo concreto e materiale con cui quel bit viene realizzato.</p>
+					<p class="mt-4 text-xs italic text-cyan-400/80 text-justify"></p>
 				</div>
 			</section>
 
