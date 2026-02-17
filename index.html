@@ -681,10 +681,77 @@
 	</div>
 	<div id="overlay"
 		class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+
+	<!-- MODAL DETTAGLI PIRAMIDE (Top Level) -->
+	<!-- DRAGGABLE WINDOW: DETTAGLI PIRAMIDE -->
+	<div id="pyramid-window"
+		class="fixed top-1/4 left-1/4 z-[3000] hidden w-full max-w-lg bg-[#13131f] border border-white/20 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col transition-opacity duration-200">
+
+		<div id="pyramid-window-header"
+			class="flex justify-between items-center p-4 border-b border-white/10 cursor-move bg-white/5 rounded-t-2xl">
+			<div class="flex items-center gap-3 pointer-events-none">
+				<div id="pm-icon-box" class="w-10 h-10 rounded-lg flex items-center justify-center">
+					<!-- Icon injected here -->
+				</div>
+				<h3 id="pm-title" class="text-xl font-bold text-white font-mono">Title</h3>
+			</div>
+			<button onclick="closePyramidInfo()"
+				class="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 cursor-pointer">
+				<i data-lucide="x" class="w-5 h-5"></i>
+			</button>
+		</div>
+
+		<div id="pm-content"
+			class="p-6 text-gray-300 leading-relaxed text-sm space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar">
+			<!-- Content injected here -->
+		</div>
+	</div>
+
+	<!-- DRAGGABLE WINDOW: UNITÀ DI MISURA -->
+	<div id="unit-window"
+		class="fixed top-1/3 left-1/3 z-[3000] hidden w-full max-w-md bg-[#1a1a2e] border border-neon-cyan/30 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col transition-opacity duration-200">
+
+		<div id="unit-window-header"
+			class="flex justify-between items-center p-4 border-b border-white/10 cursor-move bg-white/5 rounded-t-2xl">
+			<h3 id="um-title"
+				class="text-xl font-bold text-neon-cyan font-mono flex items-center gap-2 pointer-events-none">
+				<!-- Icon & Title injected -->
+			</h3>
+			<button onclick="closeUnitInfo()" class="text-gray-400 hover:text-white transition-colors cursor-pointer">
+				<i data-lucide="x" class="w-5 h-5"></i>
+			</button>
+		</div>
+
+		<div id="um-content" class="p-4 space-y-2">
+			<!-- Content table injected here -->
+		</div>
+	</div>
+
+
 	<main class="flex-grow flex flex-col items-center justify-start relative px-4 pt-24 pb-12 w-full">
 		<!-- Background Decorativi (Shared) -->
 		<div
 			class="fixed top-1/4 left-1/4 w-72 h-72 bg-neon-blue/10 rounded-full blur-[100px] pointer-events-none animate-pulse-slow">
+		</div>
+
+		<!-- DRAGGABLE WINDOW: CONFRONTO -->
+		<div id="comparison-window"
+			class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[3000] hidden w-full max-w-sm bg-[#13131f] border border-neon-cyan/50 rounded-2xl shadow-[0_0_50px_rgba(0,255,255,0.15)] flex flex-col transition-opacity duration-200">
+
+			<div id="comparison-window-header"
+				class="flex justify-between items-center p-3 border-b border-white/10 cursor-move bg-neon-cyan/10 rounded-t-2xl">
+				<h3 class="text-lg font-bold text-neon-cyan font-mono flex items-center gap-2 pointer-events-none">
+					<i data-lucide="scale" class="w-5 h-5"></i> Confronto
+				</h3>
+				<button onclick="closeComparison()"
+					class="text-gray-400 hover:text-white transition-colors cursor-pointer">
+					<i data-lucide="x" class="w-5 h-5"></i>
+				</button>
+			</div>
+
+			<div id="cmp-content" class="p-5">
+				<!-- Comparison Content Injected Here -->
+			</div>
 		</div>
 		<div
 			class="fixed bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/5 rounded-full blur-[120px] pointer-events-none">
@@ -4140,7 +4207,8 @@
 							<ul class="space-y-2 text-white text-sm mb-6">
 								<li class="flex gap-2"><i data-lucide="check"
 										class="w-4 h-4 text-neon-blue shrink-0"></i>
-									Una pila di dischi rigidi in materiale metallico;</li>
+									Una pila di dischi rigidi in materiale metallico, suddivisi in cerchi concentrici
+									(le piste) e zone (le tracce);</li>
 								<li class="flex gap-2"><i data-lucide="check"
 										class="w-4 h-4 text-neon-blue shrink-0"></i>
 									Un rivestimento superficiale di materiale ferromagnetico;</li>
@@ -4578,16 +4646,21 @@
 			<section
 				class="mb-16 bg-gradient-to-br from-blue-900/20 to-black p-8 rounded-3xl border border-blue-500/30">
 				<h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-					<i data-lucide="cloud" class="text-blue-400"></i> Salvare i dati online: unità di rete e cloud
-					computing
+					<i data-lucide="cloud" class="text-blue-400"></i> Il cloud computing
 				</h3>
 				<p class="text-gray-300 text-justify leading-relaxed mb-8">
-					Un’altra forma di memoria di massa è costituita dalle unità di rete, che permettono di salvare dati
-					su server accessibili tramite rete locale o Internet. Con lo sviluppo del <span
-						class="text-blue-400 font-bold">cloud computing</span>, è diventato comune affidare i propri
+					Un’altra forma di memoria di massa è costituita dalle unità di rete, che permettono di <span
+						class="text-neon-amber font-bold">salvare dati su server</span>
+					(computer di grandi dimensioni e potenza dedicati a fornire servizi) accessibili tramite
+					rete locale o Internet. Con lo sviluppo del cloud
+					computing, è diventato comune affidare i propri
 					dati a un fornitore di servizi informatici che li memorizza su server situati in grandi data center,
 					talvolta anche in altri continenti. In questo caso si dice che i dati sono salvati “sulla nuvola”.
+					Gli esempi principali sono Google Drive, OneDrive, Dropbox e iCloud.
 				</p>
+
+				<!-- Cloud Animation Visualization -->
+
 				<div class="grid md:grid-cols-2 gap-8">
 					<div class="bg-green-500/5 p-6 rounded-2xl border border-green-500/20">
 						<h4 class="text-green-400 font-bold mb-4 flex items-center gap-2"><i
@@ -4597,7 +4670,8 @@
 							<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 shrink-0"></i>
 								Accesso ai dati da qualsiasi dispositivo connesso a Internet.</li>
 							<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 shrink-0"></i>
-								Disponibilità continua delle informazioni.</li>
+								Non è necessario acquistare e conservare fisicamente dispositivi di archiviazione come
+								hard disk o chiavette USB.</li>
 							<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 shrink-0"></i>
 								Facilità di collaborazione tra persone geograficamente lontane.</li>
 							<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 shrink-0"></i>
@@ -4612,18 +4686,403 @@
 							<li class="flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0"></i> I dati
 								sono accessibili solo in presenza di connessione Internet.</li>
 							<li class="flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0"></i>
-								Esistono potenziali rischi legati alla sicurezza e alla privacy: in teoria, il gestore
-								del servizio potrebbe accedere ai dati o subire violazioni informatiche.</li>
+								Esistono potenziali rischi legati alla sicurezza e alla privacy a causa di possibili
+								attacchi informatici o scarsa riservatezza.</li>
+							<li class="flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0"></i>
+								Costi ricorrenti che molti provider dei servizi richiedono.</li>
 						</ul>
 					</div>
 				</div>
-				<p class="mt-8 text-gray-400 italic text-sm text-center">
-					Il cloud rappresenta quindi una soluzione estremamente comoda, ma richiede consapevolezza rispetto
-					alla protezione delle informazioni personali.
-				</p>
+
+				<div
+					class="relative w-full h-60 bg-black/40 rounded-2xl border border-blue-500/20 mb-2 mt-10 overflow-hidden flex flex-col items-center justify-center group shadow-[inset_0_0_40px_rgba(30,58,138,0.2)]">
+
+					<!-- Background Grid Effect -->
+					<div
+						class="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30">
+					</div>
+
+
+
+					<!-- Cloud Central Node -->
+					<div
+						class="relative z-10 -mt-24 group-hover:scale-110 transition-transform duration-700 ease-in-out">
+						<div
+							class="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-900 rounded-full flex items-center justify-center border-4 border-blue-400/20 shadow-[0_0_60px_rgba(59,130,246,0.5)] animate-pulse">
+							<i data-lucide="cloud"
+								class="w-10 h-10 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"></i>
+						</div>
+						<!-- Orbiting rings -->
+						<div
+							class="absolute inset-[-5px] rounded-full border border-blue-400/30 border-dashed animate-spin-slow pointer-events-none">
+						</div>
+						<div
+							class="absolute inset-[-10px] rounded-full border border-cyan-400/10 animate-spin-reverse pointer-events-none">
+						</div>
+					</div>
+
+					<!-- Connection Lines (SVG) -->
+					<div class="absolute inset-0 pointer-events-none w-full h-full">
+						<svg class="w-full h-full" viewBox="0 0 600 300" preserveAspectRatio="none">
+							<defs>
+								<linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+									<stop offset="0%" stop-color="#3b82f6" stop-opacity="0.1" />
+									<stop offset="50%" stop-color="#3b82f6" stop-opacity="0.6" />
+									<stop offset="100%" stop-color="#3b82f6" stop-opacity="0.1" />
+								</linearGradient>
+							</defs>
+
+							<!-- Left Line (Semicircle Left Arc) -->
+							<path d="M 100 250 Q 80 70 300 70" stroke="url(#lineGrad)" stroke-width="2" fill="none"
+								class="opacity-40" />
+							<circle r="3" fill="#60a5fa">
+								<animateMotion repeatCount="indefinite" dur="3s" path="M 100 250 Q 80 70 300 70" />
+							</circle>
+							<circle r="3" fill="#ffffff">
+								<animateMotion repeatCount="indefinite" dur="3s" begin="1.5s" keyPoints="1;0"
+									keyTimes="0;1" path="M 100 250 Q 80 70 300 70" />
+							</circle>
+
+							<!-- Center Line (Console Connection) -->
+							<path d="M 300 250 L 300 115" stroke="url(#lineGrad)" stroke-width="2" fill="none"
+								class="opacity-40" />
+							<circle r="3" fill="#60a5fa">
+								<animateMotion repeatCount="indefinite" dur="2s" path="M 300 250 L 300 115" />
+							</circle>
+							<circle r="2" fill="#ffffff">
+								<animateMotion repeatCount="indefinite" dur="2s" begin="1s" keyPoints="1;0"
+									keyTimes="0;1" path="M 300 250 L 300 115" />
+							</circle>
+
+							<!-- Right Line (Semicircle Right Arc) -->
+							<path d="M 500 250 Q 520 70 300 70" stroke="url(#lineGrad)" stroke-width="2" fill="none"
+								class="opacity-40" />
+							<circle r="3" fill="#60a5fa">
+								<animateMotion repeatCount="indefinite" dur="3s" path="M 500 250 Q 520 70 300 70" />
+							</circle>
+							<circle r="3" fill="#ffffff">
+								<animateMotion repeatCount="indefinite" dur="3s" begin="1.5s" keyPoints="1;0"
+									keyTimes="0;1" path="M 500 250 Q 520 70 300 70" />
+							</circle>
+						</svg>
+					</div>
+
+					<!-- Devices Row -->
+					<div class="absolute bottom-2 w-full flex justify-between px-[16%] items-end z-10">
+						<!-- Laptop (Left) -->
+						<div class="flex flex-col items-center gap-2 group/item transform -translate-x-1/2">
+							<div
+								class="p-3 bg-gray-900/80 border border-gray-700 rounded-xl shadow-lg backdrop-blur-sm group-hover/item:border-blue-500 group-hover/item:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300">
+								<i data-lucide="laptop"
+									class="w-6 h-6 text-gray-400 group-hover/item:text-blue-400 transition-colors"></i>
+							</div>
+							<span
+								class="text-[10px] text-gray-500 font-mono tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">PC</span>
+						</div>
+
+						<!-- Console (Center) -->
+						<div class="flex flex-col items-center gap-2 group/item transform -translate-y-2">
+							<div
+								class="p-3 bg-gray-900/80 border border-gray-700 rounded-xl shadow-lg backdrop-blur-sm group-hover/item:border-blue-500 group-hover/item:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300">
+								<i data-lucide="gamepad-2"
+									class="w-6 h-6 text-gray-400 group-hover/item:text-blue-400 transition-colors"></i>
+							</div>
+							<span
+								class="text-[10px] text-gray-500 font-mono tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">Console</span>
+						</div>
+
+						<!-- Tablet (Right) -->
+						<div class="flex flex-col items-center gap-2 group/item transform translate-x-1/2">
+							<div
+								class="p-3 bg-gray-900/80 border border-gray-700 rounded-xl shadow-lg backdrop-blur-sm group-hover/item:border-blue-500 group-hover/item:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300">
+								<i data-lucide="smartphone"
+									class="w-6 h-6 text-gray-400 group-hover/item:text-blue-400 transition-colors"></i>
+							</div>
+							<span
+								class="text-[10px] text-gray-500 font-mono tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">Mobile</span>
+						</div>
+					</div>
+				</div>
+
+
 			</section>
 
 			<!-- Memoria Virtuale -->
+
+
+
+			<!-- Piramide delle Memorie -->
+			<section class="mb-16">
+				<h2 class="text-2xl font-bold text-white mb-8 border-l-4 border-neon-amber pl-6">La piramide delle
+					memorie (o gerarchia delle memorie)</h2>
+				<p class="text-gray-300 text-justify leading-relaxed mb-8">
+					La piramide delle memorie è un modello concettuale che rappresenta l’organizzazione dei diversi tipi
+					di memoria in un sistema di calcolo. L’idea centrale è che non esiste una memoria che costruire una
+					memoria velocissima richiede una tecnologia sofisticata e, dunque, un costo elevato per bit. Serve
+					dunque un compromesso tra velocità, capacità e costo. <br><br>
+					Per questo motivo i computer utilizzano una gerarchia di memorie, disposte a livelli, ciascuno con
+					caratteristiche diverse in termini di velocità, capacità, costo per bit e volatilità. La forma a
+					piramide aiuta a visualizzare che in alto troviamo memorie molto veloci ma piccole e costose, mentre
+					in basso memorie più lente ma molto capienti ed economiche.
+
+
+				</p>
+
+				<!-- Struttura della Piramide -->
+				<!-- Visual Piramide INTERATTIVA -->
+				<div
+					class="flex flex-col lg:flex-row items-center justify-center gap-12 w-full max-w-6xl mx-auto my-12 bg-dark-card/50 px-8 pb-8 pt-16 rounded-3xl border border-white/5">
+
+					<!-- Stack Piramide -->
+					<div class="flex flex-col items-center w-full lg:w-2/3 gap-1 relative">
+						<div class="absolute -top-8 text-gray-400 text-xs italic animate-bounce">Clicca sui livelli per
+							i
+							dettagli</div>
+
+						<!-- 1. Registri -->
+						<div onclick="openPyramidInfo('registri')"
+							class="w-[20%] min-w-[160px] relative group transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer z-50">
+							<div
+								class="bg-red-500 rounded-t-xl p-3 flex items-center justify-center gap-2 border-x border-t border-red-300 shadow-[0_0_20px_rgba(239,68,68,0.4)] group-hover:shadow-[0_0_30px_rgba(239,68,68,0.8)]">
+								<i data-lucide="cpu" class="w-5 h-5 text-black"></i>
+								<span class="font-bold text-black text-sm uppercase tracking-wider">Registri</span>
+							</div>
+						</div>
+
+						<!-- 2. Cache -->
+						<div onclick="openPyramidInfo('cache')"
+							class="w-[36%] min-w-[200px] relative group transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer z-40">
+							<div
+								class="bg-orange-400 p-3 flex items-center justify-center gap-2 border-x border-t border-orange-300 shadow-[0_0_20px_rgba(251,146,60,0.4)] group-hover:shadow-[0_0_30px_rgba(251,146,60,0.8)]">
+								<i data-lucide="circuit-board" class="w-5 h-5 text-black"></i>
+								<span class="font-bold text-black text-sm uppercase tracking-wider">Cache</span>
+							</div>
+						</div>
+
+						<!-- 3. RAM -->
+						<div onclick="openPyramidInfo('ram')"
+							class="w-[52%] min-w-[240px] relative group transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer z-30">
+							<div
+								class="bg-yellow-400 p-3 flex items-center justify-center gap-2 border-x border-t border-yellow-200 shadow-[0_0_20px_rgba(250,204,21,0.4)] group-hover:shadow-[0_0_30px_rgba(250,204,21,0.8)]">
+								<i data-lucide="memory-stick" class="w-5 h-5 text-black"></i>
+								<span class="font-bold text-black text-sm uppercase tracking-wider">RAM</span>
+							</div>
+						</div>
+
+						<!-- 4. SSD -->
+						<div onclick="openPyramidInfo('ssd')"
+							class="w-[68%] min-w-[280px] relative group transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer z-20">
+							<div
+								class="bg-green-400 p-3 flex items-center justify-center gap-2 border-x border-t border-green-300 shadow-[0_0_20px_rgba(74,222,128,0.4)] group-hover:shadow-[0_0_30px_rgba(74,222,128,0.8)]">
+								<i data-lucide="hard-drive" class="w-5 h-5 text-black"></i>
+								<span class="font-bold text-black text-sm uppercase tracking-wider">SSD</span>
+							</div>
+						</div>
+
+						<!-- 5. HDD -->
+						<div onclick="openPyramidInfo('hdd')"
+							class="w-[84%] min-w-[320px] relative group transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer z-10">
+							<div
+								class="bg-blue-400 p-3 flex items-center justify-center gap-2 border-x border-t border-blue-300 shadow-[0_0_20px_rgba(96,165,250,0.4)] group-hover:shadow-[0_0_30px_rgba(96,165,250,0.8)]">
+								<i data-lucide="disc-3" class="w-5 h-5 text-black"></i>
+								<span class="font-bold text-black text-sm uppercase tracking-wider">HDD</span>
+							</div>
+						</div>
+
+						<!-- 6. Cloud -->
+						<div onclick="openPyramidInfo('cloud')"
+							class="w-full min-w-[360px] relative group transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer z-0">
+							<div
+								class="bg-purple-400 rounded-b-xl p-3 flex items-center justify-center gap-2 border border-purple-300 shadow-[0_0_20px_rgba(192,132,252,0.4)] group-hover:shadow-[0_0_30px_rgba(192,132,252,0.8)]">
+								<i data-lucide="cloud" class="w-5 h-5 text-black"></i>
+								<span class="font-bold text-black text-sm uppercase tracking-wider">Cloud</span>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- NUOVA SEZIONE DATI: Tempo Accesso & Capacità -->
+					<div class="flex flex-col gap-1 py-0 mx-4 relative w-64 flex-shrink-0">
+
+						<!-- Headers (Absolute to align rows perfectly with pyramid) -->
+						<div
+							class="absolute -top-12 left-0 w-full flex justify-between px-2 text-[10px] font-bold text-gray-400 uppercase tracking-wider border-b border-gray-600 pb-2">
+							<div class="flex items-center gap-1 cursor-pointer hover:text-white transition-colors group"
+								onclick="openUnitInfo('time')">
+								<span>Tempo Accesso</span>
+								<i data-lucide="info"
+									class="w-3 h-3 text-gray-500 group-hover:text-neon-cyan active:scale-95 transition-transform"></i>
+							</div>
+							<div class="flex items-center gap-1 cursor-pointer hover:text-white transition-colors group"
+								onclick="openUnitInfo('capacity')">
+								<span>Capacità</span>
+								<i data-lucide="info"
+									class="w-3 h-3 text-gray-500 group-hover:text-neon-cyan active:scale-95 transition-transform"></i>
+							</div>
+						</div>
+
+						<!-- Row 1: Registri -->
+						<div onclick="toggleRowSelection(0)" id="row-0"
+							class="grid grid-cols-[1fr_auto_1fr] items-center w-full h-[46px] border-b border-white/5 px-2 cursor-pointer hover:bg-white/5 transition-colors select-none">
+							<span class="text-red-400 font-mono text-xs text-left">~ 1 ns</span>
+							<span class="text-gray-600 text-[10px] opacity-50">|</span>
+							<span class="text-red-400 font-mono text-xs text-right">~ 1 KB</span>
+						</div>
+
+						<!-- Row 2: Cache -->
+						<div onclick="toggleRowSelection(1)" id="row-1"
+							class="grid grid-cols-[1fr_auto_1fr] items-center w-full h-[46px] border-b border-white/5 px-2 cursor-pointer hover:bg-white/5 transition-colors select-none">
+							<span class="text-orange-400 font-mono text-xs text-left">~ 10 ns</span>
+							<span class="text-gray-600 text-[10px] opacity-50">|</span>
+							<span class="text-orange-400 font-mono text-xs text-right">~ 20 MB</span>
+						</div>
+
+						<!-- Row 3: RAM -->
+						<div onclick="toggleRowSelection(2)" id="row-2"
+							class="grid grid-cols-[1fr_auto_1fr] items-center w-full h-[46px] border-b border-white/5 px-2 cursor-pointer hover:bg-white/5 transition-colors select-none">
+							<span class="text-yellow-400 font-mono text-xs text-left">~ 75 ns</span>
+							<span class="text-gray-600 text-[10px] opacity-50">|</span>
+							<span class="text-yellow-400 font-mono text-xs text-right">~ 16 GB</span>
+						</div>
+
+						<!-- Row 4: SSD -->
+						<div onclick="toggleRowSelection(3)" id="row-3"
+							class="grid grid-cols-[1fr_auto_1fr] items-center w-full h-[46px] border-b border-white/5 px-2 cursor-pointer hover:bg-white/5 transition-colors select-none">
+							<span class="text-green-400 font-mono text-xs text-left">~ 30 µs</span>
+							<span class="text-gray-600 text-[10px] opacity-50">|</span>
+							<span class="text-green-400 font-mono text-xs text-right">~ 1 TB</span>
+						</div>
+
+						<!-- Row 5: HDD -->
+						<div onclick="toggleRowSelection(4)" id="row-4"
+							class="grid grid-cols-[1fr_auto_1fr] items-center w-full h-[46px] border-b border-white/5 px-2 cursor-pointer hover:bg-white/5 transition-colors select-none">
+							<span class="text-blue-400 font-mono text-xs text-left">~ 10 ms</span>
+							<span class="text-gray-600 text-[10px] opacity-50">|</span>
+							<span class="text-blue-400 font-mono text-xs text-right">~ 4 TB</span>
+						</div>
+
+						<!-- Row 6: Cloud -->
+						<div onclick="toggleRowSelection(5)" id="row-5"
+							class="grid grid-cols-[1fr_auto_1fr] items-center w-full h-[46px] px-2 cursor-pointer hover:bg-white/5 transition-colors select-none">
+							<span class="text-purple-400 font-mono text-xs text-left"> ~ 50 - 300 ms</span>
+							<span class="text-gray-600 text-[10px] opacity-50">|</span>
+							<span class="text-purple-400 font-mono text-xs text-right">PB - EB</span>
+						</div>
+
+						<!-- Didascalia confronto -->
+						<p class="text-[10px] text-gray-500 text-center mt-3 italic animate-pulse">
+							<i data-lucide="mouse-pointer-2" class="inline w-3 h-3 mr-1 align-text-top"></i>
+							Clicca su 2 righe per confrontarle
+						</p>
+
+					</div>
+
+				</div>
+
+				<!-- MODAL DETTAGLI PIRAMIDE -->
+
+
+
+				<!-- Tendenze e Conclusioni (Racchiuso in Box) -->
+				<!-- Tendenze e Conclusioni (Box Separati) -->
+				<div class="mt-20 max-w-7xl mx-auto">
+
+					<div class="grid grid-cols-1 lg:grid-cols-[0.25fr_1.75fr] gap-12 items-start">
+
+						<!-- Colonna Sinistra: Cards Wafer Verticali -->
+						<div class="flex flex-col gap-6">
+
+							<h3 class="text-2xl font-bold text-white mb-2 text-center flex flex-col items-center gap-2">
+								SCNDENDO VERSO IL BASSO:
+
+							</h3>
+
+							<!-- Card Tendenza 1: Velocità -->
+							<div
+								class="bg-dark-card/80 p-6 rounded-2xl border border-red-500/20 shadow-[0_0_20px_rgba(239,68,68,0.05)] hover:border-red-500/50 transition-all group relative overflow-hidden flex items-center gap-6">
+								<div class="p-4 bg-red-500/10 rounded-xl shrink-0">
+									<i data-lucide="zap" class="w-8 h-8 text-red-500 font-bold"></i>
+								</div>
+								<div class="flex-1">
+									<div class="flex justify-between items-center mb-2">
+										<div class="flex items-center gap-2">
+											<h4 class="text-xl font-bold text-white">Velocità</h4>
+											<i data-lucide="arrow-down"
+												class="w-8 h-8 text-red-500 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+										</div>
+										<span
+											class="text-xs text-red-400 font-mono uppercase tracking-wide border border-red-500/30 px-2 py-0.5 rounded">Diminuisce</span>
+									</div>
+									<p class="text-gray-400 text-sm leading-relaxed">
+										L'accesso ai dati diventa drasticamente più lento. Dai nanosecondi dei registri
+										ai millisecondi dei dischi.
+									</p>
+								</div>
+							</div>
+
+							<!-- Card Tendenza 2: Costo -->
+							<div
+								class="bg-dark-card/80 p-6 rounded-2xl border border-orange-500/20 shadow-[0_0_20px_rgba(249,115,22,0.05)] hover:border-orange-500/50 transition-all group relative overflow-hidden flex items-center gap-6">
+								<div class="p-4 bg-orange-500/10 rounded-xl shrink-0">
+									<i data-lucide="coins" class="w-8 h-8 text-orange-500 font-bold"></i>
+								</div>
+								<div class="flex-1">
+									<div class="flex justify-between items-center mb-2">
+										<div class="flex items-center gap-2">
+											<h4 class="text-xl font-bold text-white">Costo per Bit</h4>
+											<i data-lucide="arrow-down"
+												class="w-8 h-8 text-orange-500 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+										</div>
+										<span
+											class="text-xs text-orange-400 font-mono uppercase tracking-wide border border-orange-500/30 px-2 py-0.5 rounded">Diminuisce</span>
+									</div>
+									<p class="text-gray-400 text-sm leading-relaxed">
+										Il costo di produzione cala notevolmente, rendendo economico archiviare grandi
+										quantità di dati.
+									</p>
+								</div>
+							</div>
+
+							<!-- Card Tendenza 3: Capacità -->
+							<div
+								class="bg-dark-card/80 p-6 rounded-2xl border border-cyan-500/20 shadow-[0_0_20px_rgba(6,182,212,0.05)] hover:border-cyan-500/50 transition-all group relative overflow-hidden flex items-center gap-6">
+								<div class="p-4 bg-cyan-500/10 rounded-xl shrink-0">
+									<i data-lucide="box" class="w-8 h-8 text-cyan-400 font-bold"></i>
+								</div>
+								<div class="flex-1">
+									<div class="flex justify-between items-center mb-2">
+										<div class="flex items-center gap-2">
+											<h4 class="text-xl font-bold text-white">Capacità</h4>
+											<i data-lucide="arrow-up"
+												class="w-8 h-8 text-cyan-400 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+										</div>
+										<span
+											class="text-xs text-cyan-400 font-mono uppercase tracking-wide border border-cyan-500/30 px-2 py-0.5 rounded">Aumenta</span>
+									</div>
+									<p class="text-gray-400 text-sm leading-relaxed">
+										Lo spazio disponibile cresce esponenzialmente, passando da pochi byte a
+										Petabyte.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+						<!-- Colonna Destra: Immagine Verticale -->
+						<div
+							class="w-full flex items-center justify-center bg-black/20 rounded-2xl border border-white/5 p-4">
+							<!-- PLACEHOLDER IMMAGINE VERTICALE -->
+							<img src="memorie.jpg" alt="Grafico Tendenze Verticale"
+								class="w-full h-auto rounded-xl opacity-90 hover:opacity-100 transition-opacity shadow-lg shadow-black/50">
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Analogia -->
+
+			</section>
+
 			<section class="mb-16">
 				<div class="bg-neon-purple/5 border border-neon-purple/20 p-8 rounded-3xl">
 					<h3 class="text-2xl font-bold text-white mb-6">La memoria virtuale</h3>
@@ -4654,169 +5113,6 @@
 				</div>
 			</section>
 
-
-
-			<!-- Piramide delle Memorie -->
-			<section class="mb-16">
-				<h2 class="text-2xl font-bold text-white mb-8 border-l-4 border-neon-amber pl-6">La piramide delle
-					memorie (o gerarchia delle memorie)</h2>
-				<p class="text-gray-300 text-justify leading-relaxed mb-8">
-					La piramide delle memorie è un modello concettuale che rappresenta l’organizzazione dei diversi tipi
-					di memoria in un sistema di calcolo. L’idea centrale è che non esiste una memoria che sia
-					contemporaneamente velocissima, enorme, economica e permanente: ogni tecnologia comporta
-					compromessi. <br><br>
-					Per questo motivo i computer utilizzano una gerarchia di memorie, disposte a livelli, ciascuno con
-					caratteristiche diverse in termini di velocità, capacità, costo per bit e volatilità. La forma a
-					piramide aiuta a visualizzare che in alto troviamo memorie molto veloci ma piccole e costose, mentre
-					in basso memorie più lente ma molto capienti ed economiche.
-				</p>
-
-				<!-- Struttura della Piramide -->
-				<div class="space-y-8 max-w-3xl mx-auto">
-					<h4 class="text-neon-amber font-bold flex items-center gap-2"><i data-lucide="triangle"></i>
-						Struttura della piramide</h4>
-					<div class="space-y-4">
-						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
-							<h5 class="text-neon-teal font-bold mb-2">🔺 1. Registri della CPU</h5>
-							<ul class="text-sm text-gray-400 space-y-1">
-								<li>• Sono integrati direttamente nel processore.</li>
-								<li>• Contengono pochissimi dati (pochi byte).</li>
-								<li>• Sono estremamente veloci.</li>
-								<li>• Usati per operazioni immediate durante l’esecuzione delle istruzioni.</li>
-								<li>• Volatili.</li>
-								<li class="italic">• Sono il punto in cui la CPU lavora direttamente.</li>
-							</ul>
-						</div>
-						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
-							<h5 class="text-neon-blue font-bold mb-2">🔺 2. Cache (L1, L2, L3)</h5>
-							<ul class="text-sm text-gray-400 space-y-1">
-								<li>• Memoria molto veloce, vicinissima alla CPU.</li>
-								<li>• Serve a conservare temporaneamente i dati e le istruzioni usati più
-									frequentemente.</li>
-								<li>• Molto più veloce della RAM.</li>
-								<li>• Capacità limitata (da pochi KB a pochi MB).</li>
-								<li>• Volatile.</li>
-								<li class="italic text-xs mt-2">• La cache riduce il tempo medio di accesso ai dati
-									sfruttando il principio di località:</li>
-								<li class="pl-4 text-[11px]">• località temporale → i dati usati di recente
-									probabilmente verranno riutilizzati</li>
-								<li class="pl-4 text-[11px]">• località spaziale → i dati vicini in memoria
-									probabilmente verranno richiesti</li>
-							</ul>
-						</div>
-						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
-							<h5 class="text-neon-purple font-bold mb-2">🔺 3. RAM (memoria principale)</h5>
-							<ul class="text-sm text-gray-400 space-y-1">
-								<li>• Memoria di lavoro del sistema.</li>
-								<li>• Contiene programmi e dati in uso.</li>
-								<li>• Più lenta della cache ma molto più veloce della memoria di massa.</li>
-								<li>• Capacità molto maggiore (GB).</li>
-								<li>• Volatile: si svuota allo spegnimento.</li>
-								<li class="italic">• È il livello su cui operano sistema operativo e applicazioni.</li>
-							</ul>
-						</div>
-						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
-							<h5 class="text-neon-amber font-bold mb-2">🔺 4. Memoria secondaria (SSD / HDD)</h5>
-							<ul class="text-sm text-gray-400 space-y-1">
-								<li>• Memoria permanente.</li>
-								<li>• Molto più capiente (centinaia di GB o TB).</li>
-								<li>• Più lenta rispetto alla RAM.</li>
-								<li>• Non volatile.</li>
-								<li>• Contiene sistema operativo, programmi e file personali.</li>
-							</ul>
-						</div>
-						<div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
-							<h5 class="text-gray-400 font-bold mb-2">🔺 5. Archiviazione remota e backup (cloud, nastri,
-								server)</h5>
-							<ul class="text-sm text-gray-500 space-y-1">
-								<li>• Capacità enorme.</li>
-								<li>• Accesso più lento.</li>
-								<li>• Utilizzata per archiviazione a lungo termine.</li>
-								<li>• Non volatile.</li>
-								<li class="italic">• È il livello più basso della piramide, ma quello con la massima
-									capacità complessiva.</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<!-- Rappresentazione Schematica -->
-				<div class="mt-12 bg-black/60 p-8 rounded-3xl border border-white/10 flex flex-col items-center">
-					<h4 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-6">Rappresentazione
-						schematica</h4>
-					<div class="font-mono text-[11px] sm:text-xs text-center space-y-1">
-						<div class="text-neon-teal">Registri CPU ← velocità massima, capacità minima</div>
-						<div class="text-neon-blue">Cache</div>
-						<div class="text-neon-purple">RAM</div>
-						<div class="text-neon-amber">SSD / HDD</div>
-						<div class="text-gray-500">Cloud / Archiviazione ← capacità massima, velocità minima</div>
-					</div>
-				</div>
-
-				<!-- Tendenze -->
-				<div class="mt-12 space-y-6">
-					<h4 class="text-white font-bold text-center underline decoration-neon-amber">Le tre grandi tendenze
-						della piramide</h4>
-					<p class="text-gray-300 text-center italic text-sm">Scendendo verso il basso:</p>
-					<div
-						class="flex flex-col sm:flex-row justify-center gap-8 text-center text-sm font-mono text-neon-amber">
-						<div>🔽 La velocità diminuisce</div>
-						<div>🔼 La capacità aumenta</div>
-						<div>🔽 Il costo per bit diminuisce</div>
-					</div>
-					<p class="text-gray-400 text-sm text-center max-w-2xl mx-auto">
-						In altre parole: le memorie più veloci sono piccole e costose; le memorie più grandi sono più
-						lente ma economiche.
-					</p>
-				</div>
-
-				<!-- Perché esiste -->
-				<div class="mt-12 bg-white/5 p-8 rounded-3xl border border-white/10 text-justify">
-					<h4 class="text-xl font-bold text-white mb-4">Perché esiste questa gerarchia?</h4>
-					<p class="text-gray-300 text-sm leading-relaxed mb-4">
-						Il motivo è tecnico ed economico. Costruire una memoria velocissima richiede tecnologia
-						sofisticata → costa molto → non può essere enorme. Al contrario, una memoria molto capiente deve
-						essere economica → ma sarà più lenta.
-					</p>
-					<p class="text-gray-300 text-sm leading-relaxed">
-						La soluzione è combinare più livelli, così il sistema usa le memorie veloci per i dati
-						immediatamente necessari e quelle più lente per archiviare grandi quantità di informazioni.
-					</p>
-				</div>
-
-				<!-- Analogia -->
-				<div class="mt-12 bg-neon-amber/5 p-8 rounded-3xl border border-neon-amber/20">
-					<h4 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i data-lucide="table-2"></i>
-						Un’analogia intuitiva</h4>
-					<p class="text-gray-300 text-sm mb-6">Si può paragonare la piramide delle memorie a una scrivania:
-					</p>
-					<div class="grid grid-cols-1 gap-3 font-mono text-xs">
-						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
-							<span class="w-24 text-neon-teal">📌 Registri</span>
-							<span class="text-gray-400">→ ciò che hai in mano in questo momento</span>
-						</div>
-						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
-							<span class="w-24 text-neon-blue">📖 Cache</span>
-							<span class="text-gray-400">→ il foglio aperto davanti a te</span>
-						</div>
-						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
-							<span class="w-24 text-neon-purple">📚 RAM</span>
-							<span class="text-gray-400">→ i libri sulla scrivania</span>
-						</div>
-						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
-							<span class="w-24 text-neon-amber">🗄 SSD/HDD</span>
-							<span class="text-gray-400">→ l’armadio in stanza</span>
-						</div>
-						<div class="flex items-center gap-4 p-2 bg-black/30 rounded">
-							<span class="w-24 text-gray-500">🏢 Cloud</span>
-							<span class="text-gray-400">→ un archivio in un altro edificio</span>
-						</div>
-					</div>
-					<p class="mt-6 text-center text-xs text-neon-amber/60 italic font-bold">
-						Più un oggetto è vicino a te, più è rapido usarlo, ma meno spazio hai disponibile.
-					</p>
-				</div>
-			</section>
 
 			<!-- Navigazione Lezioni -->
 			<div class="flex justify-between mt-12 pt-8 border-t border-white/10 text-sm">
@@ -5216,8 +5512,153 @@
 				.animate-flash {
 					animation: flash 0.2s ease-out;
 				}
+				@keyframes spin-slow {
+					from { transform: rotate(0deg); }
+					to { transform: rotate(360deg); }
+				}
+				.animate-spin-slow {
+					animation: spin-slow 10s linear infinite;
+				}
+				.animate-spin-reverse {
+					animation: spin-slow 6s linear infinite reverse;
+				}
 			`;
 		document.head.appendChild(styleSheet);
+
+
+		/* --- LOGICA PIRAMIDE INTERATTIVA --- */
+		const pyramidInfo = {
+			'registri': {
+				title: 'Registri della CPU',
+				icon: 'cpu',
+				colorClass: 'text-red-500',
+				bgClass: 'bg-red-500/20',
+				borderClass: 'border-red-500',
+				content: `
+					<ul class="space-y-3 text-sm">
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-red-500 shrink-0"></i>Integrati direttamente nel microprocessore, è il punto esatto in cui la CPU lavora</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-red-500 shrink-0"></i>Volatili</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-red-500 shrink-0"></i>Usati per operazioni immediate durante l’esecuzione delle istruzioni.</li>
+					</ul>
+				`
+			},
+			'cache': {
+				title: 'Memoria Cache',
+				icon: 'circuit-board',
+				colorClass: 'text-orange-500',
+				bgClass: 'bg-orange-500/20',
+				borderClass: 'border-orange-500',
+				content: `
+					<ul class="space-y-3 text-sm">
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-orange-500 shrink-0"></i>Memoria di appoggio della CPU</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-orange-500 shrink-0"></i>Volatile</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-orange-500 shrink-0"></i>Memorizza i dati che è più probabile vengano riutilizzati, cioè quelli usati di recente o quelli usati più spesso.</li>
+					</ul>
+				`
+			},
+			'ram': {
+				title: 'RAM (Memoria Principale)',
+				icon: 'memory-stick',
+				colorClass: 'text-yellow-400',
+				bgClass: 'bg-yellow-400/20',
+				borderClass: 'border-yellow-400',
+				content: `
+					<ul class="space-y-3 text-sm">
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-yellow-400 shrink-0"></i>Memoria di lavoro temporanea</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-yellow-400 shrink-0"></i>Volatile</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-yellow-400 shrink-0"></i>Contiene dati e programmi in esecuzione</li>
+					</ul>
+				`
+			},
+			'ssd': {
+				title: 'SSD',
+				icon: 'hard-drive',
+				colorClass: 'text-green-400',
+				bgClass: 'bg-green-400/20',
+				borderClass: 'border-green-400',
+				content: `
+					<ul class="space-y-3 text-sm">
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400 shrink-0"></i>Memoria che utilizza tecnologia Flash</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400 shrink-0"></i>Permanente</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400 shrink-0"></i>Contiene Sistema Operativo, programmi e file</li>
+					</ul>
+				`
+			},
+			'hdd': {
+				title: 'Hard Disk (HDD)',
+				icon: 'disc-3',
+				colorClass: 'text-blue-400',
+				bgClass: 'bg-blue-400/20',
+				borderClass: 'border-blue-400',
+				content: `
+					<ul class="space-y-3 text-sm">
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0"></i>Memoria magnetica meccanica</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0"></i>Permanente</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0"></i>Contiene Sistema Operativo, programmi e file</li>
+					</ul>
+				`
+			},
+			'cloud': {
+				title: 'Cloud Storage',
+				icon: 'cloud',
+				colorClass: 'text-purple-400',
+				bgClass: 'bg-purple-400/20',
+				borderClass: 'border-purple-400',
+				content: `
+					<ul class="space-y-3 text-sm">
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i>Archiviazione remota su server distanti</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i>Permanente</li>
+						<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i>Ideale per backup e condivisione</li>
+					</ul>
+				`
+			}
+		};
+
+		function openPyramidInfo(key) {
+			const data = pyramidInfo[key];
+			if (!data) return;
+
+			const win = document.getElementById('pyramid-window');
+			const title = document.getElementById('pm-title');
+			const content = document.getElementById('pm-content');
+			const iconBox = document.getElementById('pm-icon-box');
+
+			if (!win) return;
+
+			// Populate
+			if (title) {
+				title.textContent = data.title;
+				title.className = `text-xl font-bold font-mono ${data.colorClass}`;
+			}
+			if (content) {
+				content.innerHTML = data.content;
+				// Rimuove stili vecchi e applica nuovi stili al contenuto iniettato
+				const listItems = content.querySelectorAll('li');
+				listItems.forEach(li => {
+					li.className = "flex gap-3 text-base text-white not-italic items-start";
+					const icon = li.querySelector('i');
+					if (icon) icon.className += " mt-1";
+				});
+				const uls = content.querySelectorAll('ul');
+				uls.forEach(ul => ul.className = "space-y-4");
+			}
+
+			if (iconBox) {
+				iconBox.innerHTML = `<i data-lucide="${data.icon}" class="w-6 h-6 ${data.colorClass}"></i>`;
+				iconBox.className = `w-10 h-10 rounded-lg flex items-center justify-center border ${data.borderClass} ${data.bgClass}`;
+			}
+
+			// Show Window
+			win.classList.remove('hidden');
+
+			// Re-render icons
+			if (typeof lucide !== 'undefined') lucide.createIcons();
+		}
+
+		function closePyramidInfo() {
+			const win = document.getElementById('pyramid-window');
+			if (win) win.classList.add('hidden');
+		}
 
 		/* --- LOGICA LEZIONE 2 --- */
 		let currentStep = 0;
@@ -5362,6 +5803,138 @@
 				el.classList.add('ring-2', 'ring-white/60', 'shadow-[0_0_15px_rgba(255,255,255,0.2)]', 'scale-105');
 				el.style.zIndex = '10';
 			}
+		}
+
+
+
+		/* --- LOGICA MODAL UNITÀ DI MISURA --- */
+		const unitData = {
+			'time': {
+				title: 'Tempo: Sottomultipli',
+				icon: 'timer',
+				rows: [
+					{ label: 'Secondo (s)', val: '1 s', desc: 'Unità base' },
+					{ label: 'Millisecondo (ms)', val: '10<sup class="text-neon-cyan text-xs font-bold">-3</sup> s', desc: 'Millesimo di secondo' },
+					{ label: 'Microsecondo (µs)', val: '10<sup class="text-neon-cyan text-xs font-bold">-6</sup> s', desc: 'Milionesimo di secondo' },
+					{ label: 'Nanosecondo (ns)', val: '10<sup class="text-neon-cyan text-xs font-bold">-9</sup> s', desc: 'Miliardesimo di secondo' }
+				]
+			},
+			'capacity': {
+				title: 'Capacità: Multipli del Byte',
+				icon: 'hard-drive',
+				rows: [
+					{ label: 'Bit (b)', val: '0 - 1', desc: 'Unità minima' },
+					{ label: 'Byte (B)', val: '8 bit', desc: 'Unità base' },
+					{ label: 'Kilobyte (KB)', val: '1024 B', desc: '2<sup class="text-neon-cyan text-xs font-bold">10</sup> Byte' },
+					{ label: 'Megabyte (MB)', val: '1024 KB', desc: '2<sup class="text-neon-cyan text-xs font-bold">20</sup> Byte' },
+					{ label: 'Gigabyte (GB)', val: '1024 MB', desc: '2<sup class="text-neon-cyan text-xs font-bold">30</sup> Byte' },
+					{ label: 'Terabyte (TB)', val: '1024 GB', desc: '2<sup class="text-neon-cyan text-xs font-bold">40</sup> Byte' },
+					{ label: 'Petabyte (PB)', val: '1024 TB', desc: '2<sup class="text-neon-cyan text-xs font-bold">50</sup> Byte' },
+					{ label: 'Exabyte (EB)', val: '1024 PB', desc: '2<sup class="text-neon-cyan text-xs font-bold">60</sup> Byte' }
+				]
+			}
+		};
+
+
+		function makeDraggable(elementId, handleId) {
+			const el = document.getElementById(elementId);
+			const handle = document.getElementById(handleId);
+			if (!el || !handle) return;
+
+			let isDragging = false;
+			let startX, startY, initialLeft, initialTop;
+
+			handle.addEventListener('mousedown', (e) => {
+				if (e.target.closest('button')) return;
+
+				isDragging = true;
+				startX = e.clientX;
+				startY = e.clientY;
+
+				const rect = el.getBoundingClientRect();
+				initialLeft = rect.left;
+				initialTop = rect.top;
+
+				// Ensure fixed positioning is set explicitly so dragging works
+				el.style.position = 'fixed';
+				el.style.left = initialLeft + 'px';
+				el.style.top = initialTop + 'px';
+				el.style.transform = 'none';
+				el.style.margin = '0';
+			});
+
+			window.addEventListener('mousemove', (e) => {
+				if (!isDragging) return;
+				e.preventDefault();
+				const dx = e.clientX - startX;
+				const dy = e.clientY - startY;
+				el.style.left = (initialLeft + dx) + 'px';
+				el.style.top = (initialTop + dy) + 'px';
+			});
+
+			window.addEventListener('mouseup', () => {
+				isDragging = false;
+			});
+		}
+
+		// Init Draggables
+		setTimeout(() => {
+			makeDraggable('pyramid-window', 'pyramid-window-header');
+			makeDraggable('unit-window', 'unit-window-header');
+		}, 500);
+
+		function openUnitInfo(type) {
+			const data = unitData[type];
+			if (!data) return;
+
+			const win = document.getElementById('unit-window');
+			const title = document.getElementById('um-title');
+			const content = document.getElementById('um-content');
+
+			if (!win) return;
+
+			// Set Title
+			title.innerHTML = `<i data-lucide="${data.icon}" class="w-6 h-6"></i> ${data.title}`;
+
+			// Build Table
+			let html = `
+				<div class="overflow-hidden rounded-lg border border-white/10">
+					<table class="w-full text-sm text-left">
+						<thead class="bg-white/5 text-gray-400 font-mono text-xs uppercase">
+							<tr>
+								<th class="px-4 py-3">Unità</th>
+								<th class="px-4 py-3">Valore</th>
+								<th class="px-4 py-3">Descrizione</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-white/5 text-gray-300">
+			`;
+
+			data.rows.forEach(row => {
+				html += `
+					<tr class="hover:bg-white/5 transition-colors">
+						<td class="px-4 py-3 font-bold text-neon-cyan text-base">${row.label}</td>
+						<td class="px-4 py-3 font-mono text-sm text-nowrap text-white">${row.val}</td>
+						<td class="px-4 py-3 text-white not-italic text-sm">${row.desc}</td>
+					</tr>
+				`;
+			});
+
+			html += `
+						</tbody>
+					</table>
+				</div>
+			`;
+			content.innerHTML = html;
+
+			// Show Window
+			win.classList.remove('hidden');
+			if (typeof lucide !== 'undefined') lucide.createIcons();
+		}
+
+		function closeUnitInfo() {
+			const win = document.getElementById('unit-window');
+			if (win) win.classList.add('hidden');
 		}
 
 		function updateFetchVisuals() {
@@ -5534,12 +6107,133 @@
 			}
 		}
 
-		function prevFetchStep() {
-			if (fetchStep > 0) {
-				fetchStep--;
-				updateFetchVisuals();
+
+		/* --- LOGICA CONFRONTO RIGHE --- */
+		const memoryStats = [
+			{ name: 'Registri', timeNs: 1, capBytes: 1024, color: 'text-red-400' },
+			{ name: 'Cache', timeNs: 10, capBytes: 20 * 1024 * 1024, color: 'text-orange-400' },
+			{ name: 'RAM', timeNs: 75, capBytes: 16 * 1024 * 1024 * 1024, color: 'text-yellow-400' },
+			{ name: 'SSD', timeNs: 30000, capBytes: 1024 * 1024 * 1024 * 1024, color: 'text-green-400' },
+			{ name: 'HDD', timeNs: 10000000, capBytes: 4 * 1024 * 1024 * 1024 * 1024, color: 'text-blue-400' },
+			{ name: 'Cloud', timeNs: 100000000, capBytes: 1024 * 1024 * 1024 * 1024 * 1024 * 1024, color: 'text-purple-400' } // Approx 1 PB for simplified calc
+		];
+
+		let selectedRows = [];
+
+		function toggleRowSelection(index) {
+			const row = document.getElementById(`row-${index}`);
+			if (!row) return;
+
+			if (selectedRows.includes(index)) {
+				// Deselect
+				selectedRows = selectedRows.filter(i => i !== index);
+				row.classList.remove('bg-white/10', 'border-l-4', 'border-neon-cyan');
+				row.classList.add('border-b', 'border-white/5');
+			} else {
+				// Select
+				if (selectedRows.length >= 2) {
+					// Remove first selected if already 2
+					const first = selectedRows.shift();
+					const firstRow = document.getElementById(`row-${first}`);
+					if (firstRow) {
+						firstRow.classList.remove('bg-white/10', 'border-l-4', 'border-neon-cyan');
+						firstRow.classList.add('border-b', 'border-white/5');
+					}
+				}
+				selectedRows.push(index);
+				row.classList.add('bg-white/10', 'border-l-4', 'border-neon-cyan');
+				row.classList.remove('border-b', 'border-white/5');
 			}
+
+			updateComparison();
 		}
+
+		function updateComparison() {
+			const win = document.getElementById('comparison-window');
+			const content = document.getElementById('cmp-content');
+
+			if (selectedRows.length !== 2) {
+				if (win) win.classList.add('hidden');
+				return;
+			}
+
+			// We have 2 items
+			const i1 = selectedRows[0];
+			const i2 = selectedRows[1];
+
+			// Order by speed (timeNs asc) to standardize: fast vs slow
+			let m1 = memoryStats[i1];
+			let m2 = memoryStats[i2];
+
+			// Ensure m1 is the faster one (smaller timeNs) for consistent text
+			if (m1.timeNs > m2.timeNs) {
+				[m1, m2] = [m2, m1];
+			}
+
+			let speedFactor = Math.floor(m2.timeNs / m1.timeNs);
+			let sizeFactor = Math.floor(m2.capBytes / m1.capBytes);
+
+			// Rounding logic for cleaner numbers (e.g., 3333 -> 3000)
+			function approximate(num) {
+				if (num < 10) return num;
+				const magnitude = Math.pow(10, Math.floor(Math.log10(num)));
+				// Round to nearest magnitude step
+				return Math.round(num / magnitude) * magnitude;
+			}
+
+			speedFactor = approximate(speedFactor);
+			sizeFactor = approximate(sizeFactor);
+
+			// Format Numbers
+			const speedStr = speedFactor >= 1000 ? speedFactor.toLocaleString('it-IT') : speedFactor;
+			const sizeStr = sizeFactor >= 1000 ? sizeFactor.toLocaleString('it-IT') : sizeFactor;
+
+			const html = `
+				<div class="flex flex-col gap-4 text-center">
+					<div class="flex justify-around items-center text-xl font-bold font-mono">
+						<span class="${m1.color}">${m1.name}</span>
+						<span class="text-gray-500 text-sm">vs</span>
+						<span class="${m2.color}">${m2.name}</span>
+					</div>
+					
+					<div class="bg-black/40 p-3 rounded-lg border border-white/5">
+						<p class="text-gray-300 text-sm">
+							<span class="${m1.color} font-bold">${m1.name}</span> è 
+							<span class="text-neon-cyan font-bold text-lg">~${speedStr} volte</span> più veloce di ${m2.name}.
+						</p>
+					</div>
+
+					<div class="bg-black/40 p-3 rounded-lg border border-white/5">
+						<p class="text-gray-300 text-sm">
+							<span class="${m2.color} font-bold">${m2.name}</span> è 
+							<span class="text-neon-cyan font-bold text-lg">~${sizeStr} volte</span> più grande di ${m1.name}.
+						</p>
+					</div>
+				</div>
+			`;
+
+			if (content) content.innerHTML = html;
+			if (win) win.classList.remove('hidden');
+
+			// Init draggable for this new window too (if not already done)
+			makeDraggable('comparison-window', 'comparison-window-header');
+		}
+
+		function closeComparison() {
+			const win = document.getElementById('comparison-window');
+			if (win) win.classList.add('hidden');
+			// Reset selection visuals
+			selectedRows.forEach(i => {
+				const row = document.getElementById(`row-${i}`);
+				if (row) {
+					row.classList.remove('bg-white/10', 'border-l-4', 'border-neon-cyan');
+					row.classList.add('border-b', 'border-white/5');
+				}
+			});
+			selectedRows = [];
+		}
+
+
 
 		// Init
 		window.addEventListener('resize', () => {
