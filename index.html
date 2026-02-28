@@ -95,6 +95,15 @@
 			image-rendering: pixelated;
 		}
 
+		.no-scrollbar::-webkit-scrollbar {
+			display: none;
+		}
+
+		.no-scrollbar {
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+
 		.bg-grid {
 			background-size: 50px 50px;
 			background-image: linear-gradient(to right, rgba(0, 243, 255, 0.05) 1px, transparent 1px),
@@ -571,6 +580,216 @@
 			transform: scale(1.05);
 			z-index: 10;
 		}
+
+		@keyframes scan-slow {
+
+			0%,
+			100% {
+				transform: translateY(-100%);
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				transform: translateY(100%);
+			}
+		}
+
+		.animate-scan-slow {
+			animation: scan-slow 8s linear infinite;
+		}
+
+		@keyframes scan-slow-reverse {
+
+			0%,
+			100% {
+				transform: translateY(100%);
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				transform: translateY(-100%);
+			}
+		}
+
+		.animate-scan-slow-reverse {
+			animation: scan-slow-reverse 8s linear infinite;
+		}
+
+		@keyframes packet-os-to-driver-a {
+			0% {
+				left: 16.6%;
+				top: 50%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			10% {
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			40% {
+				left: 50%;
+				top: 25%;
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			45% {
+				left: 50%;
+				top: 25%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			100% {
+				left: 50%;
+				top: 25%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+		}
+
+		@keyframes packet-os-to-driver-b {
+			0% {
+				left: 16.6%;
+				top: 50%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			10% {
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			40% {
+				left: 50%;
+				top: 75%;
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			45% {
+				left: 50%;
+				top: 75%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			100% {
+				left: 50%;
+				top: 75%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+		}
+
+		@keyframes packet-driver-a-to-printer-a {
+			0% {
+				left: 50%;
+				top: 25%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			50% {
+				left: 50%;
+				top: 25%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			60% {
+				left: 50%;
+				top: 25%;
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			90% {
+				left: 83.3%;
+				top: 25%;
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			100% {
+				left: 83.3%;
+				top: 25%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+		}
+
+		@keyframes packet-driver-b-to-printer-b {
+			0% {
+				left: 50%;
+				top: 75%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			50% {
+				left: 50%;
+				top: 75%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			60% {
+				left: 50%;
+				top: 75%;
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			90% {
+				left: 83.3%;
+				top: 75%;
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			100% {
+				left: 83.3%;
+				top: 75%;
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+		}
+
+		.animate-os-a,
+		.animate-os-b,
+		.animate-driver-a,
+		.animate-driver-b {
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		.animate-os-a.running {
+			animation: packet-os-to-driver-a 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+		}
+
+		.animate-os-b.running {
+			animation: packet-os-to-driver-b 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+		}
+
+		.animate-driver-a.running {
+			animation: packet-driver-a-to-printer-a 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+		}
+
+		.animate-driver-b.running {
+			animation: packet-driver-b-to-printer-b 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+		}
 	</style>
 </head>
 
@@ -608,7 +827,8 @@
 						<span class="hidden lg:block font-mono text-xs font-bold uppercase tracking-tighter">LENTE
 							(Alt+Q)</span>
 					</button>
-					<button id="menu-btn" class="p-2 rounded-md hover:bg-white/10 transition-colors group">
+					<button id="menu-btn" onclick="openMenu()"
+						class="p-2 rounded-md hover:bg-white/10 transition-colors group">
 						<div class="flex items-center gap-2">
 							<span class="hidden md:block font-mono text-sm text-gray-400 group-hover:text-white">INDICE
 								LEZIONI</span>
@@ -621,10 +841,10 @@
 	</nav>
 	<!-- Sidebar Navigation -->
 	<div id="sidebar"
-		class="fixed top-0 right-0 h-full w-80 bg-dark-card border-l border-white/10 transform translate-x-full transition-transform duration-300 z-[60] p-6 shadow-2xl flex flex-col">
+		class="fixed top-0 right-0 h-full w-80 bg-dark-card border-l border-white/10 transform translate-x-full transition-transform duration-300 z-[4000] p-6 shadow-2xl flex flex-col">
 		<div class="flex justify-between items-center mb-6">
 			<h2 class="text-xl font-mono font-bold text-white">INDICE</h2>
-			<button id="close-btn" class="p-2 hover:bg-white/10 rounded-full transition-colors">
+			<button id="close-btn" onclick="closeMenu()" class="p-2 hover:bg-white/10 rounded-full transition-colors">
 				<i data-lucide="x" class="w-6 h-6 text-gray-400 hover:text-white"></i>
 			</button>
 		</div>
@@ -680,7 +900,8 @@
 
 	</div>
 	<div id="overlay"
-		class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+		class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[3900] hidden opacity-0 transition-opacity duration-300">
+	</div>
 
 	<!-- MODAL DETTAGLI PIRAMIDE (Top Level) -->
 	<!-- DRAGGABLE WINDOW: DETTAGLI PIRAMIDE -->
@@ -1041,7 +1262,7 @@
 							class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
 					</div>
 					<h3 class="text-xl font-bold text-white font-mono">John von Neumann</h3>
-					<p class="text-neon-purple text-sm mb-4">1945</p>
+					<p class="text-neon-purple text-sm mb-4">(1903 - 1957)</p>
 					<p class="text-gray-300 text-sm italic leading-relaxed text-justify">
 						Matematico ungherese e padre dell'informatica moderna. La sua idea rivoluzionaria:
 					</p>
@@ -1254,54 +1475,262 @@
 				</div>
 		</div>
 		</div>
-		<!-- ================= LESSON 3 VIEW (WORK IN PROGRESS) ================= -->
-		<div id="lesson-3-view"
-			class="hidden w-full max-w-5xl mx-auto animate-fade-in z-10 flex flex-col items-center justify-center min-h-[60vh]">
-			<div
-				class="text-center space-y-8 p-12 bg-dark-card border border-neon-orange/20 rounded-3xl relative overflow-hidden group">
-				<!-- Background Decoration -->
-				<div class="absolute inset-0 bg-gradient-to-br from-neon-orange/5 to-transparent pointer-events-none">
-				</div>
-				<!-- Animated Icon -->
-				<div class="relative w-32 h-32 mx-auto mb-6">
-					<div class="absolute inset-0 bg-neon-orange/20 rounded-full blur-xl animate-pulse-slow"></div>
-					<div
-						class="relative bg-gray-900 border-4 border-neon-orange rounded-full w-full h-full flex items-center justify-center shadow-[0_0_30px_rgba(255,136,0,0.3)]">
-						<i data-lucide="hammer" class="w-16 h-16 text-neon-orange animate-bounce"></i>
-					</div>
-					<!-- Gears -->
-					<i data-lucide="settings"
-						class="absolute -top-2 -right-2 w-12 h-12 text-gray-500 animate-spin-slow"></i>
-					<i data-lucide="settings-2"
-						class="absolute -bottom-2 -left-2 w-10 h-10 text-gray-600 animate-spin-reverse"></i>
-				</div>
+		<!-- ================= LESSON 3 VIEW ================= -->
+		<div id="lesson-3-view" class="hidden w-full max-w-5xl mx-auto animate-fade-in z-10">
+			<!-- Intestazione -->
+			<div class="mb-12 border-b border-white/10 pb-6 flex items-center justify-between">
 				<div>
-					<span class="text-neon-orange font-mono text-sm tracking-widest uppercase mb-2 block">Lezione
-						03</span>
-					<h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Lavori in Corso</h1>
-					<p class="text-gray-400 text-lg md:text-xl max-w-md mx-auto leading-relaxed">
-						Stiamo saldando i circuiti della <strong class="text-neon-orange">Scheda Madre</strong>. <br>
-						Questa sezione sarà disponibile a breve con schemi interattivi e dettagli sui BUS di sistema.
-					</p>
+					<span class="text-neon-orange font-mono text-sm tracking-widest uppercase">Lezione 03</span>
+					<h1 class="text-4xl md:text-5xl font-bold text-white mt-2">La Scheda Madre</h1>
+					<p class="text-gray-400 mt-4 text-lg">Lo scheletro che regge l'intero sistema.</p>
 				</div>
-				<div
-					class="w-full h-2 bg-gray-800 rounded-full overflow-hidden max-w-sm mx-auto border border-gray-700">
-					<div
-						class="h-full bg-repeating-linear-gradient(45deg, #ff8800, #ff8800 10px, #cc6d00 10px, #cc6d00 20px) animate-flow w-[200%]">
-					</div>
+				<div class="hidden md:block text-neon-orange/20 animate-spin-slow">
+					<i data-lucide="circuit-board" class="w-24 h-24"></i>
 				</div>
 			</div>
-			<div class="flex justify-between w-full mt-12 pt-8 border-t border-white/10">
+
+
+
+			<!-- SEZIONE 2: LA SCHEDA MADRE -->
+			<section class="mb-16">
+
+
+				<div class="grid md:grid-cols-3 gap-8 mb-12">
+					<div
+						class="md:col-span-2 bg-dark-lighter p-8 rounded-3xl border border-white/5 flex flex-col justify-center">
+						<p class="text-gray-300 leading-relaxed text-lg text-justify mb-6">
+							I circuiti integrati che costituiscono la parte elettronica dell’hardware sono montati sulla
+							scheda madre (in inglese <strong>motherboard</strong> o <strong>main board</strong>).
+						</p>
+						<p class="text-gray-300 leading-relaxed text-lg text-justify">
+							La scheda madre è il circuito fisico principale del computer: su di essa sono collegati e
+							coordinati tutti i componenti fondamentali del sistema. Possiamo immaginarla come una grande
+							“piattaforma” che permette a ogni parte del computer di comunicare con le altre.
+						</p>
+					</div>
+					<!-- Foto Motherboard -->
+					<div
+						class="rounded-3xl overflow-hidden border border-neon-orange/30 shadow-[0_0_50px_rgba(255,136,0,0.15)] relative group">
+						<img src="https://i.sstatic.net/r2L8H.jpg" alt="Motherboard Platform"
+							class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+					</div>
+				</div>
+
+				<!-- Posizione Motherboard -->
+				<div class="space-y-6">
+					<h3 class="text-xl font-bold text-white mb-6 font-mono text-center">La sua posizione varia in base
+						al tipo di dispositivo:</h3>
+					<div class="grid md:grid-cols-3 gap-6">
+						<!-- Desktop -->
+						<div
+							class="bg-dark-card border border-white/5 p-6 rounded-2xl hover:border-neon-orange/40 transition-all text-center group hover:-translate-y-2">
+							<div
+								class="w-16 h-16 bg-neon-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-neon-orange/20 transition-colors">
+								<i data-lucide="monitor" class="text-neon-orange w-8 h-8"></i>
+							</div>
+							<h4 class="text-white font-bold mb-3 uppercase tracking-wider">Desktop</h4>
+							<p class="text-gray-400 text-sm leading-relaxed text-center">
+								Generalmente montata in <strong>posizione verticale</strong> all’interno del case, cioè
+								la struttura esterna in plastica o metallo che contiene i componenti.
+							</p>
+						</div>
+						<!-- Notebook -->
+						<div
+							class="bg-dark-card border border-white/5 p-6 rounded-2xl hover:border-neon-orange/40 transition-all text-center group hover:-translate-y-2">
+							<div
+								class="w-16 h-16 bg-neon-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-neon-orange/20 transition-colors">
+								<i data-lucide="laptop" class="text-neon-orange w-8 h-8"></i>
+							</div>
+							<h4 class="text-white font-bold mb-3 uppercase tracking-wider">Notebook</h4>
+							<p class="text-gray-400 text-sm leading-relaxed text-center">
+								Disposta <strong>orizzontalmente</strong> sotto la tastiera, in uno spazio molto più
+								compatto.
+							</p>
+						</div>
+						<!-- Mobile -->
+						<div
+							class="bg-dark-card border border-white/5 p-6 rounded-2xl hover:border-neon-orange/40 transition-all text-center group hover:-translate-y-2">
+							<div
+								class="w-16 h-16 bg-neon-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-neon-orange/20 transition-colors">
+								<i data-lucide="smartphone" class="text-neon-orange w-8 h-8"></i>
+							</div>
+							<h4 class="text-white font-bold mb-3 uppercase tracking-wider">Mobile</h4>
+							<p class="text-gray-400 text-sm leading-relaxed text-center">
+								Si trova sotto lo schermo ed è <strong>fortemente miniaturizzata</strong>: deve essere
+								estremamente sottile e integrare in poco spazio molte funzioni.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- SEZIONE 3: SLOT E ESPANSIONE -->
+			<section class="mb-16">
+				<div
+					class="flex flex-col lg:flex-row gap-12 items-center bg-black/30 p-10 rounded-[32px] border border-white/5 relative overflow-hidden group">
+					<div class="absolute -right-20 -bottom-20 opacity-5 group-hover:opacity-10 transition-opacity">
+						<i data-lucide="layers" class="w-96 h-96 text-neon-orange"></i>
+					</div>
+
+					<div class="lg:w-1/2 space-y-6 relative z-10">
+						<h2 class="text-3xl font-bold text-white flex items-center gap-3">
+							Slot e porte
+						</h2>
+						<p class="text-gray-300 leading-relaxed text-lg text-justify">
+							La scheda madre dei personal computer è dotata di <strong>slot</strong>, cioè connettori
+							interni che permettono di aggiungere componenti hardware supplementari chiamati
+							<strong>schede di espansione</strong>.
+						</p>
+						<p class="text-gray-300 leading-relaxed text-justify">
+							Queste schede consentono di ampliare o migliorare le funzionalità del computer: ad esempio,
+							si possono aggiungere schede di grafica per migliorare le prestazioni di rendering,
+							schede di rete per connettere il computer a reti locali o a Internet, o schede di
+							audio per migliorare la qualità del suono.
+						</p>
+
+						<p class="text-gray-300 leading-relaxed text-justify">
+							La scheda madre non si limita a collegare i componenti interni: è anche il punto di
+							comunicazione
+							con le periferiche, cioè i dispositivi esterni che permettono l’interazione con l’utente o
+							con
+							l’ambiente. Questo può avvenire tramite connessione Wireless (Bluetooth, Wi-Fi) o tramite
+							porte fisiche (USB, HDMI, Ethernet).
+						</p>
+					</div>
+
+					<!-- Foto Slot/Espansione -->
+					<div class="lg:w-1/2 space-y-4 relative z-10 flex flex-col">
+						<div
+							class="w-full h-80 rounded-3xl overflow-hidden border border-neon-orange/20 shadow-2xl relative group bg-black/40 flex items-center justify-center">
+							<img src="schede.jpg" alt="Expansion Slots"
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+						</div>
+						<div class="bg-neon-orange/10 border border-neon-orange/30 p-5 rounded-2xl">
+							<p class="text-sm text-gray-200 leading-relaxed text-center italic">
+								Questa struttura modulare rende il computer desktop particolarmente
+								<strong>flessibile</strong>: l’utente può aggiornare o sostituire singoli componenti
+								senza dover cambiare l’intero dispositivo.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<!-- SEZIONE 5: RAFFREDDAMENTO -->
+			<section class="mb-16">
+
+
+				<div class="bg-dark-card border border-white/10 rounded-3xl overflow-hidden">
+
+					<div class="p-8 border-b border-white/5 bg-white/2">
+						<h2 class="text-2xl font-bold text-white mb-2">I sistemi di raffreddamento</h2>
+						<p class="text-gray-300 text-lg leading-relaxed text-justify">
+							Quando il microprocessore lavora, al suo interno circola corrente elettrica. Questo flusso
+							di
+							corrente genera calore sottoforma di energia termica: se non venisse dissipato
+							correttamente, il processore potrebbe
+							surriscaldarsi, ridurre automaticamente le proprie prestazioni o addirittura danneggiarsi.
+							Per questo motivo, i computer sono dotati di sistemi di raffreddamento.
+						</p>
+					</div>
+					<div class="grid md:grid-cols-2">
+						<!-- ARIA -->
+						<div
+							class="p-10 border-r border-white/5 hover:bg-blue-500/5 transition-colors group flex flex-col">
+							<div class="flex-grow">
+								<div class="flex items-center gap-4 mb-6">
+									<div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+										<i data-lucide="wind" class="text-blue-400 group-hover:animate-spin-slow"></i>
+									</div>
+									<h3 class="text-xl font-bold text-white">Raffreddamento ad aria</h3>
+								</div>
+								<p class="text-white text-lg mb-6 text-justify leading-relaxed">
+									Sfrutta il principio del trasferimento di calore all'aria. Un blocco di metallo (il
+									<strong>dissipatore</strong>) tocca il processore e ne "assorbe" il calore. Le
+									<strong>ventole</strong> poi soffiano l'aria calda via dal metallo, disperdendola
+									fuori
+									dal computer per far posto ad aria più fresca.
+								</p>
+								<div class="space-y-4 mb-8">
+									<div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+										<p class="text-white text-sm">
+											È la soluzione più comune: semplice, economica e affidabile per l'uso
+											quotidiano.
+										</p>
+									</div>
+								</div>
+							</div>
+							<!-- Foto Raffreddamento Aria -->
+							<div
+								class="w-full aspect-[2/1] rounded-2xl overflow-hidden border border-white/10 bg-black/40 relative group mt-auto">
+								<img src="ventole.jpg" alt="Air Cooling Setup"
+									class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
+								<div class="absolute inset-0 flex items-center justify-center">
+									<div
+										class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center border border-blue-500/40">
+										<i data-lucide="wind" class="text-blue-400"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- LIQUIDO -->
+						<div class="p-10 hover:bg-neon-pink/5 transition-colors group flex flex-col">
+							<div class="flex-grow">
+								<div class="flex items-center gap-4 mb-6">
+									<div class="w-12 h-12 bg-neon-pink/10 rounded-xl flex items-center justify-center">
+										<i data-lucide="droplet" class="text-neon-pink animate-bounce"></i>
+									</div>
+									<h3 class="text-xl font-bold text-white">Raffreddamento a liquido</h3>
+								</div>
+								<p class="text-white text-lg mb-6 text-justify leading-relaxed">
+									Funziona come il sistema di raffreddamento delle auto. Un <strong>liquido
+										speciale</strong> scorre dentro un tubicino che passa sopra il processore,
+									catturando il calore molto più velocemente dell'aria. Il liquido caldo viaggia poi
+									fino
+									a una griglia (il <strong>radiatore</strong>) dove viene raffreddato dalle ventole
+									prima
+									di ricominciare il giro.
+								</p>
+								<div class="space-y-4 mb-8">
+									<div class="bg-neon-pink/10 border border-neon-pink/20 p-4 rounded-xl">
+										<p class="text-white text-sm">
+											È ideale per computer molto potenti o per chi cerca il massimo silenzio.
+										</p>
+									</div>
+								</div>
+							</div>
+							<!-- Foto Raffreddamento Liquido -->
+							<div
+								class="w-full aspect-[2/1] rounded-2xl overflow-hidden border border-white/10 bg-black/40 relative group mt-auto">
+								<img src="liquido.jpg" alt="Liquid Cooling Setup"
+									class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
+								<div class="absolute inset-0 flex items-center justify-center">
+									<div
+										class="w-12 h-12 bg-neon-pink/20 rounded-full flex items-center justify-center border border-neon-pink/40">
+										<i data-lucide="waves" class="text-neon-pink"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- PULSANTI DI NAVIGAZIONE -->
+			<div class="flex justify-between mt-12 pt-8 border-t border-white/10">
 				<button onclick="navigateTo('lesson-2')"
 					class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
 					<i data-lucide="arrow-left"></i> Precedente: Architettura Von Neumann
 				</button>
 				<button onclick="navigateTo('lesson-4')"
 					class="flex items-center gap-2 text-neon-teal hover:text-white font-bold transition-colors">
-					Prossima: Microprocessore <i data-lucide="arrow-right"></i>
+					Prossima: Microprocessore (CPU) <i data-lucide="arrow-right"></i>
 				</button>
 			</div>
 		</div>
+
 		<!-- ================= LESSON 4 VIEW (NEW) ================= -->
 		<div id="lesson-4-view" class="hidden w-full max-w-5xl mx-auto animate-fade-in z-10">
 			<!-- Intestazione -->
@@ -1536,7 +1965,8 @@
 							<span class="text-neon-teal block mt-2">I PC moderni usano CPU a 64 bit.</span>
 							<br>
 							All'interno della CPU vi è inoltre <strong>la Cache</strong>, una memoria interna
-							superveloce dove vengono conservati i dati e le istruzioni usati più di recente, per evitare
+							superveloce dove vengono conservati i dati e le istruzioni usati più di recente e più di
+							frequente, per evitare che per i dati il cui accesso è più probabile sia richiesto
 							il lento accesso alla RAM.
 						</p>
 					</div>
@@ -2193,7 +2623,7 @@
 									<!-- Placeholder per task attivo -->
 									<div class="absolute bottom-0 left-0 h-1 bg-neon-teal transition-all duration-75 w-0"
 										id="progress-core-1"></div>
-									<span class="text-gray-600 text-xs font-mono">IDLE</span>
+
 								</div>
 							</div>
 							<!-- Core 2 (Visibile solo in Parallelo) -->
@@ -3882,9 +4312,10 @@
 				<div>
 					<span class="text-neon-amber font-mono text-sm tracking-widest">LEZIONE 09</span>
 					<h1 class="text-4xl md:text-5xl font-bold text-white mt-2">La memoria di massa</h1>
+					<p class="text-gray-400 mt-4 text-lg">Archiviazione permanente e sicura dei dati.</p>
 				</div>
-				<div class="hidden md:block text-neon-amber/20">
-					<i data-lucide="hard-drive" class="w-16 h-16"></i>
+				<div class="hidden md:block text-neon-amber/20 animate-pulse-slow">
+					<i data-lucide="hard-drive" class="w-24 h-24"></i>
 				</div>
 			</div>
 
@@ -4646,7 +5077,7 @@
 			<section
 				class="mb-16 bg-gradient-to-br from-blue-900/20 to-black p-8 rounded-3xl border border-blue-500/30">
 				<h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-					<i data-lucide="cloud" class="text-blue-400"></i> Il cloud computing
+					<i data-lucide="cloud" class="text-blue-400"></i> Il cloud
 				</h3>
 				<p class="text-gray-300 text-justify leading-relaxed mb-8">
 					Un’altra forma di memoria di massa è costituita dalle unità di rete, che permettono di <span
@@ -4807,7 +5238,7 @@
 
 			</section>
 
-			<!-- Memoria Virtuale -->
+
 
 
 
@@ -5089,29 +5520,227 @@
 					<p class="text-gray-300 text-justify leading-relaxed mb-6">
 						In determinate situazioni il computer può utilizzare una parte della memoria di massa come
 						memoria virtuale, simulando un’estensione della RAM. Ad esempio, mentre si utilizza un
-						elaboratore di testi (<span class="italic font-bold">word processor</span>), questo programma
+						elaboratore di testi, questo programma
 						occupa una porzione della RAM insieme al sistema operativo. Se si avvia un’altra applicazione
 						impegnativa, come la riproduzione di un video, la memoria RAM disponibile potrebbe non essere
 						sufficiente.
 					</p>
 					<p class="text-gray-300 text-justify leading-relaxed mb-6">
-						In questo caso il sistema operativo sposta temporaneamente nella memoria di massa (sull’SSD) le
+						In questo caso il sistema operativo sposta temporaneamente nella memoria di massa le
 						parti meno utilizzate dei programmi attivi, liberando spazio nella RAM per le operazioni più
 						urgenti.
 					</p>
 					<div class="bg-black/50 p-6 rounded-2xl border border-red-500/30">
 						<p class="text-gray-300 text-sm leading-relaxed text-justify">
 							<i data-lucide="alert-triangle" class="inline w-5 h-5 text-red-500 mr-2"></i>
-							Tuttavia, l’accesso ai dati nella memoria di massa è significativamente più lento rispetto
+							Tuttavia, come già detto, l’accesso ai dati nella memoria di massa è significativamente più
+							lento rispetto
 							alla RAM. Per questo motivo, quando il computer fa ampio uso della memoria virtuale, le
 							prestazioni generali diminuiscono: le applicazioni possono risultare meno reattive e i tempi
 							di caricamento aumentano. <br><br>
 							<strong>La memoria virtuale rappresenta quindi una soluzione utile in caso di necessità, ma
-								non può sostituire completamente la velocità e l’efficienza della RAM fisica.</strong>
+								non può sostituire in alcun modo la velocità e l’efficienza della RAM fisica.</strong>
 						</p>
 					</div>
 				</div>
 			</section>
+
+			<!-- Simulatore Architettura Virtuale -->
+			<section class="mb-16 animate-fade-in" style="animation-delay: 0.2s">
+				<div class="max-w-6xl mx-auto flex flex-col lg:grid lg:grid-cols-[1fr_350px] gap-8">
+
+					<!-- Left Side: Digital Experience (Monitor) -->
+					<div class="space-y-8">
+						<!-- Monitor Frame -->
+						<div
+							class="relative bg-gray-800 p-2 rounded-t-[2.5rem] border-x-4 border-t-4 border-gray-700 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]">
+							<!-- Screen -->
+							<div
+								class="aspect-video bg-[#0a0a0f] rounded-[1.8rem] overflow-hidden relative border border-white/5 group">
+								<!-- Wallpaper/Desktop Decor -->
+								<div
+									class="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-black to-blue-900/40">
+								</div>
+								<div
+									class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]">
+								</div>
+
+								<!-- OS Layout -->
+								<div class="absolute inset-0 flex flex-col p-4 pointer-events-none child-point-auto">
+									<!-- Top Bar with Integrated Icons -->
+									<div
+										class="flex justify-between items-center mb-4 bg-black/40 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 shadow-2xl">
+										<div class="flex items-center gap-1">
+											<!-- Desktop Icons (Horizontal) -->
+											<div id="v-desktop-icons"
+												class="flex items-center gap-1 pointer-events-none">
+												<!-- Icone generate via JS -->
+											</div>
+										</div>
+
+									</div>
+
+									<div class="flex-1 relative overflow-hidden">
+										<!-- App Display Area (Full Width) -->
+										<div class="relative h-full">
+											<!-- Active App Window -->
+											<div id="active-app-window"
+												class="hidden absolute inset-0 bg-black/60 backdrop-blur-3xl rounded-3xl border border-white/15 shadow-2xl flex flex-col overflow-hidden animate-zoom-in pointer-events-auto">
+												<div
+													class="h-10 bg-white/5 border-b border-white/5 flex items-center justify-between px-4">
+													<div class="flex items-center gap-3">
+														<i id="active-app-icon" data-lucide="globe" class="w-4 h-4"></i>
+														<span id="active-app-title"
+															class="text-[10px] font-bold text-white uppercase tracking-widest">App
+															Name</span>
+													</div>
+													<div class="flex gap-2">
+														<button onclick="minimizeApp()"
+															class="w-4 h-4 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all">
+															<i data-lucide="minus" class="w-2.5 h-2.5 text-white"></i>
+														</button>
+														<button onclick="terminateActiveApp()"
+															class="w-4 h-4 rounded-lg bg-red-500/20 hover:bg-red-500/40 flex items-center justify-center transition-all">
+															<i data-lucide="x" class="w-2.5 h-2.5 text-white"></i>
+														</button>
+													</div>
+												</div>
+												<div
+													class="flex-1 flex flex-col items-center justify-center p-6 text-center space-y-4">
+													<div
+														class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center relative shadow-2xl border border-white/10">
+														<div class="absolute inset-0 blur-2xl opacity-20"
+															id="active-app-glow"></div>
+														<i id="active-app-large-icon" data-lucide="globe"
+															class="w-7 h-7"></i>
+													</div>
+													<div class="space-y-1">
+														<p class="text-white font-bold text-xl tracking-tight"
+															id="active-app-status-name">Browser</p>
+													</div>
+
+												</div>
+											</div>
+
+											<!-- Desktop Placeholder when no app is open -->
+											<div id="desktop-empty-state"
+												class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+												<div
+													class="p-8 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-sm flex flex-col items-center text-center">
+													<i data-lucide="cpu" class="w-16 h-16 text-white/40 mb-6"></i>
+													<p
+														class="text-xs font-mono uppercase tracking-[0.5em] text-white mb-2">
+														Sistema Operativo</p>
+													<p class="text-[10px] text-white/80 font-mono">Seleziona un'app
+														dalla barra superiore</p>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Taskbar / Dock -->
+									<div class="h-14 mt-auto flex items-center justify-center pointer-events-auto">
+										<div
+											class="px-4 h-11 bg-black/40 backdrop-blur-2xl rounded-2xl border border-white/10 flex items-center gap-4 shadow-2xl">
+											<button onclick="resetVirtualSim()"
+												class="p-2 hover:bg-white/5 rounded-lg transition-colors group"
+												title="Riavvia Sistema">
+												<i data-lucide="refresh-cw"
+													class="w-4 h-4 text-white/40 group-hover:text-red-400 transition-colors"></i>
+											</button>
+											<div class="w-px h-5 bg-white/10"></div>
+											<div id="taskbar-apps" class="flex gap-3">
+												<!-- Running apps icons -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Monitor Stand -->
+						<div class="relative w-40 h-4 bg-gray-700 mx-auto rounded-b-2xl shadow-lg">
+							<div
+								class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-800 -z-10 mt-1 rounded-b-xl border-x border-b border-gray-600">
+							</div>
+						</div>
+					</div>
+
+					<!-- Right Side: Hardware Components (Outside Monitor) -->
+					<div class="space-y-6">
+						<!-- Physical RAM -->
+						<div class="bg-black/60 rounded-3xl border border-neon-purple/20 p-6 shadow-xl space-y-4">
+							<div class="flex items-center justify-between border-b border-white/5 pb-3">
+								<div class="flex items-center gap-2">
+									<i data-lucide="cpu" class="w-4 h-4 text-neon-purple"></i>
+									<span class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.2em]">RAM
+										Fisica</span>
+								</div>
+								<span id="ram-usage-status" class="text-xs font-mono text-neon-purple">0%</span>
+							</div>
+
+							<div id="v-ram-grid-os" class="grid grid-cols-5 gap-2">
+								<!-- RAM cells here -->
+							</div>
+
+
+						</div>
+
+						<!-- Virtual SSD (Swap) -->
+						<div class="bg-black/40 rounded-3xl border border-cyan-500/20 p-6 shadow-xl space-y-4">
+							<div class="flex items-center justify-between border-b border-white/5 pb-3">
+								<div class="flex items-center gap-2">
+									<i data-lucide="hard-drive" class="w-4 h-4 text-cyan-400"></i>
+									<span
+										class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.2em]">SSD</span>
+								</div>
+								<span id="ssd-status-os"
+									class="text-[9px] font-mono text-cyan-400 uppercase tracking-widest">Idle</span>
+							</div>
+
+							<div id="v-ssd-grid-os"
+								class="min-h-[60px] bg-black/40 rounded-xl border border-dashed border-cyan-500/20 flex flex-wrap gap-2 p-2 relative">
+								<!-- SSD content here -->
+								<div class="absolute inset-0 flex items-center justify-center opacity-40"
+									id="ssd-empty-msg">
+									<span
+										class="text-[8px] italic font-mono uppercase tracking-widest text-gray-600">Swap
+										Vuota</span>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+				<style>
+					.child-point-auto>* {
+						pointer-events: auto;
+					}
+
+					.animate-zoom-in {
+						animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+					}
+
+					@keyframes zoomIn {
+						from {
+							opacity: 0;
+							transform: scale(0.95);
+						}
+
+						to {
+							opacity: 1;
+							transform: scale(1);
+						}
+					}
+
+					.ram-cell-hardware {
+						transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+						border-width: 2px;
+					}
+				</style>
+			</section>
+
 
 
 			<!-- Navigazione Lezioni -->
@@ -5131,36 +5760,631 @@
 
 		<!-- ================= LESSON 10 VIEW ================= -->
 		<div id="lesson-10-view" class="hidden w-full max-w-5xl mx-auto animate-fade-in z-10">
-			<div class="flex flex-col items-center justify-center py-20 text-center space-y-8">
-				<div class="relative">
-					<div class="w-32 h-32 bg-neon-pink/20 rounded-full flex items-center justify-center animate-pulse">
-						<i data-lucide="usb" class="w-16 h-16 text-neon-pink"></i>
-					</div>
-					<i data-lucide="hammer"
-						class="absolute -top-2 -right-2 w-12 h-12 text-gray-500 animate-spin-slow"></i>
-					<i data-lucide="settings-2"
-						class="absolute -bottom-2 -left-2 w-10 h-10 text-gray-600 animate-spin-reverse"></i>
-				</div>
+			<div class="mb-12 border-b border-white/10 pb-6 flex items-center justify-between">
 				<div>
-					<span class="text-neon-pink font-mono text-sm tracking-widest uppercase mb-2 block">Lezione
-						10</span>
-					<h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Lavori in Corso</h1>
-					<p class="text-gray-400 text-lg md:text-xl max-w-md mx-auto leading-relaxed">
-						Stiamo collegando i cavi di <strong class="text-neon-pink">Periferiche e Porte</strong>. <br>
-						Questa sezione sarà disponibile a breve con dettagli su USB, HDMI e periferiche I/O.
+					<span class="text-neon-pink font-mono text-sm tracking-widest">LEZIONE 10</span>
+					<h1 class="text-4xl md:text-5xl font-bold text-white mt-2">Le periferiche e le porte</h1>
+					<p class="text-gray-400 mt-4 text-lg">I ponti di comunicazione tra il computer e il mondo esterno.
 					</p>
 				</div>
-				<div
-					class="w-full h-2 bg-gray-800 rounded-full overflow-hidden max-w-sm mx-auto border border-gray-700">
-					<div
-						class="h-full bg-[repeating-linear-gradient(45deg,#ff0099,#ff0099_10px,#cc007a_10px,#cc007a_20px)] animate-flow w-[200%]">
-					</div>
+				<div class="hidden md:block text-neon-pink/20 animate-pulse-slow">
+					<i data-lucide="monitor" class="w-24 h-24"></i>
 				</div>
 			</div>
-			<div class="flex justify-between w-full mt-12 pt-8 border-t border-white/10">
+
+			<!-- Introduzione -->
+			<section class="mb-16">
+				<p class="text-gray-300 text-justify leading-relaxed mb-6">
+					Una periferica in informatica è un dispositivo hardware che si collega a un computer per ampliarne
+					le funzionalità, consentendogli di comunicare con il mondo esterno o di svolgere operazioni
+					specifiche.
+				</p>
+				<p class="text-gray-300 text-justify leading-relaxed mb-6">
+					Le periferiche non fanno parte del nucleo centrale del computer (costituito da CPU, RAM e scheda
+					madre/BUS per collegarle) ma interagiscono con esso
+					attraverso
+					connessioni fisiche oppure connessioni wireless (come Bluetooth o Wi-Fi). Senza di esse, il
+					computer sarebbe una macchina isolata, incapace comunicare con il mondo circostante: non potrebbe
+					ricevere informazioni dall'esterno, gestire i segnali audio-video, memorizzare i dati in modo
+					permanente, comunicare con la rete Internet e molto altro.
+				</p>
+
+			</section>
+
+			<!-- Periferiche Esterne e Interne -->
+			<section class="mb-16">
+				<h3 class="text-xl font-bold text-white mb-6">Periferiche esterne e interne</h3>
+				<p class="text-gray-300 text-justify leading-relaxed mb-6">
+					Le periferiche possono trovarsi sia all’esterno sia all’interno del case del computer, ovvero della
+					scocca di plastica o metallo che contiene e protegge i componenti hardware interni
+					del computer.
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- Esterna -->
+					<div
+						class="bg-dark-card/80 p-6 rounded-2xl border border-neon-pink/20 shadow-[0_0_20px_rgba(255,0,153,0.05)] hover:border-neon-pink/50 transition-all flex flex-col gap-6 group">
+						<div class="flex items-center gap-4">
+							<div class="p-4 bg-neon-pink/10 rounded-xl shrink-0">
+								<i data-lucide="mouse-pointer-2" class="w-8 h-8 text-neon-pink font-bold"></i>
+							</div>
+							<h4 class="text-xl font-bold text-white">Periferiche esterne</h4>
+						</div>
+						<p class="text-gray-400 text-sm leading-relaxed text-justify">
+							Sono dispositivi hardware collocati al di fuori del case del computer e connessi e
+							tramite porte fisiche o tramite connessioni wireless. Hanno il grande vantaggio di essere
+							facilmente collegabili e scollegabili, rendendo il sistema altamente flessibile e
+							adattabile, ma sono più lente.
+						</p>
+
+					</div>
+
+					<!-- Interna -->
+					<div
+						class="bg-dark-card/80 p-6 rounded-2xl border border-cyan-400/20 shadow-[0_0_20px_rgba(34,211,238,0.05)] hover:border-cyan-400/50 transition-all flex flex-col gap-6 group">
+						<div class="flex items-center gap-4">
+							<div class="p-4 bg-cyan-400/10 rounded-xl shrink-0">
+								<i data-lucide="cpu" class="w-8 h-8 text-cyan-400 font-bold"></i>
+							</div>
+							<h4 class="text-xl font-bold text-white">Periferiche interne</h4>
+						</div>
+						<p class="text-gray-400 text-sm leading-relaxed text-justify text-justify">
+							Sono dispositivi hardware installati all’interno del case del
+							computer e collegati direttamente alla scheda madre tramite appositi connettori e bus, ma
+							non facenti parte del nucleo centrale del computer. Questo le rende più complesse da
+							gestire, ma con una comunicazione molto più veloce.
+						</p>
+
+					</div>
+				</div>
+			</section>
+
+			<!-- Classificazione -->
+			<section class="mb-16">
+				<h3 class="text-xl font-bold text-white mb-6">Periferiche di Input e di Output</h3>
+				<p class="text-gray-300 text-justify leading-relaxed mb-8">
+					Le periferiche si classificano anche in base alla direzione del flusso dei dati tra la periferica e
+					il computer.
+				</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Input -->
+					<div
+						class="bg-dark-card/80 p-6 rounded-3xl border border-green-500/20 shadow-[0_0_20px_rgba(34,197,94,0.05)] hover:border-green-500/40 transition-all flex flex-col group">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="p-3 bg-green-500/10 rounded-xl">
+								<i data-lucide="log-in" class="w-6 h-6 text-green-500"></i>
+							</div>
+							<h4 class="text-lg font-bold text-white uppercase tracking-wider leading-tight">Input</h4>
+						</div>
+						<p class="text-gray-400 text-sm leading-relaxed text-justify mb-6 flex-grow">
+							Acquisisce dati dall’esterno e li converte in formato digitale per il processore.
+
+						</p>
+						<div class="aspect-square rounded-2xl overflow-hidden border border-white/5 bg-black/40">
+							<img src="input.png" alt="Input Peripherals"
+								class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+						</div>
+					</div>
+
+					<!-- Output -->
+					<div
+						class="bg-dark-card/80 p-6 rounded-3xl border border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:border-blue-500/40 transition-all flex flex-col group">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="p-3 bg-blue-500/10 rounded-xl">
+								<i data-lucide="log-out" class="w-6 h-6 text-blue-500"></i>
+							</div>
+							<h4 class="text-lg font-bold text-white uppercase tracking-wider leading-tight">Output</h4>
+						</div>
+						<p class="text-gray-400 text-sm leading-relaxed text-justify mb-6 flex-grow">
+							Rende disponibile all'utente il risultato dell'elaborazione effettuata dal computer.
+
+						</p>
+						<div class="aspect-square rounded-2xl overflow-hidden border border-white/5 bg-black/40">
+							<img src="output.png" alt="Output Peripherals"
+								class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+						</div>
+					</div>
+
+					<!-- I/O -->
+					<div
+						class="bg-dark-card/80 p-6 rounded-3xl border border-purple-500/20 shadow-[0_0_20px_rgba(168,85,247,0.05)] hover:border-purple-500/40 transition-all flex flex-col group">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="p-3 bg-purple-500/10 rounded-xl">
+								<i data-lucide="arrow-left-right" class="w-6 h-6 text-purple-500"></i>
+							</div>
+							<h4 class="text-lg font-bold text-white uppercase tracking-wider leading-tight">Input /
+								Output</h4>
+						</div>
+						<p class="text-gray-400 text-sm leading-relaxed text-justify mb-6 flex-grow">
+							La distinzione tra input e output non è sempre rigida: molti componenti moderni sono
+							intrinsecamente bidirezionali, permettendo sia di fornire dati che di riceverli.
+						</p>
+						<div class="aspect-square rounded-2xl overflow-hidden border border-white/5 bg-black/40">
+							<img src="i-o.png" alt="I/O Peripherals"
+								class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+						</div>
+					</div>
+				</div>
+
+			</section>
+
+			<!-- Driver -->
+			<section class="mb-16">
+				<div class="bg-neon-purple/5 border border-neon-purple/20 p-8 rounded-3xl">
+					<h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-wider">Il ruolo dei driver</h3>
+					<p class="text-gray-300 text-justify leading-relaxed mb-6">
+						Il sistema operativo non sa come funziona ogni specifica periferica o il linguaggio macchina
+						specifico che essa utilizza. Per poter funzionare correttamente, una periferica ha perciò
+						bisogno di un
+						driver, cioè un programma
+						che consente al sistema operativo di riconoscerla e di comunicare con essa.
+					</p>
+					<p class="text-gray-300 text-justify leading-relaxed mb-6">
+						Il driver svolge il ruolo di “traduttore” tra il linguaggio generico e di alto livello del
+						sistema operativo e
+						quello del dispositivo hardware collegato, sia in termine di linguaggio macchina
+						specifico che di comandi di basso livello. Senza driver adeguato o aggiornato, una
+						periferica può non funzionare oppure funzionare solo in modo limitato.
+					</p>
+
+					<p class="text-gray-300 text-justify leading-relaxed mb-6">
+						Il driver dunque riceve comandi binari ad alto livello, traduce questi comandi in istruzioni a
+						basso livello e gestisce lo scambio di dati tra memoria e periferica, mandando al dispositivo le
+						istruzioni binarie nel linguaggio specifico di quel dispositivo.
+					</p>
+
+
+					<!-- Animazione Traduzione Driver INTERATTIVA -->
+					<div class="mt-8 space-y-6">
+						<!-- Il toggle superiore viene rimosso perché i pulsanti sono ora integrati nel "computer" -->
+
+						<div
+							class="bg-dark-card border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group">
+							<!-- Background decorative elements -->
+							<div class="absolute top-0 right-0 w-32 h-32 bg-neon-purple/10 blur-3xl rounded-full"></div>
+							<div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full"></div>
+
+							<div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+								<!-- OS Packet Move Layer (Fixed) -->
+								<div id="os-packet" class="absolute pointer-events-none opacity-0 z-20">
+									<div
+										class="bg-blue-400/20 border border-blue-400/50 px-2 py-1 rounded text-[8px] font-mono text-blue-300">
+										PRINT()</div>
+								</div>
+								<!-- HW Packet Move Layer (Dynamic based on Printer) -->
+								<div id="hw-packet" class="absolute pointer-events-none opacity-0 z-20">
+									<div id="hw-packet-content"
+										class="bg-blue-500/20 border border-blue-500/50 px-2 py-1 rounded text-[8px] font-mono text-blue-300">
+										0001 0010 0100</div>
+								</div>
+
+								<!-- OS Side -->
+								<div class="flex flex-col items-center gap-6 text-center">
+									<div
+										class="w-20 h-20 bg-blue-500/10 rounded-2xl border-2 border-blue-500/30 flex items-center justify-center relative shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+										<i data-lucide="monitor" class="w-10 h-10 text-blue-400"></i>
+									</div>
+									<div class="flex flex-col gap-2 w-full max-w-[120px]">
+										<button onclick="triggerDriverPrint('A')"
+											class="w-full py-1.5 bg-blue-500/10 border border-blue-500/30 rounded text-[9px] font-mono font-bold text-blue-400 hover:bg-blue-500/20 transition-all uppercase tracking-tighter">
+											STAMPA CON A
+										</button>
+										<button onclick="triggerDriverPrint('B')"
+											class="w-full py-1.5 bg-neon-pink/10 border border-neon-pink/30 rounded text-[9px] font-mono font-bold text-neon-pink hover:bg-neon-pink/20 transition-all uppercase tracking-tighter">
+											STAMPA CON B
+										</button>
+									</div>
+									<div class="mt-[-8px]">
+										<span
+											class="block text-blue-400 font-mono text-[9px] font-black tracking-widest uppercase">Sistema
+											Operativo</span>
+									</div>
+								</div>
+
+								<!-- Translation Bridge (Double Drivers) -->
+								<div class="flex flex-col gap-8 items-center h-full justify-center relative">
+									<!-- Driver A -->
+									<div class="flex flex-col items-center gap-2 group/dra">
+										<div id="driver-a-box"
+											class="relative w-16 h-16 bg-dark-bg border-2 border-neon-purple/30 rounded-full flex items-center justify-center transition-all duration-300">
+											<div class="absolute inset-0 bg-neon-purple/5 blur-lg rounded-full"></div>
+											<i data-lucide="languages" class="w-8 h-8 text-neon-purple/50"></i>
+										</div>
+										<div class="text-center">
+											<span
+												class="block text-neon-purple/60 font-mono text-[9px] font-black tracking-widest uppercase">Driver
+												A</span>
+											<span id="driver-a-status"
+												class="text-[7px] text-gray-500 uppercase tracking-tighter italic">In
+												attesa</span>
+										</div>
+									</div>
+
+									<!-- Driver B -->
+									<div class="flex flex-col items-center gap-2 group/drb">
+										<div id="driver-b-box"
+											class="relative w-16 h-16 bg-dark-bg border-2 border-neon-purple/30 rounded-full flex items-center justify-center transition-all duration-300">
+											<div class="absolute inset-0 bg-neon-purple/5 blur-lg rounded-full"></div>
+											<i data-lucide="languages" class="w-8 h-8 text-neon-purple/50"></i>
+										</div>
+										<div class="text-center">
+											<span
+												class="block text-neon-purple/60 font-mono text-[9px] font-black tracking-widest uppercase">Driver
+												B</span>
+											<span id="driver-b-status"
+												class="text-[7px] text-gray-500 uppercase tracking-tighter italic">In
+												attesa</span>
+										</div>
+									</div>
+								</div>
+
+								<!-- HW Side (Double Printers) -->
+								<div class="flex flex-col gap-8 items-center h-full justify-center">
+									<!-- Printer A -->
+									<div class="flex flex-col items-center gap-2">
+										<div id="printer-a-box"
+											class="w-16 h-16 bg-blue-500/5 rounded-xl border border-blue-500/20 flex items-center justify-center relative transition-all duration-300">
+											<i data-lucide="printer" class="w-8 h-8 text-blue-400/50"></i>
+										</div>
+										<span
+											class="text-blue-400/60 font-mono text-[9px] font-bold uppercase">Stampante
+											A</span>
+									</div>
+									<!-- Printer B -->
+									<div class="flex flex-col items-center gap-2">
+										<div id="printer-b-box"
+											class="w-16 h-16 bg-neon-pink/5 rounded-xl border border-neon-pink/20 flex items-center justify-center relative transition-all duration-300">
+											<i data-lucide="printer" class="w-8 h-8 text-neon-pink/50"></i>
+										</div>
+										<span
+											class="text-neon-pink/60 font-mono text-[9px] font-bold uppercase">Stampante
+											B</span>
+									</div>
+								</div>
+
+								<!-- SVG Connection Paths covering the whole grid -->
+								<svg class="absolute inset-0 w-full h-full -z-10 pointer-events-none"
+									viewBox="0 0 100 100" preserveAspectRatio="none">
+									<!-- Connection A (Blue Path) -->
+									<path d="M 16.6 50 L 50 25 L 83.3 25" fill="none" stroke="currentColor"
+										class="text-blue-500/20 stroke-[0.5]" stroke-dasharray="1,1" />
+									<!-- Connection B (Pink Path) -->
+									<path d="M 16.6 50 L 50 75 L 83.3 75" fill="none" stroke="currentColor"
+										class="text-neon-pink/20 stroke-[0.5]" stroke-dasharray="1,1" />
+								</svg>
+							</div>
+						</div>
+
+						<!-- Legenda Dinamica -->
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+							<div class="bg-blue-500/5 p-4 rounded-xl border border-blue-500/10">
+								<h5 class="text-blue-400 font-bold text-[10px] uppercase mb-1">Cosa riceve il driver:
+								</h5>
+								<p class="text-gray-400 text-[10px] leading-tight italic">Il comando "Stampa" è identico
+									per entrambe le stampanti.</p>
+							</div>
+							<div id="hw-info-card"
+								class="bg-white/5 p-4 rounded-xl border border-white/10 transition-colors duration-500">
+								<h5 id="hw-info-title" class="text-gray-400 font-bold text-[10px] uppercase mb-1">Uso
+									del driver</h5>
+								<p id="hw-info-desc" class="text-gray-500 text-[10px] leading-tight italic">In attesa di
+									un comando per mostrare la traduzione specifica.</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Porte -->
+			<section class="mb-16">
+				<h3 class="text-2xl font-bold text-white mb-6">Le porte e i cavi</h3>
+				<p class="text-white text-justify leading-relaxed mb-8">
+					Le porte sono connettori presenti su un dispositivo (un computer, ma non solo) che
+					permettono di collegare periferiche o altri dispositivi, come memorie rimuovibili, per scambiare
+					dati o
+					alimentazione.
+					Ogni porta è progettata per un determinato tipo di segnale (dati, audio, video, rete) e
+					consente uno scambio strutturato di informazioni tra il computer e il dispositivo
+					collegato.
+				</p>
+				<p class="text-white text-justify leading-relaxed mb-8">
+					Il collegamento avviene tramite cavi, che si inseriscono nelle porte, che sono presenti sulla
+					scheda madre e si affacciano all'esterno attraverso il case del computer.
+				</p>
+
+				<div class="flex flex-col gap-8">
+					<!-- Categoria USB -->
+					<div
+						class="bg-dark-card/40 p-10 rounded-[2.5rem] border border-white/5 hover:border-neon-pink/40 transition-all group relative overflow-hidden backdrop-blur-xl">
+						<div class="absolute top-0 right-0 w-96 h-96 bg-neon-pink/5 blur-[120px] -z-10"></div>
+						<div class="flex flex-col lg:flex-row gap-10">
+							<div class="flex flex-col lg:w-56 shrink-0">
+								<div class="flex items-center gap-3 mb-4">
+									<div
+										class="p-3 bg-neon-pink/10 rounded-2xl shadow-[0_0_20px_rgba(255,0,153,0.1)] group-hover:scale-110 transition-all duration-500">
+										<i data-lucide="usb" class="w-6 h-6 text-neon-pink"></i>
+									</div>
+									<h4 class="font-black text-xl text-white uppercase tracking-tighter leading-tight">
+										USB
+									</h4>
+								</div>
+								<p class="text-[13px] text-justify leading-relaxed text-white">
+									Acronimo di Universal Serial Bus, è lo standard di comunicazione nato per
+									permettere ai dispositivi elettronici di collegarsi tra loro in modo semplice e
+									universale: prima della sua diffusione esistevano molte porte diverse per collegare
+									tastiere, stampanti o altri accessori; l’USB ha unificato questi collegamenti in un
+									unico sistema compatibile con la maggior parte dei dispositivi.
+									Attraverso una connessione USB è possibile sia trasferire dati, come nel caso di una
+									chiavetta o di un hard disk esterno, sia fornire energia elettrica, ad esempio per
+									ricaricare uno smartphone.
+								</p>
+							</div>
+
+							<div
+								class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-10 border-l border-white/10 pl-0 lg:pl-10">
+								<div class="flex flex-col">
+									<div class="flex items-center gap-2">
+
+										<h5 class="text-white font-bold text-lg uppercase tracking-tight">USB-A</h5>
+									</div>
+									<p class="text-white text-sm leading-relaxed text-justify">
+										Riconoscibile dalla forma rettangolare non reversibile (ovvero, a un solo
+										verso). La velocità è
+										codificata internamente:
+										<b class="text-gray-200">Bianco (USB 1.1)</b> ormai obsoleto;
+										<b class="text-gray-400">Nero (USB 2.0 - 480 Mbps)</b> per mouse, tastiere e
+										stampanti;
+										<b class="text-blue-500">Blu (USB 3.0/3.1 - 5-10 Gbps)</b> per ricarica rapida e
+										dischi esterni.
+									</p>
+									<img src="usb-a.jpg" alt="USB-A Port"
+										class="aspect-square w-full mt-auto mt-6 object-contain rounded-xl border border-white/5 bg-white/5">
+								</div>
+								<div class="flex flex-col">
+									<div class="flex items-center gap-2">
+
+										<h5 class="text-white font-bold text-lg uppercase tracking-tight">USB-C</h5>
+									</div>
+									<p class="text-white text-sm leading-relaxed text-justify">
+										Connettore più moderno e compatto, di forma ovale e reversibile.
+
+										Supporta velocità di trasferimento molto elevate <b class="text-gray-200">(fino
+											a 40-80 Gbps)</b> e può
+										fornire una quantità
+										maggiore di energia rispetto alla USB-A, tanto da poter ricaricare anche
+										computer portatili. Inoltre, può anche trasportare
+										<b class="text-gray-200">segnali video.</b>
+
+									</p>
+									<img src="usb-c.jpg" alt="USB-C Port"
+										class="aspect-square w-full mt-auto mt-6 object-contain rounded-xl border border-white/5 bg-white/5">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Categoria Video -->
+					<div
+						class="bg-dark-card/40 p-10 rounded-[2.5rem] border border-white/5 hover:border-blue-500/40 transition-all group relative overflow-hidden backdrop-blur-xl">
+						<div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 blur-[120px] -z-10"></div>
+						<div class="flex flex-col lg:flex-row gap-10">
+							<div class="flex flex-col lg:w-56 shrink-0">
+								<div class="flex items-center gap-3 mb-4">
+									<div
+										class="p-3 bg-blue-500/10 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:scale-110 transition-all duration-500">
+										<i data-lucide="monitor" class="w-6 h-6 text-blue-400"></i>
+									</div>
+									<h4 class="font-black text-xl text-white uppercase tracking-tighter leading-tight">
+										Segnali Video
+									</h4>
+								</div>
+								<p class="text-[13px] text-justify leading-relaxed text-white">
+									Sono connettori fisici che permettono di trasmettere
+									immagini a monitor, televisori o proiettori. Alcune di queste porte trasportano solo
+									il video, mentre
+									altre possono trasmettere anche l’audio insieme alle immagini. Nel tempo si sono
+									evolute
+									per supportare risoluzioni più alte, colori più fedeli e frequenze di aggiornamento
+									più
+									elevate.
+								</p>
+							</div>
+
+							<div
+								class="flex-grow grid grid-cols-1 md:grid-cols-3 gap-8 border-l border-white/10 pl-0 lg:pl-10">
+								<div class="flex flex-col">
+									<h5
+										class="text-white font-bold flex items-center gap-2 uppercase tracking-widest text-sm border-b border-white/5 pb-2">
+										HDMI
+									</h5>
+									<p class="text-white text-xs leading-relaxed text-justify">
+										Standard digitale per i segnali video, permettendo anche la trasmissione di
+										audio
+										attraverso un unico cavo. La versione 2.1 è
+										capace di gestire
+										<b class="text-gray-200">4K a 120fps</b> o 8K a 60fps con HDR dinamico.
+
+									</p>
+									<img src="hdmi.jpg" alt="HDMI Port"
+										class="aspect-square w-full mt-auto mt-6 object-contain rounded-xl border border-white/5 bg-white/5">
+								</div>
+								<div class="flex flex-col">
+									<h5
+										class="text-white font-bold flex items-center gap-2 uppercase tracking-widest text-sm border-b border-white/5 pb-2">
+										DisplayPort 2.0
+									</h5>
+									<p class="text-white text-xs leading-relaxed text-justify">
+										Porta digitale progettata principalmente per il
+										collegamento tra computer e monitor. È molto utilizzata in ambito professionale
+										e nel gaming perché supporta risoluzioni molto elevate e frequenze di
+										aggiornamento elevatissime (fino a 360Hz+), oltre a trasmettere anche l'audio.
+									</p>
+									<img src="display-port.png" alt="DisplayPort"
+										class="aspect-square w-full mt-auto mt-6 object-contain rounded-xl border border-white/5 bg-white/5">
+								</div>
+								<div class="flex flex-col">
+									<h5
+										class="text-white font-bold flex items-center gap-2 uppercase tracking-widest text-sm border-b border-white/5 pb-2">
+										VGA
+									</h5>
+									<p class="text-white text-xs leading-relaxed text-justify">
+										Porta video più datata, di tipo analogico.
+										Trasmette solo il segnale video e non l’audio. Essendo una tecnologia più
+										vecchia, supporta risoluzioni e qualità inferiori rispetto agli standard
+										digitali moderni (Full HD, 60Hz), ma è ancora presente in alcuni dispositivi
+										meno recenti.
+									</p>
+									<img src="vga.jpg" alt="VGA Port"
+										class="aspect-square w-full mt-auto mt-6 object-contain rounded-xl border border-white/5 bg-white/5">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Categoria Audio -->
+					<div
+						class="bg-dark-card/40 p-10 rounded-[2.5rem] border border-white/5 hover:border-green-500/40 transition-all group relative overflow-hidden backdrop-blur-xl">
+						<div class="absolute top-0 right-0 w-96 h-96 bg-green-500/5 blur-[120px] -z-10"></div>
+						<div class="flex flex-col lg:flex-row gap-10">
+							<div class="flex flex-col lg:w-56 shrink-0">
+								<div class="flex items-center gap-3 mb-4">
+									<div
+										class="p-3 bg-green-500/10 rounded-2xl shadow-[0_0_20px_rgba(34,197,94,0.1)] group-hover:scale-110 transition-all duration-500">
+										<i data-lucide="headphones" class="w-6 h-6 text-green-400"></i>
+									</div>
+									<h4 class="font-black text-xl text-white uppercase tracking-tighter leading-tight">
+										Audio Analogico
+									</h4>
+								</div>
+
+								<p class="text-[13px] text-justify leading-relaxed text-white">
+									Standard di connessione che permette la trasmissione di segnali sonori in formato
+									elettrico analogico verso speaker o cuffie.
+								</p>
+							</div>
+
+							<div
+								class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-10 border-l border-white/10 pl-0 lg:pl-10">
+								<div class="flex flex-col">
+									<h5 class="text-white font-bold flex items-center gap-3">
+
+										Jack Audio 3.5mm
+									</h5>
+									<p class="text-white text-sm leading-relaxed text-justify">
+
+										Porta analogica utilizzata per trasmettere solamente segnali
+										audio, sia in uscita che in entrata in un'unica porta. È comunemente impiegata
+										per collegare cuffie, altoparlanti o microfoni a
+										computer, smartphone e altri dispositivi.
+										Essendo un segnale analogico, la qualità dipende molto dalla scheda audio e
+										dalle cuffie utilizzate.
+									</p>
+									<img src="audio.png" alt="Combo Jack"
+										class="aspect-square w-full mt-auto mt-6 object-contain rounded-xl border border-white/5 bg-white/5">
+								</div>
+								<div class="flex flex-col">
+									<h5 class="text-white font-bold flex items-center gap-3">
+
+										Connettori audio RCA
+									</h5>
+									<p class="text-white text-sm leading-relaxed text-justify">
+										I connettori RCA sono porte analogiche utilizzate per trasmettere segnali audio
+										e video. Sono facilmente riconoscibili per i tre colori tipici:
+									</p>
+
+									<div class="grid grid-cols-1 gap-1 my-2">
+										<div class="flex items-center gap-3 py-1">
+											<div
+												class="w-3 h-3 rounded-full bg-red-600 shadow-[0_0_8px_rgba(220,38,38,0.5)]">
+											</div>
+											<span
+												class="text-[11px] font-bold uppercase tracking-wider w-16">Rosso</span>
+											<span class="text-[11px] text-white/80">Audio Canale Destro</span>
+										</div>
+										<div class="flex items-center gap-3 py-1">
+											<div
+												class="w-3 h-3 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+											</div>
+											<span
+												class="text-[11px] font-bold uppercase tracking-wider w-16">Bianco</span>
+											<span class="text-[11px] text-white/80">Audio Canale Sinistro</span>
+										</div>
+										<div class="flex items-center gap-3 py-1">
+											<div
+												class="w-3 h-3 rounded-full bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.5)]">
+											</div>
+											<span
+												class="text-[11px] font-bold uppercase tracking-wider w-16">Giallo</span>
+											<span class="text-[11px] text-white/80">Video Composito (Segnale
+												Analogico)</span>
+										</div>
+									</div>
+
+									<p class="text-white text-sm leading-relaxed text-justify">
+										Questo sistema era molto diffuso su televisori, lettori
+										DVD, videocamere e console più datate.
+
+										Essendo una tecnologia analogica, la qualità è inferiore rispetto agli standard
+										digitali moderni (come HDMI), e non supporta alte risoluzioni o audio avanzato.
+									</p>
+									<img src="audio-3.png" alt="Desktop Audio Ports"
+										class="aspect-square w-full mt-auto mt-6 object-contain rounded-xl border border-white/5 bg-white/5">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Categoria Ethernet -->
+					<div
+						class="bg-dark-card/40 p-10 rounded-[2.5rem] border border-white/5 hover:border-purple-500/40 transition-all group relative overflow-hidden backdrop-blur-xl">
+						<div class="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 blur-[120px] -z-10"></div>
+						<div class="flex flex-col lg:flex-row gap-10">
+							<div class="flex flex-col lg:w-56 shrink-0">
+								<div class="flex items-center gap-3 mb-4">
+									<div
+										class="p-3 bg-purple-500/10 rounded-2xl shadow-[0_0_20px_rgba(168,85,247,0.1)] group-hover:scale-110 transition-all duration-500">
+										<i data-lucide="network" class="w-6 h-6 text-purple-400"></i>
+									</div>
+									<h4 class="font-black text-xl text-white uppercase tracking-tighter leading-tight">
+										Rete Dati
+									</h4>
+								</div>
+
+							</div>
+
+							<div class="flex-grow border-l border-white/10 pl-0 lg:pl-10 flex items-center">
+								<div class="max-w-3xl">
+									<div class="flex items-center gap-3 mb-4">
+										<h5 class="text-white font-bold flex items-center gap-3">
+											Ethernet RJ - 45</h5>
+
+									</div>
+									<p class="text-white text-sm leading-relaxed text-justify">
+										Serve per collegare un
+										dispositivo a una rete cablata locale o a
+										Internet. A differenza del Wi-Fi, il cavo
+										Ethernet offre una connessione latenza prossima allo zero (<b
+											class="text-gray-200">Ping basso</b>) e una velocità molto elevata
+										(da 1 Gbps fino a 10-40 Gbps per data center).
+
+									</p>
+									<img src="ethernet.png" alt="Ethernet Port"
+										class="aspect-square w-full max-w-sm mx-auto mt-6 object-contain rounded-xl border border-white/5 bg-white/5">
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Navigation -->
+			<div class="flex justify-between w-full mt-12 pt-8 border-t border-white/10 text-sm">
 				<button onclick="navigateTo('lesson-9')"
-					class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-					<i data-lucide="arrow-left"></i> Precedente: Memorie di Massa
+					class="flex items-center gap-2 text-gray-400 hover:text-white transition-all group">
+					<i data-lucide="arrow-left" class="group-hover:-translate-x-1 transition-transform"></i> Precedente:
+					Memorie di Massa
 				</button>
 				<div class="w-32"></div>
 			</div>
@@ -5172,9 +6396,18 @@
 			Gemini | <span id="year"></span></p>
 	</footer>
 	<script>
-		// Inizializza Icone
-		lucide.createIcons();
-		document.getElementById('year').textContent = new Date().getFullYear();
+		// Helper per icone sicuro
+		function safeCreateIcons() {
+			if (typeof lucide !== 'undefined' && lucide.createIcons) {
+				lucide.createIcons();
+			}
+		}
+
+		// Inizializza Icone all'avvio
+		safeCreateIcons();
+
+		const yearEl = document.getElementById('year');
+		if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 		// Menu Logic
 		const menuBtn = document.getElementById('menu-btn');
@@ -5222,7 +6455,7 @@
 			window.scrollTo(0, 0);
 
 			// Re-inizializza icone
-			lucide.createIcons();
+			safeCreateIcons();
 
 			// FIX: Animazioni per specifiche lezioni
 			if (viewId === 'lesson-2') {
@@ -5466,7 +6699,7 @@
 					btn.disabled = false;
 					btn.classList.remove('opacity-50', 'cursor-not-allowed');
 					btn.innerHTML = '<i data-lucide="refresh-cw" class="w-4 h-4"></i> RIAVVIA PC';
-					lucide.createIcons();
+					safeCreateIcons();
 				}
 			}
 			setTimeout(typeMessage, 200);
@@ -7256,7 +8489,7 @@
 				btn.className = "px-4 py-2 bg-neon-red text-white font-bold rounded-full text-xs transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(255,51,51,0.3)]";
 				btn.innerHTML = '<i data-lucide="power-off"></i> <span>OFFLINE</span>';
 			}
-			lucide.createIcons();
+			safeCreateIcons();
 		}
 		/* FINE CODICE VOLATILE */
 		/* CODICE VELOCITÀ - SCRIPT */
@@ -7604,7 +8837,7 @@
 			magnifierBox.style.width = '800px';
 			magnifierBox.style.height = '350px';
 			isMagnifierOpen = true;
-			lucide.createIcons();
+			safeCreateIcons();
 		}
 
 		window.closeMagnifier = function () {
@@ -7695,6 +8928,373 @@
 		});
 
 
+
+		/* --- LOGICA MONITOR VIRTUALE & HARDWARE --- */
+		const virtualApps = [
+			{ id: 'app1', name: 'Web Browser', cells: 4, color: '#bc13fe', icon: 'globe', desc: 'Navigazione avanzata con rendering GPU.' },
+			{ id: 'app2', name: 'Documento', cells: 2, color: '#3b82f6', icon: 'file-text', desc: 'Editor di testo professionale con IA.' },
+			{ id: 'app5', name: 'Chat App', cells: 5, color: '#7289da', icon: 'message-square', desc: 'Comunicazione crittografata real-time.' },
+			{ id: 'app3', name: 'Player Musica', cells: 2, color: '#1db954', icon: 'music', desc: 'Streaming audio ad alta fedeltà.' },
+			{ id: 'app4', name: 'Videogioco', cells: 5, color: '#ef4444', icon: 'gamepad-2', desc: 'Simulazione 3D ad alto carico RAM.' }
+		];
+
+		let ramContents = Array(10).fill(null);
+		let ssdContents = [];
+		let runningApps = new Set();
+		let activeAppId = null;
+
+		function initVirtualSim() {
+			const desktop = document.getElementById('v-desktop-icons');
+			const ramGrid = document.getElementById('v-ram-grid-os');
+			if (!desktop || !ramGrid) return;
+
+
+
+			// Desktop - Layout Top Bar (Orizzontale e pulito)
+			desktop.innerHTML = '';
+			virtualApps.forEach(app => {
+				const container = document.createElement('div');
+				container.className = "flex items-center gap-2 px-3 py-1 rounded-xl hover:bg-white/5 transition-all cursor-pointer group pointer-events-auto border border-transparent hover:border-white/10";
+				container.onclick = () => loadApp(app.id);
+				container.innerHTML = `
+					<div class="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
+						<i data-lucide="${app.icon}" class="w-4 h-4" style="color: ${app.color}"></i>
+					</div>
+					<div class="flex flex-col leading-tight hidden sm:flex">
+						<span class="text-[9px] text-white font-bold uppercase tracking-wider transition-colors">${app.name}</span>
+						<span class="text-[7px] text-white font-mono uppercase tracking-widest">${app.cells} Celle</span>
+					</div>
+				`;
+				desktop.appendChild(container);
+			});
+
+			// RAM cells
+			ramGrid.innerHTML = '';
+			for (let i = 0; i < 10; i++) {
+				const cell = document.createElement('div');
+				cell.id = `ram-os-cell-${i}`;
+				cell.className = "ram-cell-hardware aspect-square bg-[#0a0a15] border border-white/5 rounded-lg flex items-center justify-center text-[7px] font-mono text-white";
+				cell.textContent = i;
+				ramGrid.appendChild(cell);
+			}
+
+			safeCreateIcons();
+			updateVirtualUI();
+		}
+
+		function updateVirtualUI() {
+			const ramGrid = document.getElementById('v-ram-grid-os');
+			const ssdGrid = document.getElementById('v-ssd-grid-os');
+			const taskbar = document.getElementById('taskbar-apps');
+			const usageStatus = document.getElementById('ram-usage-status');
+			const ssdStatus = document.getElementById('ssd-status-os');
+
+			// RAM Update
+			ramContents.forEach((appId, i) => {
+				const cell = document.getElementById(`ram-os-cell-${i}`);
+				if (!cell) return;
+				if (appId) {
+					const app = virtualApps.find(a => a.id === appId);
+					cell.style.backgroundColor = `${app.color}20`;
+					cell.style.borderColor = `${app.color}50`;
+					cell.style.color = 'white';
+					cell.textContent = app.name[0];
+					cell.classList.add('shadow-[0_0_8px_' + app.color + '20]');
+				} else {
+					cell.style.backgroundColor = '';
+					cell.style.borderColor = '';
+					cell.style.color = '';
+					cell.textContent = i;
+					cell.classList.remove('shadow-none');
+				}
+			});
+
+			// SSD Update
+			if (ssdGrid) {
+				ssdGrid.innerHTML = '';
+				const emptyMsg = document.getElementById('ssd-empty-msg');
+				if (ssdContents.length > 0) {
+					if (emptyMsg) emptyMsg.style.display = 'none';
+					ssdStatus.textContent = "ATTIVO (SWAP)";
+					ssdStatus.className = "text-[9px] font-mono text-cyan-400 animate-pulse";
+					ssdContents.forEach(appId => {
+						const app = virtualApps.find(a => a.id === appId);
+						const block = document.createElement('div');
+						block.className = "w-4 h-4 rounded-sm border flex items-center justify-center text-[6px] font-bold transition-all";
+						block.style.backgroundColor = `${app.color}20`;
+						block.style.borderColor = `${app.color}50`;
+						block.style.color = app.color;
+						block.textContent = app.name[0];
+						ssdGrid.appendChild(block);
+					});
+				} else {
+					if (emptyMsg) emptyMsg.style.display = 'flex';
+					ssdStatus.textContent = "IDLE";
+					ssdStatus.className = "text-[9px] font-mono text-gray-600 uppercase tracking-widest";
+				}
+			}
+
+			// Taskbar
+			if (taskbar) {
+				taskbar.innerHTML = '';
+				runningApps.forEach(appId => {
+					const app = virtualApps.find(a => a.id === appId);
+					const inSSD = ssdContents.includes(appId);
+					const isActive = activeAppId === appId;
+					const item = document.createElement('div');
+					item.className = `w-8 h-8 rounded-lg flex items-center justify-center relative transition-all border cursor-pointer ${isActive ? 'bg-white/10 border-white/20' : 'bg-white/5 border-white/5 hover:bg-white/10'} ${inSSD ? 'opacity-50 grayscale' : ''}`;
+					item.onclick = () => focusApp(appId);
+					item.innerHTML = `
+						<i data-lucide="${app.icon}" class="w-4 h-4" style="color: ${app.color}"></i>
+						<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full ${inSSD ? 'bg-cyan-400' : 'bg-white'}"></div>
+					`;
+					taskbar.appendChild(item);
+				});
+			}
+
+			// App Window Update
+			const appWindow = document.getElementById('active-app-window');
+			const emptyState = document.getElementById('desktop-empty-state');
+
+			if (activeAppId) {
+				const app = virtualApps.find(a => a.id === activeAppId);
+				const cellsInRam = ramContents.filter(id => id === activeAppId).length;
+				const totalCells = app.cells;
+
+				if (appWindow) appWindow.classList.remove('hidden');
+				if (emptyState) emptyState.classList.add('hidden');
+
+				document.getElementById('active-app-icon').setAttribute('data-lucide', app.icon);
+				document.getElementById('active-app-large-icon').setAttribute('data-lucide', app.icon);
+				document.getElementById('active-app-large-icon').style.color = app.color;
+				const glow = document.getElementById('active-app-glow');
+				if (glow) {
+					glow.style.backgroundColor = app.color;
+					glow.style.opacity = '0.3';
+				}
+				document.getElementById('active-app-title').textContent = app.name;
+				document.getElementById('active-app-status-name').textContent = app.name;
+
+
+
+
+				safeCreateIcons();
+			} else {
+				if (appWindow) appWindow.classList.add('hidden');
+				if (emptyState) emptyState.classList.remove('hidden');
+			}
+
+			// Usage
+			if (usageStatus) {
+				const occupied = ramContents.filter(c => c !== null).length;
+				usageStatus.textContent = `${(occupied * 10).toFixed(0)}%`;
+				usageStatus.className = occupied > 8 ? 'text-red-500 animate-pulse font-mono' : 'text-neon-purple font-mono';
+			}
+
+			safeCreateIcons();
+		}
+
+		function loadApp(appId) {
+			if (runningApps.has(appId)) {
+				focusApp(appId);
+				return;
+			}
+
+			const app = virtualApps.find(a => a.id === appId);
+			const freeCells = ramContents.filter(c => c === null).length;
+
+			if (freeCells >= app.cells) {
+				allocInRam(appId);
+				runningApps.add(appId);
+				activeAppId = appId;
+			} else {
+				// Swap mechanism: move individual cells to SSD until enough RAM is free
+				setTimeout(() => {
+					while (ramContents.filter(c => c === null).length < app.cells) {
+						let victimIdx = ramContents.findIndex(c => c !== null && c !== appId);
+						if (victimIdx === -1) break;
+
+						let victimId = ramContents[victimIdx];
+						ssdContents.push(victimId);
+						ramContents[victimIdx] = null;
+					}
+
+					allocInRam(appId);
+					runningApps.add(appId);
+					activeAppId = appId;
+					updateVirtualUI();
+				}, 600);
+			}
+			updateVirtualUI();
+		}
+
+		function allocInRam(appId) {
+			const app = virtualApps.find(a => a.id === appId);
+			let allocated = 0;
+			for (let i = 0; i < 10 && allocated < app.cells; i++) {
+				if (ramContents[i] === null) {
+					ramContents[i] = appId;
+					allocated++;
+				}
+			}
+		}
+
+		function focusApp(appId) {
+			activeAppId = appId;
+			const app = virtualApps.find(a => a.id === appId);
+
+			// Bring cells back from SSD if possible/needed
+			const countInSsd = ssdContents.filter(id => id === appId).length;
+			if (countInSsd > 0) {
+				// Swap out other apps' cells if needed to make room for active app's cells
+				while (ssdContents.includes(appId)) {
+					if (ramContents.filter(c => c === null).length === 0) {
+						let victimIdx = ramContents.findIndex(c => c !== null && c !== appId);
+						if (victimIdx !== -1) {
+							ssdContents.push(ramContents[victimIdx]);
+							ramContents[victimIdx] = null;
+						} else {
+							break; // Should not happen given memory constraints
+						}
+					}
+
+					let ssdIdx = ssdContents.indexOf(appId);
+					let ramIdx = ramContents.indexOf(null);
+					if (ssdIdx !== -1 && ramIdx !== -1) {
+						ramContents[ramIdx] = appId;
+						ssdContents.splice(ssdIdx, 1);
+					}
+				}
+			}
+			updateVirtualUI();
+		}
+
+		function minimizeApp() {
+			activeAppId = null;
+			updateVirtualUI();
+		}
+
+		function terminateActiveApp() {
+			if (!activeAppId) return;
+			const app = virtualApps.find(a => a.id === activeAppId);
+			ramContents = ramContents.map(c => c === activeAppId ? null : c);
+			ssdContents = ssdContents.filter(id => id !== activeAppId);
+			runningApps.delete(activeAppId);
+
+			// Auto-filling RAM with SSD content (MRU - Most Recently Used)
+			while (ssdContents.length > 0 && ramContents.includes(null)) {
+				const lastSwappedId = ssdContents.pop();
+				const freeIdx = ramContents.indexOf(null);
+				if (freeIdx !== -1) {
+					ramContents[freeIdx] = lastSwappedId;
+				}
+			}
+
+			activeAppId = null;
+			updateVirtualUI();
+		}
+
+		function resetVirtualSim() {
+			ramContents = Array(10).fill(null);
+			ssdContents = [];
+			runningApps = new Set();
+			activeAppId = null;
+			updateVirtualUI();
+		}
+
+		function triggerDriverPrint(printerType) {
+			const osPacket = document.getElementById('os-packet');
+			const hwPacket = document.getElementById('hw-packet');
+			const hwPacketContent = document.getElementById('hw-packet-content');
+			const driverABox = document.getElementById('driver-a-box');
+			const driverBBox = document.getElementById('driver-b-box');
+			const driverAStatus = document.getElementById('driver-a-status');
+			const driverBStatus = document.getElementById('driver-b-status');
+			const printerABox = document.getElementById('printer-a-box');
+			const printerBBox = document.getElementById('printer-b-box');
+			const infoTitle = document.getElementById('hw-info-title');
+			const infoDesc = document.getElementById('hw-info-desc');
+			const infoCard = document.getElementById('hw-info-card');
+
+			// Reset everything
+			osPacket.classList.remove('running', 'animate-os-a', 'animate-os-b');
+			hwPacket.classList.remove('running', 'animate-driver-a', 'animate-driver-b');
+			driverABox.classList.remove('border-neon-purple/80', 'shadow-[0_0_20px_rgba(188,19,254,0.3)]');
+			driverBBox.classList.remove('border-neon-purple/80', 'shadow-[0_0_20px_rgba(188,19,254,0.3)]');
+			driverAStatus.textContent = "In attesa";
+			driverBStatus.textContent = "In attesa";
+			driverAStatus.className = "text-[7px] text-gray-500 uppercase tracking-tighter italic";
+			driverBStatus.className = "text-[7px] text-gray-500 uppercase tracking-tighter italic";
+			printerABox.classList.remove('bg-blue-500/20', 'border-blue-500/50', 'shadow-[0_0_20px_rgba(59,130,246,0.3)]');
+			printerBBox.classList.remove('bg-neon-pink/20', 'border-neon-pink/50', 'shadow-[0_0_20px_rgba(255,0,153,0.3)]');
+
+			// Reset Info Card
+			infoTitle.textContent = "Uso del driver";
+			infoTitle.className = "text-gray-400 font-bold text-[10px] uppercase mb-1";
+			infoDesc.textContent = "In attesa di un comando...";
+			infoCard.className = "bg-white/5 p-4 rounded-xl border border-white/10 transition-colors";
+
+			// Force reflow
+			void osPacket.offsetWidth;
+			void hwPacket.offsetWidth;
+
+			// Phase 1: OS to Driver
+			if (printerType === 'A') {
+				osPacket.classList.add('animate-os-a', 'running');
+				setTimeout(() => {
+					driverABox.classList.add('border-neon-purple/80', 'shadow-[0_0_20px_rgba(188,19,254,0.3)]');
+					driverAStatus.textContent = "Ricezione...";
+					driverAStatus.className = "text-[7px] text-blue-400 uppercase tracking-tighter italic animate-pulse";
+				}, 1000);
+			} else {
+				osPacket.classList.add('animate-os-b', 'running');
+				setTimeout(() => {
+					driverBBox.classList.add('border-neon-purple/80', 'shadow-[0_0_20px_rgba(188,19,254,0.3)]');
+					driverBStatus.textContent = "Ricezione...";
+					driverBStatus.className = "text-[7px] text-neon-pink uppercase tracking-tighter italic animate-pulse";
+				}, 1000);
+			}
+
+			// Phase 2: Driver to HW
+			setTimeout(() => {
+				if (printerType === 'A') {
+					driverAStatus.textContent = "Traduzione A...";
+					driverAStatus.className = "text-[7px] text-neon-purple font-bold uppercase tracking-tighter italic";
+					hwPacketContent.textContent = "0001 0010 0100";
+					hwPacketContent.className = "bg-blue-500/20 border border-blue-500/50 px-2 py-1 rounded text-[8px] font-mono text-blue-300";
+					hwPacket.classList.add('animate-driver-a', 'running');
+
+					infoTitle.textContent = "Uso del Driver A:";
+					infoDesc.textContent = "Il Driver A riceve 'Stampa' e lo traduce nel pacchetto specifico 0001 0010 0100 per la Stampante A.";
+					infoCard.className = "bg-blue-500/5 p-4 rounded-xl border border-blue-500/10 transition-colors";
+				} else {
+					driverBStatus.textContent = "Traduzione B...";
+					driverBStatus.className = "text-[7px] text-neon-purple font-bold uppercase tracking-tighter italic";
+					hwPacketContent.textContent = "1010 1100 1111";
+					hwPacketContent.className = "bg-neon-pink/20 border border-neon-pink/50 px-2 py-1 rounded text-[8px] font-mono text-neon-pink";
+					hwPacket.classList.add('animate-driver-b', 'running');
+
+					infoTitle.textContent = "Uso del Driver B:";
+					infoDesc.textContent = "Il Driver B riceve lo stesso comando ma lo traduce in 1010 1100 1111 per la Stampante B.";
+					infoCard.className = "bg-neon-pink/5 p-4 rounded-xl border border-neon-pink/10 transition-colors";
+				}
+			}, 2000);
+
+			// Phase 3: Hardware received
+			setTimeout(() => {
+				if (printerType === 'A') {
+					printerABox.classList.add('bg-blue-500/20', 'border-blue-500/50', 'shadow-[0_0_20px_rgba(59,130,246,0.3)]');
+					driverAStatus.textContent = "Pronto";
+				} else {
+					printerBBox.classList.add('bg-neon-pink/20', 'border-neon-pink/50', 'shadow-[0_0_20px_rgba(255,0,153,0.3)]');
+					driverBStatus.textContent = "Pronto";
+				}
+			}, 4500);
+		}
+
+		document.addEventListener('DOMContentLoaded', () => {
+			if (document.getElementById('v-ram-grid-os')) initVirtualSim();
+		});
 
 	</script>
 </body>
