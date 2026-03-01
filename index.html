@@ -1443,6 +1443,12 @@
 								id="btn-next">
 								<i data-lucide="chevron-right" class="w-6 h-6 text-white"></i>
 							</button>
+							<!-- Pulsante Restart -->
+							<button onclick="resetStep()"
+								class="p-2 rounded-full bg-neon-blue/20 hover:bg-neon-blue/40 border border-neon-blue/30 transition-all hidden flex-shrink-0"
+								id="btn-restart">
+								<i data-lucide="refresh-cw" class="w-6 h-6 text-neon-blue"></i>
+							</button>
 						</div>
 					</div>
 					<div class="mt-8 p-6 bg-yellow-500/5 border border-yellow-500/20 rounded-xl">
@@ -2248,6 +2254,12 @@
 							class="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0"
 							id="btn-f-next">
 							<i data-lucide="chevron-right" class="w-6 h-6 text-white"></i>
+						</button>
+						<!-- Pulsante Restart -->
+						<button onclick="resetFetchStep()"
+							class="p-2 rounded-full bg-neon-teal/20 hover:bg-neon-teal/40 border border-neon-teal/30 transition-all hidden flex-shrink-0"
+							id="btn-f-restart">
+							<i data-lucide="refresh-cw" class="w-6 h-6 text-neon-teal"></i>
 						</button>
 					</div>
 				</div>
@@ -6980,6 +6992,22 @@
 
 			if (btnPrev) btnPrev.disabled = currentStep === 0;
 			if (btnNext) btnNext.disabled = currentStep === 5;
+
+			const btnRestart = document.getElementById('btn-restart');
+			if (btnRestart && btnNext) {
+				if (currentStep === 5) {
+					btnRestart.classList.remove('hidden');
+					btnNext.classList.add('hidden');
+				} else {
+					btnRestart.classList.add('hidden');
+					btnNext.classList.remove('hidden');
+				}
+			}
+		}
+
+		function resetStep() {
+			currentStep = 0;
+			updateVisuals();
 		}
 
 		function nextStep() {
@@ -7329,8 +7357,24 @@
 			if (prevBtn) prevBtn.disabled = fetchStep === 0;
 			if (nextBtn) nextBtn.disabled = fetchStep === 4;
 
+			const btnRestartFetch = document.getElementById('btn-f-restart');
+			if (btnRestartFetch && nextBtn) {
+				if (fetchStep === 4) {
+					btnRestartFetch.classList.remove('hidden');
+					nextBtn.classList.add('hidden');
+				} else {
+					btnRestartFetch.classList.add('hidden');
+					nextBtn.classList.remove('hidden');
+				}
+			}
+
 			// Re-render icons inside token if innerHTML changed
 			if (typeof lucide !== 'undefined') lucide.createIcons();
+		}
+
+		function resetFetchStep() {
+			fetchStep = 0;
+			updateFetchVisuals();
 		}
 
 		function nextFetchStep() {
